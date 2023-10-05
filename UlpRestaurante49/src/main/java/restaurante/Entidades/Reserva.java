@@ -111,5 +111,5 @@ public class Reserva {
         return "Reserva{" + "idReserva=" + idReserva + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", cantidadPersonas=" + cantidadPersonas + ", fecha=" + fecha + ", hora=" + hora + ", estado=" + estado + '}';
     }
     
-    //  adssaddsa
+    
 }

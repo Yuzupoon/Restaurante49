@@ -6,7 +6,7 @@ package restaurante.Entidades;
 
 
 public class Producto {
-    //Emi
+    
     private int idProducto;
     private String producto;
     private double precio;
