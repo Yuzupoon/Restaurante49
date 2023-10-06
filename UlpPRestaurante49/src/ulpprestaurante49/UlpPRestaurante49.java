@@ -1,7 +1,11 @@
 package ulpprestaurante49;
 
+import java.sql.Time;
+import java.time.LocalDate;
 import restaurante.Entidades.Producto;
+import restaurante.Entidades.Reserva;
 import restaurante.accesoData.ProductoData;
+import restaurante.accesoData.ReservaData;
 
 public class UlpPRestaurante49 {
 
@@ -25,6 +29,15 @@ public class UlpPRestaurante49 {
 
 //a.cambiarEstadoProductoFalse(1);
 //a.cambiarEstadoProductoTrue(1);
+        ReservaData z = new ReservaData();
+        Reserva res= new Reserva(123456, "BOMBOM", "Asesino", 1000, LocalDate.of(2000, 4, 21), new Time(11, 36, 0), true);
+//        Reserva res2 = new Reserva(5,1321, "González", "Roberto", 4, LocalDate.now(), new Time(13, 25, 0), true);
+//        z.crearReserva(res);
+//        z.modificarReserva(res2);
+//         z.eliminarReserva(3);
+//        for (Reserva listaReserva : z.listaReservasXFecha(res.getFecha())) {
+//            System.out.println(listaReserva.toString());
+        }
     }
 
-}
+
