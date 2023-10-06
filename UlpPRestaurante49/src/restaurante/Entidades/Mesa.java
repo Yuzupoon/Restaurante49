@@ -24,6 +24,12 @@ public class Mesa {
         this.estado = estado;
     }
 
+    public Mesa(int capacidad, boolean estado) {
+        this.capacidad = capacidad;
+        this.estado = estado;
+    }
+    
+
     public int getIdMesa() {
         return idMesa;
     }
