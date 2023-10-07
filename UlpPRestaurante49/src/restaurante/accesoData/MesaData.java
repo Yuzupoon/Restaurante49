@@ -77,6 +77,29 @@ public class MesaData {
         
     }
 
+    public Mesa buscarMesaID(int idMesa){
+        Mesa mesa= new Mesa();
+        try {
+            String sql="SELECT * FROM `mesa` WHERE idMesa=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, idMesa);
+            ResultSet rs =ps.executeQuery();
+             while (rs.next()) {          
+                 ReservaData reservaData= new ReservaData();
+                 
+                mesa.setIdMesa(idMesa);
+                mesa.setReserva(reservaData.buscarReservaID(rs.getInt("idReserva")));
+                mesa.setCapacidad(rs.getInt("capacidad"));
+                mesa.setEstado(rs.getBoolean("estado"));
+            }
+             ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MesaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mesa;
+    }
+    
+    
     public void ocuparMesa(int id) {
         try {
             String sql = "UPDATE Mesa SET estado = 0 WHERE idMesa = ? ";

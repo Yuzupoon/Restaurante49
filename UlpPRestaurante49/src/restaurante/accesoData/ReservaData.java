@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import restaurante.Entidades.Reserva;
 
@@ -51,6 +53,32 @@ public class ReservaData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al acceder a la tabla reserva", 0);
         }
+    }
+
+    public Reserva buscarReservaID(int idReserva) {
+        Reserva reserva=new Reserva();
+        try {
+            
+            String sql="SELECT * FROM `reserva` WHERE idReserva=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, idReserva);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()) {                
+                reserva.setIdReserva(rs.getInt("idreserva"));
+                reserva.setNombre(rs.getString("nombre"));
+                reserva.setApellido(rs.getString("apellido"));
+                reserva.setDni(rs.getInt("dni"));
+                reserva.setFecha(rs.getDate("fecha").toLocalDate());
+                reserva.setHora(rs.getTime("hora"));
+                reserva.setCantidadPersonas(rs.getInt("cantPersonas"));
+                reserva.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Reserva");
+                 
+        }
+        return reserva;
     }
 
     public void modificarReserva(Reserva reserva) {
@@ -93,17 +121,17 @@ public class ReservaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Reserva " + ex.getMessage());
         }
     }
-    
-       public List<Reserva> listaReservas() {
-      List<Reserva> listaReservas = new ArrayList<>();
+
+    public List<Reserva> listaReservas() {
+        List<Reserva> listaReservas = new ArrayList<>();
         try {
-            
+
             String sql = "SELECT * FROM `reserva`";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Reserva reserva = new Reserva();
-                
+
                 reserva.setIdReserva(rs.getInt("idreserva"));
                 reserva.setNombre(rs.getString("nombre"));
                 reserva.setApellido(rs.getString("apellido"));
@@ -120,18 +148,18 @@ public class ReservaData {
         }
         return listaReservas;
     }
-       
-          public List<Reserva> listaReservasXFecha(LocalDate fecha) {
-      List<Reserva> listaReservas = new ArrayList<>();
+
+    public List<Reserva> listaReservasXFecha(LocalDate fecha) {
+        List<Reserva> listaReservas = new ArrayList<>();
         try {
-            
+
             String sql = "SELECT * FROM `reserva` WHERE fecha = ?";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fecha));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Reserva reserva = new Reserva();
-                
+
                 reserva.setIdReserva(rs.getInt("idreserva"));
                 reserva.setNombre(rs.getString("nombre"));
                 reserva.setApellido(rs.getString("apellido"));
@@ -148,5 +176,5 @@ public class ReservaData {
         }
         return listaReservas;
     }
-    
+
 }

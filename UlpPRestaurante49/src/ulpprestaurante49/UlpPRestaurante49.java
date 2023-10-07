@@ -3,19 +3,21 @@ package ulpprestaurante49;
 import java.sql.Time;
 import java.time.LocalDate;
 import restaurante.Entidades.Producto;
+import restaurante.Entidades.ProductoXPedido;
 import restaurante.Entidades.Reserva;
+import restaurante.accesoData.MesaData;
 import restaurante.accesoData.MeseroData;
 import restaurante.accesoData.ProductoData;
+import restaurante.accesoData.ProductoXPedidoData;
 import restaurante.accesoData.ReservaData;
 
 public class UlpPRestaurante49 {
 
-    /**
-     * @param args the command line arguments
-     */
+    //CAMBIO IMPORTANTE CAMBIE EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
+    //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
     public static void main(String[] args) {
         ProductoData a = new ProductoData();
-//        Producto x = new Producto("PIPO", 40, 3, true);
+        Producto x = new Producto("MAMINENA", 104.3,5, true);
 //        a.crearProducto(x);
 //        System.out.println( a.buscarProductoId(1).toString());
 //         Producto d = new Producto("PIPO", 40, 3, true);
@@ -53,6 +55,30 @@ public class UlpPRestaurante49 {
 //        }
 //    Mesero meserito = new Mesero(2,"Fer", "Ferchus", "LaOne");
 //    mesero.modificarMesero(meserito);
-//    
+        MesaData mesita = new MesaData();
+        Reserva resmuerta = new Reserva(1, 123456, "BOMBOM", "Asesino", 1000, LocalDate.of(2000, 4, 21), new Time(11, 36, 0), true);
+//        mesita.armarMesa(5, 4);
+//    mesita.crearMesa(mesa2);
+//    int cont = 0;
+//    do{
+//        cont++;
+//        Mesa mesa2 = new Mesa(cont, resmuerta, 4, true);
+//        mesita.crearMesa(mesa2);
+//        System.out.println(cont);
+//    }while(cont != 20
+    //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
+     //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
+    
+        ProductoXPedidoData proxped = new ProductoXPedidoData();
+//        proxped.crearPedidoDeProducto(5, 1, 6);
+//        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
+//            System.out.println(MostrarProducto.getProducto().getNombre());
+//            System.out.println(MostrarProducto.getCantidad());
+//        }
+        
+        
+    
+    } 
+
     }
-}
+

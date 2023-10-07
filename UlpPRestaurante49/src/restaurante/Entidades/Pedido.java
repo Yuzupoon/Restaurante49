@@ -1,14 +1,10 @@
 
 package restaurante.Entidades;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class Pedido {
     private int idPedido;
     private Mesa mesa;
-    private List<Producto> productos = new ArrayList<>();
     private Mesero mesero;
     private String Estado;
 
@@ -19,13 +15,13 @@ public class Pedido {
         this.Estado = Estado;
     }
 
-    public Pedido() {
-    }
-
     public Pedido(Mesa mesa, Mesero mesero, String Estado) {
         this.mesa = mesa;
         this.mesero = mesero;
         this.Estado = Estado;
+    }
+
+    public Pedido() {
     }
 
     public int getIdPedido() {
@@ -44,14 +40,6 @@ public class Pedido {
         this.mesa = mesa;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
     public Mesero getMesero() {
         return mesero;
     }
@@ -64,16 +52,13 @@ public class Pedido {
         return Estado;
     }
 
-      public void agregarProducto(Producto producto) {
-        productos.add(producto);
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
     }
 
     @Override
     public String toString() {
-        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", productos=" + productos + ", mesero=" + mesero + ", Estado=" + Estado + '}';
+        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", mesero=" + mesero + ", Estado=" + Estado + '}';
     }
-    
-    
-    
-    
+
 }

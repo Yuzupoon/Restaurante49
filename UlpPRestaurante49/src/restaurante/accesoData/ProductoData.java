@@ -24,10 +24,10 @@ public class ProductoData {
     public ProductoData() {
         conexion = Conexion.getConexion();
     }
-
+    //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
     public void crearProducto(Producto producto) {
 
-        String sql = "INSERT INTO producto(nombre, precio, cantidad, estado) " + "VALUES (?,?,?,?)";
+        String sql = "INSERT INTO producto(nombre, precio, stock, estado) " + "VALUES (?,?,?,?)";
 
         try {
             PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -49,7 +49,7 @@ public class ProductoData {
 
     public void modificarProducto(Producto producto) {
         try {
-            String sql = "UPDATE `producto` SET `nombre`= ? ,`cantidad`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
+            String sql = "UPDATE `producto` SET `nombre`= ? ,`stock`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setString(1, producto.getNombre());
             ps.setInt(2, producto.getStock());
@@ -98,7 +98,7 @@ public class ProductoData {
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getDouble("precio"));
-                producto.setStock(rs.getInt("cantidad"));
+                producto.setStock(rs.getInt("stock"));
                 producto.setEstado(rs.getBoolean("estado"));
                 listaProductos.add(producto);
             }
@@ -155,7 +155,7 @@ public class ProductoData {
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getDouble("precio"));
-                producto.setStock(rs.getInt("cantidad"));
+                producto.setStock(rs.getInt("stock"));
                 producto.setEstado(rs.getBoolean("estado"));
             }
         ps.close();
