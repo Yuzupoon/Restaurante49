@@ -2,6 +2,7 @@ package ulpprestaurante49;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import restaurante.Entidades.Producto;
 import restaurante.Entidades.ProductoXPedido;
 import restaurante.Entidades.Reserva;
@@ -40,7 +41,17 @@ public class UlpPRestaurante49 {
 //         z.eliminarReserva(3);
 //        for (Reserva listaReserva : z.listaReservasXFecha(res.getFecha())) {
 //            System.out.println(listaReserva.toString());
-
+//    }
+//Reserva reserva1= z.buscarReservaID(1);
+//Reserva reserva2=z.buscarReservaID(6);
+//        if (reserva1.getHora().getHours()!=reserva2.getHora().getHours()) {
+//            JOptionPane.showMessageDialog(null, "LAS HORAS NO SON IGUALES");
+//        }
+//        if (reserva1.getHora().getMinutes()==reserva2.getHora().getMinutes()) {
+//            JOptionPane.showMessageDialog(null, "LOS MINUTOS SON IGUALES");
+//        }else{
+//            JOptionPane.showMessageDialog(null, "NO SON IGUALES");
+//        }
         MeseroData mesero = new MeseroData();
 //    Mesero mes = new Mesero("Fer", "Ferchu", "LaWaching");
 //   mesero.crearMesero(mes);
@@ -70,14 +81,18 @@ public class UlpPRestaurante49 {
      //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
     
         ProductoXPedidoData proxped = new ProductoXPedidoData();
-//        proxped.crearPedidoDeProducto(5, 1, 6);
-//        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
+//        proxped.crearPedidoDeProducto(1, 1, 1);
+        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
 //            System.out.println(MostrarProducto.getProducto().getNombre());
 //            System.out.println(MostrarProducto.getCantidad());
-//        }
+                System.out.println(MostrarProducto);
+        }
+        Producto nuevo = a.buscarProductoId(1);       
+//        nuevo.restarStock(1);
+//       nuevo.cargarStock(20);
+//       nuevo.restarStock(5);
+      
         
-        
-    
     } 
 
     }

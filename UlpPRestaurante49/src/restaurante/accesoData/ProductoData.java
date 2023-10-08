@@ -56,6 +56,7 @@ public class ProductoData {
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, producto.isEstado());
             ps.setInt(5, producto.getIdProducto());
+           
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -67,7 +68,7 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
         }
     }
-
+    
     public void eliminarProducto(int idProducto) {
         try {
             String sql = "DELETE FROM `producto` WHERE idProducto = ?";

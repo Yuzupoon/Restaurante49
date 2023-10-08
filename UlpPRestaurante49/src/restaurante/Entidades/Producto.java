@@ -1,9 +1,10 @@
-
 package restaurante.Entidades;
 
+import javax.swing.JOptionPane;
+import restaurante.accesoData.ProductoData;
 
 public class Producto {
-    
+
     private int idProducto;
     private String nombre;
     private double precio;
@@ -72,7 +73,29 @@ public class Producto {
     public String toString() {
         return "Producto{" + "idProducto=" + idProducto + ", producto=" + nombre + ", precio=" + precio + ", stock=" + stock + ", estado=" + estado + '}';
     }
-    
-    
-    
+
+    public void restarStock(int cantidad) {
+        ProductoData a = new ProductoData();
+        if (stock - cantidad >= 0) {
+
+            setStock(stock - cantidad);
+            a.modificarProducto(this);
+
+            if (stock <= 5) {
+                JOptionPane.showMessageDialog(null, "<html> Reponga el Stock de " + nombre.toUpperCase() + ". <br> Cantidad: " + stock + " </html>");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay Stock suficiente de " + nombre.toUpperCase() + " para realizar ese pedido ");
+        }
+
+    }
+
+    public void cargarStock(int cantidad) {
+        ProductoData a = new ProductoData();
+
+        setStock(stock + cantidad);
+        a.modificarProducto(this);
+        JOptionPane.showMessageDialog(null, "Stock de "+nombre.toUpperCase()+" : "+getStock());
+    }
+
 }
