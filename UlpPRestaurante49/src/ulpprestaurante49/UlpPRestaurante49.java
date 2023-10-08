@@ -83,9 +83,8 @@ public class UlpPRestaurante49 {
         ProductoXPedidoData proxped = new ProductoXPedidoData();
 //        proxped.crearPedidoDeProducto(1, 1, 1);
         for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
-//            System.out.println(MostrarProducto.getProducto().getNombre());
-//            System.out.println(MostrarProducto.getCantidad());
-                System.out.println(MostrarProducto);
+            System.out.println(MostrarProducto.getProducto().getNombre());
+            System.out.println(MostrarProducto.getCantidad());              
         }
         Producto nuevo = a.buscarProductoId(1);       
 //        nuevo.restarStock(1);
