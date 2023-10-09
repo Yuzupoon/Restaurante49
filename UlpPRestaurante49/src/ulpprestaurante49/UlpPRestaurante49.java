@@ -3,11 +3,15 @@ package ulpprestaurante49;
 import java.sql.Time;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import restaurante.Entidades.Mesa;
+import restaurante.Entidades.Mesero;
+import restaurante.Entidades.Pedido;
 import restaurante.Entidades.Producto;
 import restaurante.Entidades.ProductoXPedido;
 import restaurante.Entidades.Reserva;
 import restaurante.accesoData.MesaData;
 import restaurante.accesoData.MeseroData;
+import restaurante.accesoData.PedidoData;
 import restaurante.accesoData.ProductoData;
 import restaurante.accesoData.ProductoXPedidoData;
 import restaurante.accesoData.ReservaData;
@@ -18,7 +22,7 @@ public class UlpPRestaurante49 {
     //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
     public static void main(String[] args) {
         ProductoData a = new ProductoData();
-        Producto x = new Producto("MAMINENA", 104.3,5, true);
+        Producto x = new Producto("MAMINENA", 104.3, 5, true);
 //        a.crearProducto(x);
 //        System.out.println( a.buscarProductoId(1).toString());
 //         Producto d = new Producto("PIPO", 40, 3, true);
@@ -53,10 +57,9 @@ public class UlpPRestaurante49 {
 //            JOptionPane.showMessageDialog(null, "NO SON IGUALES");
 //        }
         MeseroData mesero = new MeseroData();
-//    Mesero mes = new Mesero("Fer", "Ferchu", "LaWaching");
+
 //   mesero.crearMesero(mes);
 //        System.out.println(mesero.buscarMeseroPorId(1).toString());
-
 //        Mesero mes = new Mesero("Messi", "Numberone12", "Lio");
 //        mesero.crearMesero(mes);
 //        System.out.println(mesero.buscarMeseroPorId(1).toString());
@@ -67,7 +70,8 @@ public class UlpPRestaurante49 {
 //    Mesero meserito = new Mesero(2,"Fer", "Ferchus", "LaOne");
 //    mesero.modificarMesero(meserito);
         MesaData mesita = new MesaData();
-        Reserva resmuerta = new Reserva(1, 123456, "BOMBOM", "Asesino", 1000, LocalDate.of(2000, 4, 21), new Time(11, 36, 0), true);
+        Reserva resmuerta = new Reserva(1, 12345621, "BOMBOM", "Asesino", 1000, LocalDate.of(2000, 4, 21), new Time(11, 36, 0), true);
+//        z.modificarReserva(resmuerta);
 //        mesita.armarMesa(5, 4);
 //    mesita.crearMesa(mesa2);
 //    int cont = 0;
@@ -77,22 +81,37 @@ public class UlpPRestaurante49 {
 //        mesita.crearMesa(mesa2);
 //        System.out.println(cont);
 //    }while(cont != 20
-    //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
-     //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
-    
+        //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
+        //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
+
         ProductoXPedidoData proxped = new ProductoXPedidoData();
 //        proxped.crearPedidoDeProducto(1, 1, 1);
-        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
-            System.out.println(MostrarProducto.getProducto().getNombre());
-            System.out.println(MostrarProducto.getCantidad());              
-        }
-        Producto nuevo = a.buscarProductoId(1);       
-//        nuevo.restarStock(1);
+//        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
+//            System.out.println(MostrarProducto.getProducto().getNombre());
+//            System.out.println(MostrarProducto.getCantidad());              
+//        }
+//        Producto nuevo = a.buscarProductoId(1);   
+        Producto aa = new Producto();
+//        aa.modificarProducto(1);
+//       nuevo.restarStock(1);
 //       nuevo.cargarStock(20);
 //       nuevo.restarStock(5);
-      
-        
-    } 
+//
+        Mesa mesa1 = new Mesa(2, resmuerta, 5, true);
+        Mesero mes = new Mesero(2, "Fer", "Ferchu", "LaWaching");
+        Mesero mesero1 = new Mesero(3, "EL SANGU", "EL SANGULONGONTE", "PASSWORD");
 
+        PedidoData pedi = new PedidoData();
+//        pedi.crearPedido(1, 1, "activo");
+
+        Pedido juan = new Pedido(3, mesa1, mesero1, "activo");
+//        pedi.eliminarPedido(juan);
+//        pedi.modificarPedido(juan);
+        for (Pedido listadePedido : pedi.listadePedidos()) {
+            System.out.println(listadePedido.toString());
+            System.out.println("===================================");
+        }
+//
     }
 
+}

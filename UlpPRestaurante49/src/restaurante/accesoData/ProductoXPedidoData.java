@@ -16,13 +16,10 @@ import javax.swing.JOptionPane;
 import restaurante.Entidades.Producto;
 import restaurante.Entidades.ProductoXPedido;
 
-/**
- *
- * @author angel
- */
+
 public class ProductoXPedidoData {   
     Connection conexion = null;
-   
+    ProductoData produ = new ProductoData();
     public ProductoXPedidoData() {
         conexion = Conexion.getConexion();
     }
@@ -38,6 +35,7 @@ public class ProductoXPedidoData {
             if (exito==1) {
                 JOptionPane.showMessageDialog(null, "Producto añadido al Pedido");
             }
+            
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al acceder a la tabla Producto X Pedido", 0);

@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import restaurante.Entidades.Producto;
+import restaurante.Entidades.ProductoXPedido;
 
 public class ProductoData {
 
@@ -24,6 +25,7 @@ public class ProductoData {
     public ProductoData() {
         conexion = Conexion.getConexion();
     }
+
     //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
     public void crearProducto(Producto producto) {
 
@@ -50,13 +52,23 @@ public class ProductoData {
     public void modificarProducto(Producto producto) {
         try {
             String sql = "UPDATE `producto` SET `nombre`= ? ,`stock`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
+            ProductoXPedido can = new ProductoXPedido();
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setString(1, producto.getNombre());
-            ps.setInt(2, producto.getStock());
+            if (producto.getStock() - can.getCantidad() >= 0) {
+                
+                ps.setInt(2, (producto.getStock() - can.getCantidad()));
+            }
+            if (producto.getStock() <= 5) {
+                JOptionPane.showMessageDialog(null, "<html> Reponga el Stock de " + producto.getNombre().toUpperCase() + ". <br> Cantidad: " + producto.getStock() + " </html>");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay Stock suficiente de " + producto.getNombre().toUpperCase() + " para realizar ese pedido ");
+            }
             ps.setDouble(3, producto.getPrecio());
             ps.setBoolean(4, producto.isEstado());
             ps.setInt(5, producto.getIdProducto());
-           
+
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -68,7 +80,28 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
         }
     }
-    
+
+//        public void modificarProducto(Producto producto) {
+//        try {
+//            String sql = "UPDATE `producto` SET `nombre`= ? ,`stock`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
+//            PreparedStatement ps = conexion.prepareStatement(sql);
+//            ps.setString(1, producto.getNombre());
+//            ps.setInt(2, producto.getStock());
+//            ps.setDouble(3, producto.getPrecio());
+//            ps.setBoolean(4, producto.isEstado());
+//            ps.setInt(5, producto.getIdProducto());
+//           
+//            int exito = ps.executeUpdate();
+//            if (exito == 1) {
+//                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "El Producto no existe");
+//            }
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
+//        }
+//    }
     public void eliminarProducto(int idProducto) {
         try {
             String sql = "DELETE FROM `producto` WHERE idProducto = ?";
@@ -87,15 +120,15 @@ public class ProductoData {
     }
 
     public List<Producto> listaProductos() {
-      List<Producto> listaProductos = new ArrayList<>();
+        List<Producto> listaProductos = new ArrayList<>();
         try {
-            
+
             String sql = "SELECT * FROM `producto`";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Producto producto = new Producto();
-                
+
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getDouble("precio"));
@@ -145,9 +178,9 @@ public class ProductoData {
     }
 
     public Producto buscarProductoId(int idProducto) {
-       Producto producto = new Producto();
+        Producto producto = new Producto();
         try {
-          
+
             String sql = "SELECT * FROM `producto` WHERE `idProducto`= ?";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, idProducto);
@@ -159,10 +192,10 @@ public class ProductoData {
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(rs.getBoolean("estado"));
             }
-        ps.close();
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
         }
-        return producto;       
+        return producto;
     }
 }
