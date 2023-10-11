@@ -1,12 +1,17 @@
 package ulpprestaurante49.vistas;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Mesero;
 import restaurante.accesoData.MeseroData;
@@ -22,6 +27,8 @@ public class Administracion extends javax.swing.JFrame {
         initComponents();
         armarCabecera();
         llenartabla();
+        Font fuente = new Font("Segoe UI", Font.PLAIN, 12);
+        jbCerrarSesion.setFont(fuente);
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +51,7 @@ public class Administracion extends javax.swing.JFrame {
         jbModificarMozo = new javax.swing.JButton();
         jtAtras = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
+        jlControl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +79,14 @@ public class Administracion extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTablaMozo);
 
         jbCrearMozo.setText("CREAR");
+        jbCrearMozo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbCrearMozoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCrearMozoMouseExited(evt);
+            }
+        });
         jbCrearMozo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCrearMozoActionPerformed(evt);
@@ -78,6 +94,14 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         jbEliminarMozo.setText("ELIMINAR ");
+        jbEliminarMozo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbEliminarMozoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbEliminarMozoMouseExited(evt);
+            }
+        });
         jbEliminarMozo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarMozoActionPerformed(evt);
@@ -85,14 +109,28 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         jbCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
+        jbCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jbCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
         jbCerrarSesion.setText("CERRAR SESION");
         jbCerrarSesion.setBorder(null);
         jbCerrarSesion.setContentAreaFilled(false);
-        jbCerrarSesion.setOpaque(false);
+        jbCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarSesionMouseExited(evt);
+            }
+        });
         jbCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarSesionActionPerformed(evt);
+            }
+        });
+
+        jtContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtContraseniaKeyReleased(evt);
             }
         });
 
@@ -103,6 +141,14 @@ public class Administracion extends javax.swing.JFrame {
         jLabel4.setText("CONTRASEÑA");
 
         jbModificarMozo.setText("MODIFICAR");
+        jbModificarMozo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbModificarMozoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbModificarMozoMouseExited(evt);
+            }
+        });
         jbModificarMozo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarMozoActionPerformed(evt);
@@ -110,6 +156,14 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         jtAtras.setText("ATRAS");
+        jtAtras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jtAtrasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jtAtrasMouseExited(evt);
+            }
+        });
         jtAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtAtrasActionPerformed(evt);
@@ -117,11 +171,21 @@ public class Administracion extends javax.swing.JFrame {
         });
 
         jbLimpiar.setText("LIMPIAR");
+        jbLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbLimpiarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbLimpiarMouseExited(evt);
+            }
+        });
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimpiarActionPerformed(evt);
             }
         });
+
+        jlControl.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,14 +201,16 @@ public class Administracion extends javax.swing.JFrame {
                         .addGap(18, 26, Short.MAX_VALUE)
                         .addComponent(jbEliminarMozo)
                         .addContainerGap(21, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jbCrearMozo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbLimpiar)
                         .addGap(78, 78, 78)
-                        .addComponent(jtAtras)
-                        .addGap(79, 79, 79))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlControl, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtAtras))
+                        .addGap(15, 15, 15))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +224,7 @@ public class Administracion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(45, 45, 45)))
-                .addGap(143, 143, 143))
+                .addGap(152, 152, 152))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -199,7 +265,8 @@ public class Administracion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlControl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(114, 114, 114)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCrearMozo)
@@ -298,11 +365,13 @@ public class Administracion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbModificarMozoActionPerformed
 
+
     private void jbCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarSesionActionPerformed
         Home home = new Home();
         home.setVisible(true);
         home.setLocationRelativeTo(null);
         this.dispose();
+
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
     private void jtAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAtrasActionPerformed
@@ -347,6 +416,84 @@ public class Administracion extends javax.swing.JFrame {
         jtContrasenia.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
+    private void jbCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarSesionMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jbCerrarSesion.setForeground(Color.red);
+        Font font1 = new Font("Segoe UI", Font.BOLD, 12);
+        jbCerrarSesion.setFont(font1);
+    }//GEN-LAST:event_jbCerrarSesionMouseEntered
+
+    private void jbCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarSesionMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        jbCerrarSesion.setForeground(Color.black);
+        Font font2 = new Font("Segoe UI", Font.PLAIN, 12);
+        jbCerrarSesion.setFont(font2);
+    }//GEN-LAST:event_jbCerrarSesionMouseExited
+
+    private void jbCrearMozoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCrearMozoMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jbCrearMozoMouseEntered
+
+    private void jbCrearMozoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCrearMozoMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jbCrearMozoMouseExited
+
+    private void jbModificarMozoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModificarMozoMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jbModificarMozoMouseEntered
+
+    private void jbModificarMozoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbModificarMozoMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jbModificarMozoMouseExited
+
+    private void jbLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbLimpiarMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jbLimpiarMouseEntered
+
+    private void jbLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbLimpiarMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jbLimpiarMouseExited
+
+    private void jtAtrasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAtrasMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jtAtrasMouseEntered
+
+    private void jtAtrasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAtrasMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jtAtrasMouseExited
+
+    private void jbEliminarMozoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEliminarMozoMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_jbEliminarMozoMouseEntered
+
+    private void jbEliminarMozoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEliminarMozoMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jbEliminarMozoMouseExited
+
+    private void jtContraseniaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtContraseniaKeyReleased
+        int cantidadDeLetras = jtContrasenia.getText().length();
+        Font font3 = new Font("Segoe UI", Font.BOLD, 8);
+        Color colorRojo = new Color(158, 66, 46);
+        Color colorVerde = new Color(29, 113, 27);
+        Color colorAmarillo = new Color(154, 155, 34);
+        jlControl.setFont(font3);
+        if (cantidadDeLetras==0) {
+            jlControl.setText("");
+        }
+        if (cantidadDeLetras <= 3 && cantidadDeLetras != 0) {
+            jlControl.setText("POCO SEGURA");
+            jlControl.setForeground(colorRojo);
+        }
+        if (cantidadDeLetras <= 7 && cantidadDeLetras >= 4 ) {
+            jlControl.setText("SEGURA");
+            jlControl.setForeground(colorAmarillo);
+        }
+        if (cantidadDeLetras >= 8) {
+            jlControl.setText(" MUY SEGURA");
+            jlControl.setForeground(colorVerde);
+        }
+    }//GEN-LAST:event_jtContraseniaKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -360,6 +507,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jbEliminarMozo;
     private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbModificarMozo;
+    private javax.swing.JLabel jlControl;
     private javax.swing.JButton jtAtras;
     private javax.swing.JTextField jtContrasenia;
     private javax.swing.JTextField jtNombre;

@@ -1,9 +1,13 @@
 package ulpprestaurante49.vistas;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class Home extends javax.swing.JFrame {
 
@@ -40,7 +44,14 @@ public class Home extends javax.swing.JFrame {
         jbIngresar.setText("INGRESAR");
         jbIngresar.setBorder(null);
         jbIngresar.setContentAreaFilled(false);
-        jbIngresar.setOpaque(false);
+        jbIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbIngresarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbIngresarMouseExited(evt);
+            }
+        });
         jbIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbIngresarActionPerformed(evt);
@@ -90,6 +101,19 @@ public class Home extends javax.swing.JFrame {
         principal.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jbIngresarActionPerformed
+
+    private void jbIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbIngresarMouseEntered
+        Color colorborde = new Color(217, 233, 144);
+        Border bordePersonalizado = new LineBorder(colorborde, 1);
+//        jbIngresar
+        jbIngresar.setBorder(bordePersonalizado);
+    }//GEN-LAST:event_jbIngresarMouseEntered
+
+    private void jbIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbIngresarMouseExited
+        Color colorborde = new Color(18, 156, 140);
+        Border bordePersonalizado = new LineBorder(colorborde, 0);
+        jbIngresar.setBorder(bordePersonalizado);
+    }//GEN-LAST:event_jbIngresarMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
