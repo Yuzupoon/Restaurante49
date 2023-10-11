@@ -1,4 +1,3 @@
-
 package ulpprestaurante49.vistas;
 
 import java.awt.Graphics;
@@ -6,17 +5,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-
 public class Home extends javax.swing.JFrame {
 
     Fondopantalla frame = new Fondopantalla();
+
     public Home() {
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         this.setContentPane(frame);
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,15 +24,23 @@ public class Home extends javax.swing.JFrame {
         jbIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Dubai", 1, 36)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Freestyle Script", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BIENVENIDOS");
+        jLabel1.setFocusable(false);
 
-        jbIngresar.setForeground(new java.awt.Color(0, 0, 0));
+        jbIngresar.setBackground(new java.awt.Color(255, 255, 255));
+        jbIngresar.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jbIngresar.setForeground(new java.awt.Color(255, 255, 255));
         jbIngresar.setText("INGRESAR");
+        jbIngresar.setBorder(null);
+        jbIngresar.setContentAreaFilled(false);
+        jbIngresar.setOpaque(false);
         jbIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbIngresarActionPerformed(evt);
@@ -46,22 +52,22 @@ public class Home extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(115, 115, 115))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(186, 186, 186)
+                .addGap(178, 178, 178)
                 .addComponent(jbIngresar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbIngresar)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,7 +91,6 @@ public class Home extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jbIngresarActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -93,7 +98,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jbIngresar;
     // End of variables declaration//GEN-END:variables
 
-public class Fondopantalla extends JPanel {
+    public class Fondopantalla extends JPanel {
 
         private Image imagen;
 
@@ -106,7 +111,5 @@ public class Fondopantalla extends JPanel {
             super.paint(g);
         }
     }
-
-
 
 }

@@ -43,6 +43,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jbModificarMozo = new javax.swing.JButton();
         jtAtras = new javax.swing.JButton();
+        jbLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +71,11 @@ public class Administracion extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTablaMozo);
 
         jbCrearMozo.setText("CREAR");
+        jbCrearMozo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCrearMozoActionPerformed(evt);
+            }
+        });
 
         jbEliminarMozo.setText("ELIMINAR ");
         jbEliminarMozo.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +84,12 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
 
+        jbCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
+        jbCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
         jbCerrarSesion.setText("CERRAR SESION");
+        jbCerrarSesion.setBorder(null);
+        jbCerrarSesion.setContentAreaFilled(false);
+        jbCerrarSesion.setOpaque(false);
         jbCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarSesionActionPerformed(evt);
@@ -105,6 +116,13 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
 
+        jbLimpiar.setText("LIMPIAR");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,39 +131,48 @@ public class Administracion extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 26, Short.MAX_VALUE)
+                        .addComponent(jbEliminarMozo)
+                        .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jbCrearMozo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbLimpiar)
+                        .addGap(78, 78, 78)
+                        .addComponent(jtAtras)
+                        .addGap(79, 79, 79))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtContrasenia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(45, 45, 45)))
+                .addGap(143, 143, 143))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57)
-                                .addComponent(jLabel4)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel2))
+                            .addComponent(jbModificarMozo)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(18, 26, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)))
-                        .addComponent(jbEliminarMozo)
-                        .addContainerGap(21, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jbCrearMozo)
-                        .addGap(44, 44, 44)
-                        .addComponent(jbModificarMozo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbCerrarSesion)
-                        .addGap(65, 65, 65)
-                        .addComponent(jtAtras)
-                        .addGap(81, 81, 81))))
+                        .addContainerGap()
+                        .addComponent(jbCerrarSesion)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,30 +181,34 @@ public class Administracion extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jbEliminarMozo)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbEliminarMozo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel2)))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(118, 118, 118)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(114, 114, 114)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCrearMozo)
                     .addComponent(jbModificarMozo)
-                    .addComponent(jbCerrarSesion)
-                    .addComponent(jtAtras))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(jtAtras)
+                    .addComponent(jbLimpiar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jbCerrarSesion)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,9 +274,9 @@ public class Administracion extends javax.swing.JFrame {
                 for (Mesero meser : meserData.listaMesero()) {
                     if (meser.getIdMesero() == id) {
                         mesero.setIdMesero(id);
-                        if(soloLetras(jtNombre.getText()) == true){
-                        mesero.setNombre(jtNombre.getText());
-                        }else{ 
+                        if (soloLetras(jtNombre.getText()) == true) {
+                            mesero.setNombre(jtNombre.getText());
+                        } else {
                             JOptionPane.showMessageDialog(this, "Porfavor ingresa solo Letras en la casilla nombre");
                             jtNombre.setText("");
                             error = 1;
@@ -256,7 +287,7 @@ public class Administracion extends javax.swing.JFrame {
 
                 }
             }
-            if (error == 0){
+            if (error == 0) {
                 meseroData.modificarMesero(mesero);
                 borradofilas();
                 llenartabla();
@@ -281,6 +312,41 @@ public class Administracion extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jtAtrasActionPerformed
 
+    private void jbCrearMozoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearMozoActionPerformed
+
+        Mesero mesero = new Mesero();
+        int error = 0;
+        if (jtNombre.getText().isEmpty()
+                || jtUsuario.getText().isEmpty()
+                || jtContrasenia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor rellene las casillas vacias");
+        } else {
+            if (soloLetras(jtNombre.getText()) == true) {
+                mesero.setNombre(jtNombre.getText());
+            } else {
+                JOptionPane.showMessageDialog(this, "Porfavor ingresa solo Letras en la casilla nombre");
+                jtNombre.setText("");
+                error = 1;
+            }
+            mesero.setUsuario(jtUsuario.getText());
+            mesero.setContraseña(jtContrasenia.getText());
+            if (error == 0) {
+                meseroData.crearMesero(mesero);
+                jtNombre.setText("");
+                jtUsuario.setText("");
+                jtContrasenia.setText("");
+                borradofilas();
+                llenartabla();
+            }
+        }
+    }//GEN-LAST:event_jbCrearMozoActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        jtNombre.setText("");
+        jtUsuario.setText("");
+        jtContrasenia.setText("");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -292,6 +358,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jbCerrarSesion;
     private javax.swing.JButton jbCrearMozo;
     private javax.swing.JButton jbEliminarMozo;
+    private javax.swing.JButton jbLimpiar;
     private javax.swing.JButton jbModificarMozo;
     private javax.swing.JButton jtAtras;
     private javax.swing.JTextField jtContrasenia;
