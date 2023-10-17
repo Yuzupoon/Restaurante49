@@ -19,8 +19,6 @@ import ulpprestaurante49.vistas.Home;
 
 public class UlpPRestaurante49 {
 
-    //CAMBIO IMPORTANTE CAMBIE EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
-    //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
     public static void main(String[] args) {
 //        ProductoData a = new ProductoData();
 //        Producto x = new Producto("MAMINENA", 104.3, 5, true);
@@ -85,8 +83,8 @@ public class UlpPRestaurante49 {
         //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
         //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
 
-//        ProductoXPedidoData proxped = new ProductoXPedidoData();
-//        proxped.crearPedidoDeProducto(1, 1, 1);
+        ProductoXPedidoData proxped = new ProductoXPedidoData();
+//        proxped.crearPedidoDeProducto( 1,"PEPE", 1);
 //        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
 //            System.out.println(MostrarProducto.getProducto().getNombre());
 //            System.out.println(MostrarProducto.getCantidad());              

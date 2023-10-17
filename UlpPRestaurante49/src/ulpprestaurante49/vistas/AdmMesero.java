@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Mesero;
 import restaurante.accesoData.MeseroData;
 
-public class Administracion extends javax.swing.JFrame {
+public class AdmMesero extends javax.swing.JFrame {
 
     Fondopantalla frame = new Fondopantalla();
     MeseroData meseroData = new MeseroData();
 
-    public Administracion() {
+    public AdmMesero() {
         this.setLocationRelativeTo(null);
         this.setContentPane(frame);
         initComponents();
@@ -375,7 +375,7 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCerrarSesionActionPerformed
 
     private void jtAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtAtrasActionPerformed
-        PrincipalAdm principal = new PrincipalAdm();
+        AdmPrincipal principal = new AdmPrincipal();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         this.dispose();
@@ -475,7 +475,7 @@ public class Administracion extends javax.swing.JFrame {
         Font font3 = new Font("Segoe UI", Font.BOLD, 8);
         Color colorRojo = new Color(158, 66, 46);
         Color colorVerde = new Color(29, 113, 27);
-        Color colorAmarillo = new Color(154, 155, 34);
+        Color colorAmarillo = new Color(154, 155, 34);     
         jlControl.setFont(font3);
         if (cantidadDeLetras==0) {
             jlControl.setText("");

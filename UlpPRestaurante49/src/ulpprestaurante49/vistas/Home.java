@@ -96,7 +96,7 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIngresarActionPerformed
-        Principal principal = new Principal();
+        Login principal = new Login();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         this.dispose();

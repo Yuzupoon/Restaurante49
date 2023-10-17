@@ -18,18 +18,17 @@ public class ProductoXPedidoData {
         conexion = Conexion.getConexion();
     }
     
-    public void crearPedidoDeProducto(int idProducto, int idPedido, int cantidad){
+    public void crearPedidoDeProducto( int idPedido, String producto, int cantidad){
         try {
-            String sql="INSERT INTO `productoxpedido`(`idProducto`, `idPedido`, `cantidad`) VALUES (?,?,?)";
+            String sql="INSERT INTO `productoxpedido`(`idPedido`, `producto`, `cantidad`) VALUES (?,?,?)";
             PreparedStatement ps=conexion.prepareStatement(sql);
-            ps.setInt(1, idProducto);
-            ps.setInt(2, idPedido);
+            ps.setInt(1, idPedido);
+            ps.setString(2, producto);
             ps.setInt(3, cantidad);
             int exito=ps.executeUpdate();
             if (exito==1) {
                 JOptionPane.showMessageDialog(null, "Producto añadido al Pedido");
-            }
-            
+            }            
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al acceder a la tabla Producto X Pedido", 0);
@@ -40,7 +39,7 @@ public class ProductoXPedidoData {
        List<ProductoXPedido> ListaProducto = new ArrayList<>();
         try {            
            
-            String sql="SELECT `idProducto`, `cantidad` FROM `productoxpedido` WHERE idPedido=?";
+            String sql="SELECT `producto`, `cantidad` FROM `productoxpedido` WHERE idPedido=?";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, idPedido);
             ResultSet rs= ps.executeQuery();
@@ -49,7 +48,7 @@ public class ProductoXPedidoData {
                 ProductoData productoData= new ProductoData();
                 PedidoData pedidoData =new PedidoData();
                 
-                productoXPedido.setProducto(productoData.buscarProductoId(rs.getInt("idProducto")));
+                productoXPedido.setProducto(productoData.buscarProductoPorNombre(rs.getString("producto")));
                 productoXPedido.setPedido(pedidoData.buscarPedidoID(idPedido));
                 productoXPedido.setCantidad(rs.getInt("cantidad"));
                 ListaProducto.add(productoXPedido);

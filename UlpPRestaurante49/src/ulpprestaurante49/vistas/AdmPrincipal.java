@@ -5,11 +5,11 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class PrincipalAdm extends javax.swing.JFrame {
+public class AdmPrincipal extends javax.swing.JFrame {
 
     Fondopantalla frame = new Fondopantalla();
 
-    public PrincipalAdm() {
+    public AdmPrincipal() {
         this.setLocationRelativeTo(null);
         this.setContentPane(frame);
         initComponents();
@@ -32,7 +32,6 @@ public class PrincipalAdm extends javax.swing.JFrame {
         jbMeseros.setText("MESEROS");
         jbMeseros.setBorder(null);
         jbMeseros.setBorderPainted(false);
-        jbMeseros.setOpaque(false);
         jbMeseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbMeserosActionPerformed(evt);
@@ -85,7 +84,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbMeserosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMeserosActionPerformed
-        Administracion principal = new Administracion();
+        AdmMesero principal = new AdmMesero();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         this.dispose();
@@ -93,7 +92,7 @@ public class PrincipalAdm extends javax.swing.JFrame {
 
     private void jbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProductosActionPerformed
 
-        Productos principal = new Productos();
+        AdmProducto principal = new AdmProducto();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
         this.dispose();

@@ -87,7 +87,6 @@ public class Producto {
         } else {
             JOptionPane.showMessageDialog(null, "No hay Stock suficiente de " + nombre.toUpperCase() + " para realizar ese pedido ");
         }
-
     }
 
     public void cargarStock(int cantidad) {

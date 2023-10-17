@@ -49,48 +49,26 @@ public class ProductoData {
         }
     }
 
-    public void modificarProducto(Producto producto) {
-        try {
-            String sql = "UPDATE `producto` SET `nombre`= ? ,`stock`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
-            ProductoXPedido can = new ProductoXPedido();
-            PreparedStatement ps = conexion.prepareStatement(sql);
-            ps.setString(1, producto.getNombre());
-            if (producto.getStock() - can.getCantidad() >= 0) {
-                
-                ps.setInt(2, (producto.getStock() - can.getCantidad()));
-            }
-            if (producto.getStock() <= 5) {
-                JOptionPane.showMessageDialog(null, "<html> Reponga el Stock de " + producto.getNombre().toUpperCase() + ". <br> Cantidad: " + producto.getStock() + " </html>");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay Stock suficiente de " + producto.getNombre().toUpperCase() + " para realizar ese pedido ");
-            }
-            ps.setDouble(3, producto.getPrecio());
-            ps.setBoolean(4, producto.isEstado());
-            ps.setInt(5, producto.getIdProducto());
-
-            int exito = ps.executeUpdate();
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
-            } else {
-                JOptionPane.showMessageDialog(null, "El Producto no existe");
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
-        }
-    }
-
-//        public void modificarProducto(Producto producto) {
+//    public void modificarProducto(Producto producto) {
 //        try {
 //            String sql = "UPDATE `producto` SET `nombre`= ? ,`stock`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
+//            ProductoXPedido can = new ProductoXPedido();
 //            PreparedStatement ps = conexion.prepareStatement(sql);
 //            ps.setString(1, producto.getNombre());
-//            ps.setInt(2, producto.getStock());
+//            if (producto.getStock() - can.getCantidad() >= 0) {
+//                
+//                ps.setInt(2, (producto.getStock() - can.getCantidad()));
+//            }
+//            if (producto.getStock() <= 5) {
+//                JOptionPane.showMessageDialog(null, "<html> Reponga el Stock de " + producto.getNombre().toUpperCase() + ". <br> Cantidad: " + producto.getStock() + " </html>");
+//
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No hay Stock suficiente de " + producto.getNombre().toUpperCase() + " para realizar ese pedido ");
+//            }
 //            ps.setDouble(3, producto.getPrecio());
 //            ps.setBoolean(4, producto.isEstado());
 //            ps.setInt(5, producto.getIdProducto());
-//           
+//
 //            int exito = ps.executeUpdate();
 //            if (exito == 1) {
 //                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -102,6 +80,29 @@ public class ProductoData {
 //            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
 //        }
 //    }
+
+        public void modificarProducto(Producto producto) {
+        try {
+            String sql = "UPDATE `producto` SET `nombre`= ? ,`stock`= ? ,`precio`= ? ,`estado`= ? WHERE `idProducto`= ? ";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, producto.getNombre());
+            ps.setInt(2, producto.getStock());
+            ps.setDouble(3, producto.getPrecio());
+            ps.setBoolean(4, producto.isEstado());
+            ps.setInt(5, producto.getIdProducto());
+           
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El Producto no existe");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
+        }
+    }
+        
     public void eliminarProducto(int idProducto) {
         try {
             String sql = "DELETE FROM `producto` WHERE idProducto = ?";
@@ -184,6 +185,28 @@ public class ProductoData {
             String sql = "SELECT * FROM `producto` WHERE `idProducto`= ?";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, idProducto);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
+        }
+        return producto;
+    }
+    
+       public Producto buscarProductoPorNombre(String pro) {
+        Producto producto = new Producto();
+        try {
+
+            String sql = "SELECT * FROM `producto` WHERE `nombre`= ?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, pro);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 producto.setIdProducto(rs.getInt("idProducto"));

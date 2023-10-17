@@ -8,12 +8,12 @@ import javax.swing.JPanel;
 import restaurante.Entidades.Mesero;
 import restaurante.accesoData.MeseroData;
 
-public class Principal extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     Fondopantalla frame = new Fondopantalla();
     MeseroData meseroData = new MeseroData();
 
-    public Principal() {
+    public Login() {
         this.setLocationRelativeTo(null);
         this.setContentPane(frame);
         initComponents();
@@ -112,7 +112,7 @@ public class Principal extends javax.swing.JFrame {
 //        String admi = "Administracion";
 //        String usu = "proyecto49";
 //        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
-            PrincipalAdm adm = new PrincipalAdm();
+            AdmPrincipal adm = new AdmPrincipal();
             adm.setVisible(true);
             adm.setLocationRelativeTo(null);
             this.dispose();
