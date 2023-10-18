@@ -253,6 +253,7 @@ public class GenerarReserva extends javax.swing.JFrame {
             this.dispose();
             
             
+            
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 

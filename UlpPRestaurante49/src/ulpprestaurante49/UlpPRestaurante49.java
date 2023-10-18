@@ -17,6 +17,7 @@ import restaurante.accesoData.ProductoXPedidoData;
 import restaurante.accesoData.ReservaData;
 import ulpprestaurante49.vistas.AdmProducto;
 import ulpprestaurante49.vistas.Home;
+import ulpprestaurante49.vistas.MesPrincipal;
 
 public class UlpPRestaurante49 {
 
@@ -116,10 +117,14 @@ public class UlpPRestaurante49 {
 //        principal.setVisible(true);
 //        principal.setLocationRelativeTo(null);
 
-            AdmProducto produ = new AdmProducto();
-            produ.setVisible(true);
-            produ.setLocationRelativeTo(null);
+//            AdmProducto produ = new AdmProducto();
+//            produ.setVisible(true);
+//            produ.setLocationRelativeTo(null);
 
+
+          MesPrincipal mesa = new MesPrincipal();
+          mesa.setVisible(true);
+          mesa.setLocationRelativeTo(mesa);
     }
 
 }

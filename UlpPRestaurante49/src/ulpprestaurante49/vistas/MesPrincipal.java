@@ -2,11 +2,18 @@ package ulpprestaurante49.vistas;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.table.DefaultTableModel;
+import restaurante.Entidades.Reserva;
+import restaurante.accesoData.ReservaData;
 
 public class MesPrincipal extends javax.swing.JFrame {
 
+    ReservaData reservadata = new ReservaData();
+
     public MesPrincipal() {
         initComponents();
+        armarTabla();
+        llenarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -64,6 +71,11 @@ public class MesPrincipal extends javax.swing.JFrame {
         jbModificarRes.setText("MODIFICAR RESERVA");
 
         jbEliminarRes.setText("ELIMINAR RESERVA");
+        jbEliminarRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarResActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("SISTEMA DE RESERVAS");
 
@@ -220,6 +232,61 @@ public class MesPrincipal extends javax.swing.JFrame {
         reserva.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jbGenerarResActionPerformed
+
+    private void jbEliminarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarResActionPerformed
+        int fila = jTablaReserva.getSelectedRow();
+        int id = (Integer) modelo.getValueAt(fila, 0);
+
+        if (fila != -1) {
+            Reserva a = reservadata.buscarReservaID(id);
+            a.setEstado(false);
+            reservadata.modificarReserva(a);
+                } 
+            borradofilas();
+            llenarTabla();
+    }//GEN-LAST:event_jbEliminarResActionPerformed
+
+    public DefaultTableModel modelo = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
+    public void armarTabla() {
+        modelo.addColumn("IdReserva");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Hora");
+        modelo.addColumn("Cant Personas");
+        jTablaReserva.setModel(modelo);
+    }
+
+    public void llenarTabla() {
+        for (Reserva listaReserva : reservadata.listaReservas()) {
+            if(listaReserva.isEstado() == true){
+            modelo.addRow(new Object[]{
+                listaReserva.getIdReserva(),
+                listaReserva.getNombre(),
+                listaReserva.getFecha(),
+                listaReserva.getHora(),
+                listaReserva.getCantidadPersonas()
+
+            });
+            }
+            }
+    }
+
+    public void borradofilas() {
+
+        int fila = jTablaReserva.getRowCount() - 1;
+        for (int i = fila; i >= 0; i--) {
+
+            modelo.removeRow(i);
+
+        }
+    }
 
     public static boolean soloLetras(String cadena) {
 
