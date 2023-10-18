@@ -112,10 +112,10 @@ public class Login extends javax.swing.JFrame {
 //        String admi = "Administracion";
 //        String usu = "proyecto49";
 //        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
-            AdmPrincipal adm = new AdmPrincipal();
-            adm.setVisible(true);
-            adm.setLocationRelativeTo(null);
-            this.dispose();
+//            AdmPrincipal adm = new AdmPrincipal();
+//            adm.setVisible(true);
+//            adm.setLocationRelativeTo(null);
+//            this.dispose();
 //        }else{
 //            int acierto = 0;
 //            
@@ -127,7 +127,7 @@ public class Login extends javax.swing.JFrame {
 //            }
 //        
 //            if(acierto == 1){
-//            Meseros mesero = new Meseros();
+//            MesPrincipal mesero = new MesPrincipal();
 //            mesero.setVisible(true);
 //            mesero.setLocationRelativeTo(null);
 //            this.dispose();
@@ -136,7 +136,9 @@ public class Login extends javax.swing.JFrame {
 //                jpContrasena.setText("");
 //            }
 //        }
-
+      MesPrincipal mes = new MesPrincipal();
+      mes.setVisible(true);
+      mes.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jbLoginActionPerformed
 

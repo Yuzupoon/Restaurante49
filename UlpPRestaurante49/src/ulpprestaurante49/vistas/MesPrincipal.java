@@ -216,7 +216,13 @@ public class MesPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGenerarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarResActionPerformed
-        // TODO add your handling code here:
+        
+        GenerarReserva reserva = new GenerarReserva();
+        reserva.setVisible(true);
+        reserva.toFront();
+        
+       
+       
     }//GEN-LAST:event_jbGenerarResActionPerformed
 
     
