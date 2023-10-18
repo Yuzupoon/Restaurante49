@@ -139,7 +139,7 @@ public class Login extends javax.swing.JFrame {
       MesPrincipal mes = new MesPrincipal();
       mes.setVisible(true);
       mes.setLocationRelativeTo(null);
-
+      dispose();
     }//GEN-LAST:event_jbLoginActionPerformed
 
 
