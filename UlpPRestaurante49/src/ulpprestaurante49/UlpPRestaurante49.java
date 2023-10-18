@@ -15,6 +15,7 @@ import restaurante.accesoData.PedidoData;
 import restaurante.accesoData.ProductoData;
 import restaurante.accesoData.ProductoXPedidoData;
 import restaurante.accesoData.ReservaData;
+import ulpprestaurante49.vistas.AdmProducto;
 import ulpprestaurante49.vistas.Home;
 
 public class UlpPRestaurante49 {
@@ -111,9 +112,13 @@ public class UlpPRestaurante49 {
 //            System.out.println("===================================");
 //        }
 //
-        Home principal = new Home();
-        principal.setVisible(true);
-        principal.setLocationRelativeTo(null);
+//        Home principal = new Home();
+//        principal.setVisible(true);
+//        principal.setLocationRelativeTo(null);
+
+            AdmProducto produ = new AdmProducto();
+            produ.setVisible(true);
+            produ.setLocationRelativeTo(null);
 
     }
 

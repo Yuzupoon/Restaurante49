@@ -1,6 +1,7 @@
-
 package ulpprestaurante49.vistas;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MesPrincipal extends javax.swing.JFrame {
 
@@ -8,7 +9,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -214,18 +214,20 @@ public class MesPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGenerarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarResActionPerformed
-        
+
         GenerarReserva reserva = new GenerarReserva();
         reserva.setVisible(true);
         reserva.setLocationRelativeTo(null);
-//        this.dispose();
-        
-        
-       
-       
+        this.dispose();
     }//GEN-LAST:event_jbGenerarResActionPerformed
 
-    
+    public static boolean soloLetras(String cadena) {
+
+        Pattern pattern = Pattern.compile("[0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]+");
+        Matcher matcher = pattern.matcher(cadena);
+
+        return !matcher.find();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

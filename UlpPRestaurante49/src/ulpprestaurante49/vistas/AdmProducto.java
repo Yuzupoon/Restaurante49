@@ -27,7 +27,7 @@ public class AdmProducto extends javax.swing.JFrame {
         initComponents();
         armarCabecera();
         llenartabla();
-        Font font2 = new Font("Segoe UI", Font.PLAIN, 10);
+        Font font2 = new Font("Segoe UI", Font.PLAIN, 12);
         jbCerrarSesion.setFont(font2);
     }
        public class Fondopantalla extends JPanel {
@@ -37,7 +37,7 @@ public class AdmProducto extends javax.swing.JFrame {
         @Override
         public void paint(Graphics g) {
 
-            imagen = new ImageIcon(getClass().getResource("/imagenes/vinos.jpg/")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/imagenes/_VINO2.png/")).getImage();
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);
@@ -476,7 +476,7 @@ public class AdmProducto extends javax.swing.JFrame {
     private void jbCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarSesionMouseExited
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         jbCerrarSesion.setForeground(Color.BLACK);
-        Font font2 = new Font("Segoe UI", Font.PLAIN, 10);
+        Font font2 = new Font("Segoe UI", Font.PLAIN, 12);
         jbCerrarSesion.setFont(font2);
     }//GEN-LAST:event_jbCerrarSesionMouseExited
 
