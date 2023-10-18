@@ -1,7 +1,10 @@
 package ulpprestaurante49.vistas;
 
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Reserva;
 import restaurante.accesoData.ReservaData;
@@ -14,6 +17,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         initComponents();
         armarTabla();
         llenarTabla();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -55,6 +59,11 @@ public class MesPrincipal extends javax.swing.JFrame {
 
             }
         ));
+        jTablaReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablaReservaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTablaReserva);
 
         jbGenerarRes.setText("GENERAR RESERVA");
@@ -69,6 +78,11 @@ public class MesPrincipal extends javax.swing.JFrame {
         jLabel2.setText("CAPACIDAD DISPONIBLE: 100");
 
         jbModificarRes.setText("MODIFICAR RESERVA");
+        jbModificarRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarResActionPerformed(evt);
+            }
+        });
 
         jbEliminarRes.setText("ELIMINAR RESERVA");
         jbEliminarRes.addActionListener(new java.awt.event.ActionListener() {
@@ -241,10 +255,48 @@ public class MesPrincipal extends javax.swing.JFrame {
             Reserva a = reservadata.buscarReservaID(id);
             a.setEstado(false);
             reservadata.modificarReserva(a);
-                } 
-            borradofilas();
-            llenarTabla();
+        }
+        borradofilas();
+        llenarTabla();
     }//GEN-LAST:event_jbEliminarResActionPerformed
+
+    private void jbModificarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarResActionPerformed
+        int fila = jTablaReserva.getSelectedRow();
+        int id = (Integer) modelo.getValueAt(fila, 0);
+        if (fila != -1) {
+            ModificarReserva modificar = new ModificarReserva();
+            modificar.setVisible(true);
+            modificar.setLocationRelativeTo(null);
+            this.dispose();
+
+            Reserva res = new Reserva();
+            res = reservadata.buscarReservaID(id);
+
+            ModificarReserva.jtId.setText(id + "");
+            ModificarReserva.jtNombre.setText(res.getNombre());
+            ModificarReserva.jtApellido.setText(res.getApellido());
+            ModificarReserva.jtDni.setText(res.getDni() + "");
+            ModificarReserva.jdFecha.setDate(java.sql.Date.valueOf(res.getFecha()));
+            ModificarReserva.jsHora.setValue(res.getHora().getHours());
+            ModificarReserva.jsMinutos.setValue(res.getHora().getMinutes());
+            ModificarReserva.jtCantPersonas.setText(res.getCantidadPersonas() + "");
+            if (res.isEstado() == true) {
+                ModificarReserva.jcEstado.setSelectedIndex(0);
+            } else {
+                ModificarReserva.jcEstado.setSelectedIndex(1);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccioname una reserva para modificar");
+        }
+
+    }//GEN-LAST:event_jbModificarResActionPerformed
+
+    private void jTablaReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaReservaMouseClicked
+        int fila = jTablaReserva.getSelectedRow();
+        int id = (Integer) modelo.getValueAt(fila, 0);
+
+//        Reserva a = reservadata.buscarReservaID(datoid);
+    }//GEN-LAST:event_jTablaReservaMouseClicked
 
     public DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -265,17 +317,17 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     public void llenarTabla() {
         for (Reserva listaReserva : reservadata.listaReservas()) {
-            if(listaReserva.isEstado() == true){
-            modelo.addRow(new Object[]{
-                listaReserva.getIdReserva(),
-                listaReserva.getNombre(),
-                listaReserva.getFecha(),
-                listaReserva.getHora(),
-                listaReserva.getCantidadPersonas()
+            if (listaReserva.isEstado() == true) {
+                modelo.addRow(new Object[]{
+                    listaReserva.getIdReserva(),
+                    listaReserva.getNombre(),
+                    listaReserva.getFecha(),
+                    listaReserva.getHora(),
+                    listaReserva.getCantidadPersonas()
 
-            });
+                });
             }
-            }
+        }
     }
 
     public void borradofilas() {
