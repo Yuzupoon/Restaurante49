@@ -1,6 +1,7 @@
 package ulpprestaurante49.vistas;
 
 import javax.swing.JOptionPane;
+import restaurante.Entidades.Mesa;
 import restaurante.Entidades.Mesero;
 import restaurante.Entidades.Pedido;
 import restaurante.accesoData.MesaData;
@@ -166,8 +167,9 @@ public class PedidoPorMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAgregarPedidoActionPerformed
 
     private void jbGenerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarPedidoActionPerformed
-      
         Pedido pedido = new Pedido();
+        int meserito = 0;
+        String Estado = "";
         if (jcMesero.getSelectedIndex() == 0
                 || jtMesa.getText().isEmpty()
                 || jcEstado.getSelectedIndex() == 0) {
@@ -177,31 +179,17 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             for (Mesero mesero : mesData.listaMesero()) {
                 cont++;
                 if (jcMesero.getSelectedIndex() == cont) {
-                   
-//                Mesero mesero = (Mesero) mesData.buscarMeseroPorId(mesero.getIdMesero());
-                
+
+                    meserito = mesero.getIdMesero();
+
                 }
 
             }
-            pedido.setMesa(mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText())));
-            
-            switch(jcEstado.getSelectedIndex()){
-                case 1:
-                    pedido.setEstado("Pendiente");
-                    break;
-                case 2:
-                     pedido.setEstado("Pendiente");
-                     break;
-                case 3:
-                     pedido.setEstado("Pendiente");
-                     break;
-                    
-            }
-            
-//            pedidoData.crearPedido(WIDTH, SOMEBITS, Estado);
+            int mesi = Integer.parseInt(jtMesa.getText());
+            pedidoData.crearPedido(mesi, meserito, "Pendiente");
         }
-        
-        
+
+
     }//GEN-LAST:event_jbGenerarPedidoActionPerformed
 
 

@@ -55,7 +55,7 @@ public class PedidoData {
 
             ps.setInt(1, mesaData.buscarMesaID(idMesa).getIdMesa());
             ps.setInt(2, meseroData.buscarMeseroPorId(idMesero).getIdMesero());
-            ps.setString(3, pedi.getEstado() + "");
+            ps.setString(3, Estado);
             ps.executeUpdate();
             ResultSet resultado = ps.getGeneratedKeys();
             if (resultado.next()) {
