@@ -121,7 +121,7 @@ public class UlpPRestaurante49 {
 //            produ.setVisible(true);
 //            produ.setLocationRelativeTo(null);
 
-
+//
           MesPrincipal mesa = new MesPrincipal();
           mesa.setVisible(true);
           mesa.setLocationRelativeTo(mesa);

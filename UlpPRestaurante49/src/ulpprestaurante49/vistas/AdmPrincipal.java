@@ -22,6 +22,7 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jbMeseros = new javax.swing.JButton();
         jbProductos = new javax.swing.JButton();
+        jbMozo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -48,15 +49,23 @@ public class AdmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbMozo.setText("VENT MOZO");
+        jbMozo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMozoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbMeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jbMozo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(jbMeseros, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
                 .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -66,7 +75,9 @@ public class AdmPrincipal extends javax.swing.JFrame {
                 .addComponent(jbMeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jbMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,10 +110,18 @@ public class AdmPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbProductosActionPerformed
 
+    private void jbMozoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMozoActionPerformed
+        MesPrincipal principal = new MesPrincipal();
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jbMozoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbMeseros;
+    private javax.swing.JButton jbMozo;
     private javax.swing.JButton jbProductos;
     // End of variables declaration//GEN-END:variables
 

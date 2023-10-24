@@ -8,12 +8,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import restaurante.Entidades.Producto;
 import restaurante.Entidades.ProductoXPedido;
 
 
 public class ProductoXPedidoData {   
     Connection conexion = null;
     ProductoData produ = new ProductoData();
+    Producto producto = new Producto();
     public ProductoXPedidoData() {
         conexion = Conexion.getConexion();
     }
@@ -69,7 +71,7 @@ public class ProductoXPedidoData {
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Se elimino exitosamente");
             } else {
-                JOptionPane.showMessageDialog(null, "No existe Producto con ID: " + producto);
+                JOptionPane.showMessageDialog(null, "No existe Producto: " + producto);
             }
             ps.close();
         } catch (SQLException ex) {

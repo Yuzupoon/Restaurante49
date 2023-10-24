@@ -108,7 +108,7 @@ public class MesaData {
             int fila = ps.executeUpdate();
             if (fila == 1) {
 
-                JOptionPane.showMessageDialog(null, "Se cambio el estado de la mesa correctamente");
+                JOptionPane.showMessageDialog(null, "Se ocupo la mesa");
             }
             ps.close();
         } catch (SQLException ex) {

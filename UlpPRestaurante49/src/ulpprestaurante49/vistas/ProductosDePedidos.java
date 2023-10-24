@@ -2,6 +2,7 @@ package ulpprestaurante49.vistas;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -38,7 +39,6 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         jsCantidad = new javax.swing.JSpinner();
         jlNumPedido = new javax.swing.JLabel();
         jlIdpedido = new javax.swing.JLabel();
-        JtIdpedido2 = new javax.swing.JTextField();
         jtEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,8 +83,6 @@ public class ProductosDePedidos extends javax.swing.JFrame {
 
         jlNumPedido.setText("Num de Pedido:");
 
-        JtIdpedido2.setEditable(false);
-
         jtEliminar.setText("ELIMINAR");
         jtEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,11 +101,9 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jsCantidad)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jlIdpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jlNumPedido))
-                            .addComponent(JtIdpedido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlIdpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlNumPedido))
                         .addGap(0, 11, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -128,9 +124,7 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                         .addComponent(jlNumPedido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlIdpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JtIdpedido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115)
+                        .addGap(147, 147, 147)
                         .addComponent(jbAñadir)
                         .addGap(18, 18, 18)
                         .addComponent(jsCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,15 +151,20 @@ public class ProductosDePedidos extends javax.swing.JFrame {
 
     private void jbAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAñadirActionPerformed
         int filaproduc = jtablaProductos.getSelectedRow();
-        int idproducto = (Integer) jtablaProductos.getValueAt(filaproduc, 0);
-        int idpedido = Integer.parseInt(jlIdpedido.getText());
-        Producto prod = prodData.buscarProductoId(idproducto);
-        String produ = prodData.buscarProductoId(idproducto).getNombre();
-        int cant = (Integer) jsCantidad.getValue();
-        prodXPedidoData.crearPedidoDeProducto(idpedido, produ, cant);
-        borradofilasProdXPedidos();
-        llenarSegundaTabla();
-        prodData.modificarProducto(prod);
+        if (filaproduc != -1) {
+            int idproducto = (Integer) jtablaProductos.getValueAt(filaproduc, 0);
+            int idpedido = Integer.parseInt(jlIdpedido.getText());
+            Producto prod = prodData.buscarProductoId(idproducto);
+            String produ = prodData.buscarProductoId(idproducto).getNombre();
+            int cant = (Integer) jsCantidad.getValue();
+            prodXPedidoData.crearPedidoDeProducto(idpedido, produ, cant);
+            borradofilasProdXPedidos();
+            llenarSegundaTabla();
+            int cantidadrequerida = (Integer) jsCantidad.getValue();
+            prodData.buscarProductoId(idproducto).restarStock(cantidadrequerida);
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor selecciona un producto que desea Agregar al pedido");
+        }
     }//GEN-LAST:event_jbAñadirActionPerformed
 
     private void jtablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtablaProductosMouseClicked
@@ -175,20 +174,31 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         SpinnerModel model = new SpinnerNumberModel(0, 0, cantidad, 1);
         jsCantidad.setModel(model);
 
+
     }//GEN-LAST:event_jtablaProductosMouseClicked
 
     private void jtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtEliminarActionPerformed
         int fila = jtablaPedido.getSelectedRow();
-        String product = jtablaPedido.getValueAt(fila, 0) + "";
-//        for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(Integer.parseInt(jlIdpedido.getText()))) {
-//            if(MostrarProducto.getProducto().equals(product)){
-//                Producto pr = MostrarProducto.getProducto();
-//            }
-//        }
-        prodXPedidoData.eliminarProductoxPedido(product);
-        borradofilasProdXPedidos();
-        llenarSegundaTabla();
-        
+        if (fila != -1) {
+            int idpedido = Integer.parseInt(jlIdpedido.getText());
+            String product = jtablaPedido.getValueAt(fila, 0) + "";
+            int cantidad = (Integer) jtablaPedido.getValueAt(fila, 1);
+            for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
+                System.out.println(MostrarProducto.getProducto().getNombre());
+                if (MostrarProducto.getProducto().getNombre().equals(product)) {
+                    System.out.println(cantidad);
+                    prodData.buscarProductoPorNombre(product).cargarStock(cantidad);
+                }
+            }
+            prodXPedidoData.eliminarProductoxPedido(product);
+            borradofilasProdXPedidos();
+            borradofilasProductos();
+            llenartablaPrducto();
+            llenarSegundaTabla();
+        } else {
+            JOptionPane.showMessageDialog(null, "Profavor seleccioname un producto agregado al pedido");
+        }
+
     }//GEN-LAST:event_jtEliminarActionPerformed
 
     public DefaultTableModel modelo = new DefaultTableModel() {
@@ -208,7 +218,6 @@ public class ProductosDePedidos extends javax.swing.JFrame {
     };
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JTextField JtIdpedido2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -251,9 +260,6 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         }
     }
 
-    public void llenartablaPrductoXPedido() {
-
-    }
 
     public void borradofilasProductos() {
 

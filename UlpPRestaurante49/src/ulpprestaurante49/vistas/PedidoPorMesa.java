@@ -4,14 +4,21 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Mesa;
 import restaurante.Entidades.Mesero;
 import restaurante.Entidades.Pedido;
+import restaurante.Entidades.Producto;
+import restaurante.Entidades.ProductoXPedido;
 import restaurante.Entidades.Reserva;
 import restaurante.accesoData.MesaData;
 import restaurante.accesoData.MeseroData;
 import restaurante.accesoData.PedidoData;
+import restaurante.accesoData.ProductoData;
+import restaurante.accesoData.ProductoXPedidoData;
 import restaurante.accesoData.ReservaData;
 
 public class PedidoPorMesa extends javax.swing.JFrame {
@@ -24,11 +31,16 @@ public class PedidoPorMesa extends javax.swing.JFrame {
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     String fecha = formato.format(fechaDia);
     LocalDate fechalista = LocalDate.now();
+    ProductoXPedidoData prodXPedidoData = new ProductoXPedidoData();
+    ProductoData produdata = new ProductoData();
 
     public PedidoPorMesa() {
         initComponents();
+
         llenarComboMesero();
         llenarComboReserva();
+        crearCabecera();
+        llenarTabla();
         jtFecha.setText(fecha);
     }
 
@@ -37,34 +49,35 @@ public class PedidoPorMesa extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlMesero = new javax.swing.JLabel();
+        jlMesa = new javax.swing.JLabel();
+        jlEstado = new javax.swing.JLabel();
         jtMesa = new javax.swing.JTextField();
         jcEstado = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jttablaPedida = new javax.swing.JTable();
         jbGenerarPedido = new javax.swing.JButton();
         jbAgregarPedido = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jcMesero = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        jlReserva = new javax.swing.JLabel();
         JcReserva = new javax.swing.JComboBox<>();
         jtFecha = new javax.swing.JLabel();
+        jlTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("MESERO:");
+        jlMesero.setText("MESERO:");
 
-        jLabel2.setText("MESA:");
+        jlMesa.setText("MESA:");
 
-        jLabel3.setText("ESTADO:");
+        jlEstado.setText("ESTADO:");
 
         jtMesa.setEditable(false);
 
         jcEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "PENDIENTE", "ENTREGADO", "PAGADO" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jttablaPedida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -75,7 +88,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jttablaPedida);
 
         jbGenerarPedido.setText("GENERAR PEDIDO");
         jbGenerarPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +108,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
         jcMesero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
-        jLabel4.setText("RESERVA:");
+        jlReserva.setText("RESERVA:");
 
         JcReserva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
@@ -108,7 +121,9 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                 .addComponent(jbGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addGap(39, 39, 39)
+                .addComponent(jlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -116,10 +131,10 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(jlMesero)
+                    .addComponent(jlMesa)
+                    .addComponent(jlEstado)
+                    .addComponent(jlReserva))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,29 +159,32 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                            .addComponent(jlMesero)
                             .addComponent(jcMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jlMesa)
                     .addComponent(jtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jlEstado)
                     .addComponent(jcEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAgregarPedido))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JcReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbGuardar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlReserva)
+                            .addComponent(JcReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbGuardar)))
+                    .addComponent(jlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -213,7 +231,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             int mesi = Integer.parseInt(jtMesa.getText());
             pedidoData.crearPedido(mesi, meserito, "Pendiente");
             mesaData.armarMesa(mesi, idreserva);
-            mesaData.ocuparMesa(mesi);
+
         }
 
 
@@ -227,32 +245,30 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
-                int idpedido = Integer.parseInt(listadePedido.getIdPedido()+"");
-               ProductosDePedidos.jlIdpedido.setText(idpedido+"");
-               ProductosDePedidos.JtIdpedido2.setText(idpedido+"");
-               
-//                System.out.println(listadePedido.getIdPedido());
+                int idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+                ProductosDePedidos.jlIdpedido.setText(idpedido + "");
             }
         }
     }//GEN-LAST:event_jbAgregarPedidoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JcReserva;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    public static javax.swing.JComboBox<String> JcReserva;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbAgregarPedido;
-    private javax.swing.JButton jbGenerarPedido;
-    private javax.swing.JButton jbGuardar;
-    private javax.swing.JComboBox<String> jcEstado;
-    private javax.swing.JComboBox<String> jcMesero;
+    public static javax.swing.JButton jbAgregarPedido;
+    public static javax.swing.JButton jbGenerarPedido;
+    public static javax.swing.JButton jbGuardar;
+    public static javax.swing.JComboBox<String> jcEstado;
+    public static javax.swing.JComboBox<String> jcMesero;
+    public static javax.swing.JLabel jlEstado;
+    public static javax.swing.JLabel jlMesa;
+    public static javax.swing.JLabel jlMesero;
+    public static javax.swing.JLabel jlReserva;
+    private javax.swing.JLabel jlTotal;
     private javax.swing.JLabel jtFecha;
     public static javax.swing.JTextField jtMesa;
+    public static javax.swing.JTable jttablaPedida;
     // End of variables declaration//GEN-END:variables
 
     private void llenarComboMesero() {
@@ -266,6 +282,63 @@ public class PedidoPorMesa extends javax.swing.JFrame {
         for (Reserva listaReserva : resData.listaReservasXFecha(fechalista)) {
             JcReserva.addItem(listaReserva + "");
         }
+    }
+
+    public DefaultTableModel modelo2 = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
+    public void crearCabecera() {
+        modelo2.addColumn("Producto");
+        modelo2.addColumn("Cantidad");
+        modelo2.addColumn("Subtotal");
+        jttablaPedida.setModel(modelo2);
+
+    }
+
+    public void llenarTabla() {
+
+        Timer crono = new Timer();
+        int tiempo = 300;
+
+        crono.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int idpedido = 0;
+                for (Pedido listadePedido : pedidoData.listadePedidos()) {
+                    int mesa = Integer.parseInt(jtMesa.getText());
+                    if (listadePedido.getMesa().getIdMesa() == mesa) {
+                        idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+                    }
+                }
+                crono.cancel();
+                for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
+                    for (Producto listaProducto : produdata.listaProductos()) {
+                        if (MostrarProducto.getProducto().getNombre().equals(listaProducto.getNombre())) {
+                            modelo2.addRow(new Object[]{
+                                MostrarProducto.getProducto().getNombre(),
+                                MostrarProducto.getCantidad(),
+                                listaProducto.getPrecio() * MostrarProducto.getCantidad()
+                            });
+                        }
+
+                    }
+                }
+                int fila = jttablaPedida.getRowCount() - 1;
+                double total = 0;
+                for (int i = fila; i >= 0; i--) {
+
+                    total = Double.parseDouble(jttablaPedida.getValueAt(i, 2) + "") + total;
+
+                }
+                jlTotal.setText( total + "");
+            }
+        }, tiempo);
+
     }
 
 }

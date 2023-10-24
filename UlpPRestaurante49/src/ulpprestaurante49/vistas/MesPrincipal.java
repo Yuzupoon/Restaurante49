@@ -7,11 +7,13 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Reserva;
+import restaurante.accesoData.MesaData;
 import restaurante.accesoData.ReservaData;
 
 public class MesPrincipal extends javax.swing.JFrame {
 
     ReservaData reservadata = new ReservaData();
+    MesaData mesdata = new MesaData();
 
     public MesPrincipal() {
         initComponents();
@@ -314,7 +316,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         pedidoMesa.setVisible(true);
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
-        
         PedidoPorMesa.jtMesa.setText("1");
         
     }//GEN-LAST:event_jButton1ActionPerformed

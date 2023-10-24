@@ -301,6 +301,7 @@ public class AdmMesero extends javax.swing.JFrame {
             jtNombre.setText(mes.getNombre());
             jtUsuario.setText(mes.getUsuario());
             jtContrasenia.setText(mes.getContraseña());
+            jlControl.setText("");
         }
     }//GEN-LAST:event_jTablaMozoMouseClicked
 
