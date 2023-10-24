@@ -109,37 +109,37 @@ public class Login extends javax.swing.JFrame {
 
     private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
         
-//        String admi = "Administracion";
-//        String usu = "proyecto49";
-//        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
-//            AdmPrincipal adm = new AdmPrincipal();
-//            adm.setVisible(true);
-//            adm.setLocationRelativeTo(null);
-//            this.dispose();
-//        }else{
-//            int acierto = 0;
-//            
-//            for (Mesero mesero : meseroData.listaMesero()) {
-//                
-//               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
-//                   acierto = 1;
-//               }
-//            }
-//        
-//            if(acierto == 1){
-//            MesPrincipal mesero = new MesPrincipal();
-//            mesero.setVisible(true);
-//            mesero.setLocationRelativeTo(null);
-//            this.dispose();
-//        }else{
-//                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
-//                jpContrasena.setText("");
-//            }
-//        }
-      MesPrincipal mes = new MesPrincipal();
-      mes.setVisible(true);
-      mes.setLocationRelativeTo(null);
-      dispose();
+        String admi = "Administracion";
+        String usu = "proyecto49";
+        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
+            AdmPrincipal adm = new AdmPrincipal();
+            adm.setVisible(true);
+            adm.setLocationRelativeTo(null);
+            this.dispose();
+        }else{
+            int acierto = 0;
+            
+            for (Mesero mesero : meseroData.listaMesero()) {
+                
+               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
+                   acierto = 1;
+               }
+            }
+        
+            if(acierto == 1){
+            MesPrincipal mesero = new MesPrincipal();
+            mesero.setVisible(true);
+            mesero.setLocationRelativeTo(null);
+            this.dispose();
+        }else{
+                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
+                jpContrasena.setText("");
+            }
+        }
+//      MesPrincipal mes = new MesPrincipal();
+//      mes.setVisible(true);
+//      mes.setLocationRelativeTo(null);
+//      dispose();
     }//GEN-LAST:event_jbLoginActionPerformed
 
 

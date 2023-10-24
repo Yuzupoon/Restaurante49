@@ -60,6 +60,22 @@ public class ProductoXPedidoData {
         return ListaProducto;
     }
     
+      public void eliminarProductoxPedido(String producto) {
+        try {
+            String sql = "DELETE FROM `productoxpedido` WHERE producto = ?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, producto);
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se elimino exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe Producto con ID: " + producto);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
+        }
+    }
    
     
     

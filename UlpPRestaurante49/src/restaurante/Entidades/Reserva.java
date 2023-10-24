@@ -105,7 +105,7 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva{" + "idReserva=" + idReserva + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", cantidadPersonas=" + cantidadPersonas + ", fecha=" + fecha + ", hora=" + hora + ", estado=" + estado + '}';
+        return apellido + " - "+ nombre;
     }
     
     

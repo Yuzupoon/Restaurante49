@@ -75,7 +75,7 @@ public class Producto {
     }
 
     public void restarStock(int cantidad) {
-        ProductoData a = new ProductoData();
+        ProductoData a =     new ProductoData();
         if (stock - cantidad >= 0) {
 
             setStock(stock - cantidad);
