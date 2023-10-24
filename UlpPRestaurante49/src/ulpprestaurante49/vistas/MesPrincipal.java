@@ -1,19 +1,27 @@
 package ulpprestaurante49.vistas;
 
 import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import restaurante.Entidades.Mesa;
+import restaurante.Entidades.Mesero;
+import restaurante.Entidades.Pedido;
 import restaurante.Entidades.Reserva;
 import restaurante.accesoData.MesaData;
+import restaurante.accesoData.MeseroData;
+import restaurante.accesoData.PedidoData;
 import restaurante.accesoData.ReservaData;
 
 public class MesPrincipal extends javax.swing.JFrame {
 
+    MeseroData meseroData = new MeseroData();
     ReservaData reservadata = new ReservaData();
     MesaData mesdata = new MesaData();
+    PedidoData pedidoData = new PedidoData();
 
     public MesPrincipal() {
         initComponents();
@@ -32,11 +40,12 @@ public class MesPrincipal extends javax.swing.JFrame {
         jTablaReserva = new javax.swing.JTable();
         jbGenerarRes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jdFecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jbModificarRes = new javax.swing.JButton();
         jbEliminarRes = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jdFecha = new com.toedter.calendar.JDateChooser();
+        jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -95,6 +104,19 @@ public class MesPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("SISTEMA DE RESERVAS");
 
+        jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdFechaPropertyChange(evt);
+            }
+        });
+
+        jButton8.setText("Mostrar todas las Reservas");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -111,18 +133,20 @@ public class MesPrincipal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jbEliminarRes))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jbGenerarRes)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton8)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -133,8 +157,9 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8))
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -304,6 +329,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbModificarResActionPerformed
 
     private void jTablaReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaReservaMouseClicked
+        System.out.println(jdFecha.getDate());
         int fila = jTablaReserva.getSelectedRow();
         int id = (Integer) modelo.getValueAt(fila, 0);
 
@@ -311,14 +337,85 @@ public class MesPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTablaReservaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         PedidoPorMesa pedidoMesa = new PedidoPorMesa();
         pedidoMesa.setVisible(true);
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
         PedidoPorMesa.jtMesa.setText("1");
-        
+
+        Mesa mesa = new Mesa();
+        int contador = 0;
+        for (Pedido listadePedido : pedidoData.listadePedidos()) {
+            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
+                    && listadePedido.getMesa().getReserva().getIdReserva() != 1
+                    && !listadePedido.getEstado().equals("Pagado")) {
+                for (Mesero mesero : meseroData.listaMesero()) {
+                    contador++;
+                    if (mesero.getIdMesero() == listadePedido.getMesero().getIdMesero()) {
+                        PedidoPorMesa.jcMesero.setSelectedIndex(contador);
+                    }
+                }
+                if (listadePedido.getEstado().equals("Pendiente")) {
+                    PedidoPorMesa.jcEstado.setSelectedIndex(1);
+                } else {
+                    PedidoPorMesa.jcEstado.setSelectedIndex(2);
+                }
+                contador=0;
+                for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    contador++;
+                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
+                    }
+                    
+                           
+                }
+
+            }
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private int numero = 0;
+    private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
+        System.out.println("acA");
+        numero++;
+        if (numero == 3) {
+            borradofilas();
+            if (jdFecha.getDate() == null) {
+                for (Reserva listaReserva : reservadata.listaReservas()) {
+                    modelo.addRow(new Object[]{
+                        listaReserva.getIdReserva(),
+                        listaReserva.getNombre(),
+                        listaReserva.getFecha(),
+                        listaReserva.getHora(),
+                        listaReserva.getCantidadPersonas()
+
+                    });
+                }
+            } else {
+                for (Reserva listaReserva : reservadata.listaReservas()) {
+                    if (listaReserva.isEstado() == true
+                            && listaReserva.getFecha().isEqual(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+
+                        modelo.addRow(new Object[]{
+                            listaReserva.getIdReserva(),
+                            listaReserva.getNombre(),
+                            listaReserva.getFecha(),
+                            listaReserva.getHora(),
+                            listaReserva.getCantidadPersonas()
+
+                        });
+                    }
+                }
+            }
+            numero = 2;
+        }
+    }//GEN-LAST:event_jdFechaPropertyChange
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        jdFecha.setDate(null);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     public DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -378,6 +475,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

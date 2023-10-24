@@ -117,14 +117,14 @@ public class UlpPRestaurante49 {
 //        principal.setVisible(true);
 //        principal.setLocationRelativeTo(null);
 
-//            AdmProducto produ = new AdmProducto();
-//            produ.setVisible(true);
-//            produ.setLocationRelativeTo(null);
+            AdmProducto produ = new AdmProducto();
+            produ.setVisible(true);
+            produ.setLocationRelativeTo(null);
 
 //
-          MesPrincipal mesa = new MesPrincipal();
-          mesa.setVisible(true);
-          mesa.setLocationRelativeTo(mesa);
+//          MesPrincipal mesa = new MesPrincipal();
+//          mesa.setVisible(true);
+//          mesa.setLocationRelativeTo(mesa);
     }
 
 }

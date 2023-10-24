@@ -229,8 +229,9 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                 }
             }
             int mesi = Integer.parseInt(jtMesa.getText());
-            pedidoData.crearPedido(mesi, meserito, "Pendiente");
             mesaData.armarMesa(mesi, idreserva);
+            pedidoData.crearPedido(mesi, meserito, "Pendiente");
+            
 
         }
 
