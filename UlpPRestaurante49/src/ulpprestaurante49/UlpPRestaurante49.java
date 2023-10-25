@@ -18,6 +18,7 @@ import restaurante.accesoData.ReservaData;
 import ulpprestaurante49.vistas.AdmProducto;
 import ulpprestaurante49.vistas.Home;
 import ulpprestaurante49.vistas.MesPrincipal;
+import ulpprestaurante49.vistas.PedidosTotales;
 
 public class UlpPRestaurante49 {
 
@@ -39,6 +40,7 @@ public class UlpPRestaurante49 {
 //a.cambiarEstadoProductoFalse(1);
 //a.cambiarEstadoProductoTrue(1);
 //        ReservaData z = new ReservaData();
+//        z.listaReservas();
 //        Reserva res = new Reserva(123456, "BOMBOM", "Asesino", 1000, LocalDate.of(2000, 4, 21), new Time(11, 36, 0), true);
 //        Reserva res2 = new Reserva(5,1321, "González", "Roberto", 4, LocalDate.now(), new Time(13, 25, 0), true);
 //        z.crearReserva(res);
@@ -58,7 +60,7 @@ public class UlpPRestaurante49 {
 //            JOptionPane.showMessageDialog(null, "NO SON IGUALES");
 //        }
 //        MeseroData mesero = new MeseroData();
-
+//        mesero.listaMesero();
 //   mesero.crearMesero(mes);
 //        System.out.println(mesero.buscarMeseroPorId(1).toString());
 //        Mesero mes = new Mesero("Messi", "Numberone12", "Lio");
@@ -86,6 +88,7 @@ public class UlpPRestaurante49 {
         //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
 
         ProductoXPedidoData proxped = new ProductoXPedidoData();
+//        System.out.println(proxped.MostrarProductos(1));
 //        proxped.crearPedidoDeProducto( 1,"PEPE", 1);
 //        for (ProductoXPedido MostrarProducto :proxped.MostrarProductos(1)) {
 //            System.out.println(MostrarProducto.getProducto().getNombre());
@@ -103,7 +106,8 @@ public class UlpPRestaurante49 {
 //        Mesero mesero1 = new Mesero(3, "EL SANGU", "EL SANGULONGONTE", "PASSWORD");
 //
 //        PedidoData pedi = new PedidoData();
-//        pedi.crearPedido(1, 1, "activo");
+//        System.out.println(pedi.listadePedidos());
+//        pedi.crearPedido(1, 1, "activo", 0.0);
 
 //        Pedido juan = new Pedido(3, mesa1, mesero1, "activo");
 //        pedi.eliminarPedido(juan);
@@ -117,14 +121,17 @@ public class UlpPRestaurante49 {
 //        principal.setVisible(true);
 //        principal.setLocationRelativeTo(null);
 
-            AdmProducto produ = new AdmProducto();
-            produ.setVisible(true);
-            produ.setLocationRelativeTo(null);
-
+//            AdmProducto produ = new AdmProducto();
+//            produ.setVisible(true);
+//            produ.setLocationRelativeTo(null);
 //
 //          MesPrincipal mesa = new MesPrincipal();
 //          mesa.setVisible(true);
 //          mesa.setLocationRelativeTo(mesa);
+          
+          PedidosTotales total = new PedidosTotales();
+          total.setVisible(true);
+          total.setLocationRelativeTo(total);
     }
 
 }

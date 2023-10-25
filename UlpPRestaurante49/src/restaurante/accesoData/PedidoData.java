@@ -1,4 +1,3 @@
-
 package restaurante.accesoData;
 
 import java.sql.Connection;
@@ -22,7 +21,6 @@ public class PedidoData {
     MesaData mesaData = new MesaData();
     MeseroData meseroData = new MeseroData();
 
-
     public PedidoData() {
         conexion = Conexion.getConexion();
     }
@@ -39,6 +37,7 @@ public class PedidoData {
                 pedido.setMesa(mesaData.buscarMesaID(rs.getInt("idMesa")));
                 pedido.setMesero(meseroData.buscarMeseroPorId(rs.getInt("idMesero")));
                 pedido.setEstado(rs.getString("estado"));
+                pedido.setTotal(rs.getDouble("total"));
             }
             ps.close();
         } catch (SQLException ex) {
@@ -47,8 +46,8 @@ public class PedidoData {
         return pedido;
     }
 
-    public Pedido crearPedido(int idMesa, int idMesero, String Estado) {
-        String sql = "INSERT INTO pedido(idMesa, idMesero, estado) " + "VALUES (?,?,?)";
+    public Pedido crearPedido(int idMesa, int idMesero, String Estado, double total) {
+        String sql = "INSERT INTO pedido(idMesa, idMesero, estado, total) " + "VALUES (?,?,?,?)";
         Pedido pedi = new Pedido();
         try {
             PreparedStatement ps = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -56,6 +55,7 @@ public class PedidoData {
             ps.setInt(1, mesaData.buscarMesaID(idMesa).getIdMesa());
             ps.setInt(2, meseroData.buscarMeseroPorId(idMesero).getIdMesero());
             ps.setString(3, Estado);
+            ps.setDouble(4, pedido.getTotal());
             ps.executeUpdate();
             ResultSet resultado = ps.getGeneratedKeys();
             if (resultado.next()) {
@@ -70,13 +70,14 @@ public class PedidoData {
     }
 
     public Pedido modificarPedido(Pedido pedido) {
-        String sql = "UPDATE `pedido` SET `idMesa`=?,`idMesero`=?,`estado`=? WHERE idPedido = ?";
+        String sql = "UPDATE `pedido` SET `idMesa`=?,`idMesero`=?,`estado`=?, total=? WHERE idPedido = ?";
         try {
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, pedido.getMesa().getIdMesa());
             ps.setInt(2, pedido.getMesero().getIdMesero());
             ps.setString(3, pedido.getEstado());
-            ps.setInt(4, pedido.getIdPedido());
+            ps.setDouble(4, pedido.getTotal());
+            ps.setInt(5, pedido.getIdPedido());
 
             int correcto = ps.executeUpdate();
             if (correcto == 1) {
@@ -107,12 +108,13 @@ public class PedidoData {
         }
     }
 
-    public void cambiarEstado(Pedido peido) {
-        String sql = "UPDATE `pedido` SET `estado`= ? WHERE idPedido = ?";
+    public void cambiarEstado(Pedido pedido) {
+        String sql = "UPDATE `pedido` SET `estado`= ?, total = ? WHERE idPedido = ?";
         try {
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setString(1, pedido.getEstado());
-            ps.setInt(2, pedido.getIdPedido());
+            ps.setDouble(2, pedido.getTotal());
+            ps.setInt(3, pedido.getIdPedido());
             int correcto = ps.executeUpdate();
             if (correcto == 1) {
                 JOptionPane.showMessageDialog(null, "Se Cambio el estado correctamente");
@@ -136,8 +138,8 @@ public class PedidoData {
                 pedi.setMesa(mesaData.buscarMesaID(rs.getInt("idMesa")));
                 pedi.setMesero(meseroData.buscarMeseroPorId(rs.getInt("idMesero")));
                 pedi.setEstado(rs.getString("estado"));
+                pedi.setTotal(rs.getDouble("total"));
                 listado.add(pedi);
-
             }
             ps.close();
         } catch (SQLException ex) {

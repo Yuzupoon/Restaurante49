@@ -14,7 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Mesero;
+import restaurante.Entidades.Pedido;
 import restaurante.accesoData.MeseroData;
+import restaurante.accesoData.PedidoData;
 
 public class AdmMesero extends javax.swing.JFrame {
 
@@ -308,14 +310,30 @@ public class AdmMesero extends javax.swing.JFrame {
     private void jbEliminarMozoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarMozoActionPerformed
         int fila = jTablaMozo.getSelectedRow();
         int id = (Integer) modelo.getValueAt(fila, 0);
+        int registra = 0;
+        PedidoData pedidoData = new PedidoData();
+        MeseroData meseroData = new MeseroData();
+        int seleccion = JOptionPane.showConfirmDialog(null, "¿Estas seguro que desea eliminar al Mesero?"
+                    + "", "Eliminar Prodcuto", JOptionPane.YES_NO_OPTION);
 
-        if (fila != -1) {
+        if (fila != -1 && seleccion ==0) {
+            for (Pedido listadePedido : pedidoData.listadePedidos()) {
+                if (listadePedido.getMesero().getIdMesero()==id) {
+                    registra=1;
+                    listadePedido.setMesero(meseroData.buscarMeseroPorId(1));
+                    pedidoData.modificarPedido(listadePedido);
+                }
+            }
+            if (registra ==1) {
+                  JOptionPane.showMessageDialog(null, "Ahora Administacion posee la informacion de los pedidos");
+            }
+
             for (Mesero mesero : meseroData.listaMesero()) {
                 if (mesero.getIdMesero() == id) {
                     meseroData.eliminarMesero(id);
                 }
-
             }
+
             borradofilas();
             llenartabla();
             jtNombre.setText("");

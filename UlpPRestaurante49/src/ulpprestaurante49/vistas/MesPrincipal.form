@@ -286,6 +286,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\Datos del cpu\Download\Image20231025113600.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mesa 1"/>
               </Properties>
               <Events>

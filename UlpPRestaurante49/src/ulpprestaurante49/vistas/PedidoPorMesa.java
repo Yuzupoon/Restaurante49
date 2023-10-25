@@ -38,7 +38,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
         initComponents();
 
         llenarComboMesero();
-        llenarComboReserva();
+//        llenarComboReserva();
         crearCabecera();
         llenarTabla();
         jtFecha.setText(fecha);
@@ -58,12 +58,14 @@ public class PedidoPorMesa extends javax.swing.JFrame {
         jttablaPedida = new javax.swing.JTable();
         jbGenerarPedido = new javax.swing.JButton();
         jbAgregarPedido = new javax.swing.JButton();
-        jbGuardar = new javax.swing.JButton();
+        jbEntregado = new javax.swing.JButton();
         jcMesero = new javax.swing.JComboBox<>();
         jlReserva = new javax.swing.JLabel();
         JcReserva = new javax.swing.JComboBox<>();
         jtFecha = new javax.swing.JLabel();
         jlTotal = new javax.swing.JLabel();
+        jbPagado = new javax.swing.JButton();
+        jtRellename = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +77,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
         jtMesa.setEditable(false);
 
-        jcEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "PENDIENTE", "ENTREGADO", "PAGADO" }));
+        jcEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "PENDIENTE", "ENTREGADO" }));
 
         jttablaPedida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,7 +106,12 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             }
         });
 
-        jbGuardar.setText("GUARDAR");
+        jbEntregado.setText("ENTREGADO");
+        jbEntregado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEntregadoActionPerformed(evt);
+            }
+        });
 
         jcMesero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
@@ -112,22 +119,17 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
         JcReserva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
+        jbPagado.setText("PAGADO");
+        jbPagado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPagadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jbGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,15 +144,36 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                             .addComponent(jcEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jbAgregarPedido)
-                                .addGap(42, 42, 42))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jbAgregarPedido)
+                                        .addGap(42, 42, 42))
+                                    .addComponent(jtFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(202, 202, 202)
+                                .addComponent(jtRellename, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JcReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jbGenerarPedido)
+                        .addGap(17, 17, 17)
+                        .addComponent(jbEntregado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(jlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,29 +183,32 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlMesero)
-                            .addComponent(jcMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlMesa)
-                    .addComponent(jtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlMesa)
+                            .addComponent(jtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtRellename, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEstado)
                     .addComponent(jcEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAgregarPedido))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jlReserva)
-                            .addComponent(JcReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbGuardar)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlReserva)
+                    .addComponent(JcReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbGenerarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbEntregado)
+                        .addComponent(jbPagado))
                     .addComponent(jlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
@@ -207,7 +233,6 @@ public class PedidoPorMesa extends javax.swing.JFrame {
         int idreserva = 0;
         if (jcMesero.getSelectedIndex() == 0
                 || jtMesa.getText().isEmpty()
-                || jcEstado.getSelectedIndex() == 0
                 || JcReserva.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Por favor seleccione todos los campos");
         } else {
@@ -219,7 +244,6 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                     meserito = mesero.getIdMesero();
 
                 }
-
             }
             int cont2 = 0;
             for (Reserva reserva : resData.listaReservasXFecha(fechalista)) {
@@ -228,9 +252,10 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                     idreserva = reserva.getIdReserva();
                 }
             }
+            double total = Double.parseDouble(jlTotal.getText());
             int mesi = Integer.parseInt(jtMesa.getText());
             mesaData.armarMesa(mesi, idreserva);
-            pedidoData.crearPedido(mesi, meserito, "Pendiente");
+            pedidoData.crearPedido(mesi, meserito, "Pendiente", total);
             
 
         }
@@ -252,23 +277,77 @@ public class PedidoPorMesa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbAgregarPedidoActionPerformed
 
+    private void jbEntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntregadoActionPerformed
+        Mesa idmesa = new Mesa();
+        Mesero meserito = new Mesero();
+        int cont = 0;
+        int idpedido = 0;
+        idmesa = mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText()));
+        for (Pedido listadePedido : pedidoData.listadePedidos()) {
+            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
+                idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+            }
+        }
+        for (Mesero mesero : mesData.listaMesero()) {
+                cont++;
+                if (jcMesero.getSelectedIndex() == cont) {
+
+                    meserito = mesero;
+
+                }
+            }
+        double total = Double.parseDouble(jlTotal.getText());
+        Pedido pedido = new Pedido(idpedido, idmesa, meserito, "Entregado", total);
+        pedidoData.cambiarEstado(pedido);
+    }//GEN-LAST:event_jbEntregadoActionPerformed
+
+    private void jbPagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPagadoActionPerformed
+        Mesa idmesa = new Mesa();
+        Mesero meserito = new Mesero();
+        int cont = 0;
+        int idpedido = 0;
+        int mesa = Integer.parseInt(jtMesa.getText());
+        idmesa = mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText()));
+        for (Pedido listadePedido : pedidoData.listadePedidos()) {
+            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
+                idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+            }
+        }
+        for (Mesero mesero : mesData.listaMesero()) {
+                cont++;
+                if (jcMesero.getSelectedIndex() == cont) {
+
+                    meserito = mesero;
+
+                }
+            }
+        double total = Double.parseDouble(jlTotal.getText());
+        Pedido pedido = new Pedido(idpedido, idmesa, meserito, "Pagado", total);
+        mesaData.armarMesa(mesa, 1);
+        mesaData.liberarMesa(mesa);
+        resData.eliminarReserva(Integer.parseInt(jtRellename.getText()));
+        pedidoData.modificarPedido(pedido);
+    }//GEN-LAST:event_jbPagadoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JComboBox<String> JcReserva;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JButton jbAgregarPedido;
+    public static javax.swing.JButton jbEntregado;
     public static javax.swing.JButton jbGenerarPedido;
-    public static javax.swing.JButton jbGuardar;
+    public static javax.swing.JButton jbPagado;
     public static javax.swing.JComboBox<String> jcEstado;
     public static javax.swing.JComboBox<String> jcMesero;
     public static javax.swing.JLabel jlEstado;
     public static javax.swing.JLabel jlMesa;
     public static javax.swing.JLabel jlMesero;
     public static javax.swing.JLabel jlReserva;
-    private javax.swing.JLabel jlTotal;
+    public static javax.swing.JLabel jlTotal;
     private javax.swing.JLabel jtFecha;
     public static javax.swing.JTextField jtMesa;
+    public static javax.swing.JLabel jtRellename;
     public static javax.swing.JTable jttablaPedida;
     // End of variables declaration//GEN-END:variables
 

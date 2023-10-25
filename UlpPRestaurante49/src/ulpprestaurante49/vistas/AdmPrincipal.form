@@ -45,9 +45,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jbMozo" max="32767" attributes="0"/>
-                      <Component id="jbProductos" pref="159" max="32767" attributes="0"/>
-                      <Component id="jbMeseros" pref="159" max="32767" attributes="0"/>
+                      <Component id="jButton1" pref="159" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jbMozo" max="32767" attributes="0"/>
+                          <Component id="jbProductos" pref="159" max="32767" attributes="0"/>
+                          <Component id="jbMeseros" pref="159" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="221" max="32767" attributes="0"/>
               </Group>
@@ -56,13 +59,15 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jbMeseros" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="jbProductos" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="jbMozo" min="-2" pref="49" max="-2" attributes="0"/>
-                  <EmptySpace pref="128" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace pref="90" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -105,6 +110,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMozoActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="PEDIDOS REALIZADOS"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

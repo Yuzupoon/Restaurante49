@@ -3,6 +3,7 @@ package ulpprestaurante49.vistas;
 import java.time.ZoneId;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -22,6 +23,10 @@ public class MesPrincipal extends javax.swing.JFrame {
     ReservaData reservadata = new ReservaData();
     MesaData mesdata = new MesaData();
     PedidoData pedidoData = new PedidoData();
+    java.util.Date fechaDia = new java.util.Date();
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    String fecha = formato.format(fechaDia);
+    LocalDate fechalista = LocalDate.now();
 
     public MesPrincipal() {
         initComponents();
@@ -172,6 +177,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setIcon(new javax.swing.ImageIcon("D:\\Datos del cpu\\Download\\Image20231025113600.png")); // NOI18N
         jButton1.setText("Mesa 1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,6 +352,7 @@ public class MesPrincipal extends javax.swing.JFrame {
 
         Mesa mesa = new Mesa();
         int contador = 0;
+        System.out.println("hola1");
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
                     && listadePedido.getMesa().getReserva().getIdReserva() != 1
@@ -364,21 +371,31 @@ public class MesPrincipal extends javax.swing.JFrame {
                 contador=0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
                     contador++;
+                    PedidoPorMesa.JcReserva.addItem(reserva + "");
                     if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                    }
-                    
-                           
+                        PedidoPorMesa.jtRellename.setText(reserva.getIdReserva()+"");
+                        PedidoPorMesa.jtRellename.setVisible(false);
+                        
+                    }                  
+                }
+                PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
+                PedidoPorMesa.jbGenerarPedido.setVisible(false);
+
+            }else{
+                System.out.println("hola2");
+                LocalDate hoy = LocalDate.now();
+                for (Reserva reserva : reservadata.listaReservasXFecha( hoy)) {
+                    PedidoPorMesa.JcReserva.addItem(reserva + "");
                 }
 
             }
         }
-
+ 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private int numero = 0;
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
-        System.out.println("acA");
         numero++;
         if (numero == 3) {
             borradofilas();

@@ -1,24 +1,26 @@
-
 package restaurante.Entidades;
 
-
 public class Pedido {
+
     private int idPedido;
     private Mesa mesa;
     private Mesero mesero;
     private String Estado;
+    private double total;
 
-    public Pedido(int idPedido, Mesa mesa, Mesero mesero, String Estado) {
+    public Pedido(int idPedido, Mesa mesa, Mesero mesero, String Estado, double total) {
         this.idPedido = idPedido;
         this.mesa = mesa;
         this.mesero = mesero;
         this.Estado = Estado;
+        this.total = total;
     }
 
-    public Pedido(Mesa mesa, Mesero mesero, String Estado) {
+    public Pedido(Mesa mesa, Mesero mesero, String Estado, double total) {
         this.mesa = mesa;
         this.mesero = mesero;
         this.Estado = Estado;
+        this.total = total;
     }
 
     public Pedido() {
@@ -55,10 +57,20 @@ public class Pedido {
     public void setEstado(String Estado) {
         this.Estado = Estado;
     }
+    
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
 
     @Override
     public String toString() {
-        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", mesero=" + mesero + ", Estado=" + Estado + '}';
+        return "Pedido{" + "idPedido=" + idPedido + ", mesa=" + mesa + ", mesero=" + mesero + ", Estado=" + Estado + ", total=" + total + '}';
     }
+
+    
 
 }
