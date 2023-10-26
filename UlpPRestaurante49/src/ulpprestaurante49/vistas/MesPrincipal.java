@@ -353,6 +353,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         Mesa mesa = new Mesa();
         int contador = 0;
         System.out.println("hola1");
+        System.out.println("Aca");
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
                     && listadePedido.getMesa().getReserva().getIdReserva() != 1
