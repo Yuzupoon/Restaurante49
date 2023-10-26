@@ -2,8 +2,10 @@ package ulpprestaurante49.vistas;
 
 import java.time.ZoneId;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -32,6 +34,8 @@ public class MesPrincipal extends javax.swing.JFrame {
         initComponents();
         armarTabla();
         llenarTabla();
+        JtxCantReserv.setVisible(false);
+        JtxReservadiatx.setVisible(false);
 
     }
 
@@ -50,7 +54,11 @@ public class MesPrincipal extends javax.swing.JFrame {
         jbEliminarRes = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jdFecha = new com.toedter.calendar.JDateChooser();
-        jButton8 = new javax.swing.JButton();
+        jbMostrarreservas = new javax.swing.JButton();
+        JtxReservadiatx = new javax.swing.JLabel();
+        JtxCantReserv = new javax.swing.JLabel();
+        jsHora = new javax.swing.JSpinner();
+        jsMinutos = new javax.swing.JSpinner();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -115,10 +123,24 @@ public class MesPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("Mostrar todas las Reservas");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jbMostrarreservas.setText("Mostrar todas las Reservas");
+        jbMostrarreservas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jbMostrarreservasActionPerformed(evt);
+            }
+        });
+
+        JtxReservadiatx.setText("RESERVAS POR DIA:");
+
+        jsHora.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jsHoraStateChanged(evt);
+            }
+        });
+
+        jsMinutos.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jsMinutosStateChanged(evt);
             }
         });
 
@@ -136,7 +158,11 @@ public class MesPrincipal extends javax.swing.JFrame {
                                 .addGap(148, 148, 148)
                                 .addComponent(jbModificarRes)
                                 .addGap(18, 18, 18)
-                                .addComponent(jbEliminarRes))))
+                                .addComponent(jbEliminarRes))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(JtxReservadiatx)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -145,13 +171,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
+                                    .addGap(92, 92, 92)
                                     .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton8)))))
+                                    .addComponent(jbMostrarreservas)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -161,16 +192,24 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
-                .addGap(26, 26, 26)
+                    .addComponent(jbMostrarreservas)
+                    .addComponent(jLabel1))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jbGenerarRes))
-                .addGap(79, 79, 79)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JtxReservadiatx)
+                    .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificarRes)
                     .addComponent(jbEliminarRes))
@@ -369,35 +408,36 @@ public class MesPrincipal extends javax.swing.JFrame {
                 } else {
                     PedidoPorMesa.jcEstado.setSelectedIndex(2);
                 }
-                contador=0;
+                contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
                     contador++;
                     PedidoPorMesa.JcReserva.addItem(reserva + "");
                     if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                        PedidoPorMesa.jtRellename.setText(reserva.getIdReserva()+"");
+                        PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
-                        
-                    }                  
+
+                    }
                 }
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            }else{
+            } else {
                 System.out.println("hola2");
                 LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha( hoy)) {
+                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
                     PedidoPorMesa.JcReserva.addItem(reserva + "");
                 }
 
             }
         }
- 
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private int numero = 0;
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
         numero++;
+        int reservaspordia = 4;
         if (numero == 3) {
             borradofilas();
             if (jdFecha.getDate() == null) {
@@ -412,18 +452,40 @@ public class MesPrincipal extends javax.swing.JFrame {
                     });
                 }
             } else {
+                LocalDate hoy = LocalDate.now();
                 for (Reserva listaReserva : reservadata.listaReservas()) {
+                    JtxCantReserv.setVisible(true);
+                    JtxReservadiatx.setVisible(true);
+                    JtxCantReserv.setText(reservaspordia + "");
                     if (listaReserva.isEstado() == true
                             && listaReserva.getFecha().isEqual(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+                        reservaspordia--;
+                        if (listaReserva.getFecha().equals(hoy)) {
+                            JtxCantReserv.setVisible(false);
+                            JtxReservadiatx.setVisible(false);
+                            JtxCantReserv.setText("");
+                            modelo.addRow(new Object[]{
+                                listaReserva.getIdReserva(),
+                                listaReserva.getNombre(),
+                                listaReserva.getFecha(),
+                                listaReserva.getHora(),
+                                listaReserva.getCantidadPersonas()
 
-                        modelo.addRow(new Object[]{
-                            listaReserva.getIdReserva(),
-                            listaReserva.getNombre(),
-                            listaReserva.getFecha(),
-                            listaReserva.getHora(),
-                            listaReserva.getCantidadPersonas()
+                            });
+                        } else {
+                            JtxCantReserv.setVisible(true);
+                            JtxReservadiatx.setVisible(true);
+                            JtxCantReserv.setText(reservaspordia + "");
+                            modelo.addRow(new Object[]{
+                                listaReserva.getIdReserva(),
+                                listaReserva.getNombre(),
+                                listaReserva.getFecha(),
+                                listaReserva.getHora(),
+                                listaReserva.getCantidadPersonas()
 
-                        });
+                            });
+                        }
+
                     }
                 }
             }
@@ -431,9 +493,33 @@ public class MesPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jdFechaPropertyChange
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jbMostrarreservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarreservasActionPerformed
         jdFecha.setDate(null);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jbMostrarreservasActionPerformed
+
+    private void jsHoraStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsHoraStateChanged
+        LocalTime tiempo2 = new Time(Integer.parseInt(jsHora.getValue() + ""), Integer.parseInt(jsMinutos.getValue() + ""), 00).toLocalTime();
+        
+        for (Reserva reserva : reservadata.listaReservasXFecha(fechalista)) {
+            LocalTime tiempo1 = reserva.getHora().toLocalTime();
+            LocalTime diferencia = tiempo1.minusMinutes(10);
+            if (diferencia.equals(tiempo2)) {
+                JOptionPane.showMessageDialog(null, "La Reserva a nombre de " + reserva.getNombre() + " esta por llegar.");
+            }
+        }
+    }//GEN-LAST:event_jsHoraStateChanged
+
+    private void jsMinutosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsMinutosStateChanged
+        LocalTime tiempo2 = new Time(Integer.parseInt(jsHora.getValue() + ""), Integer.parseInt(jsMinutos.getValue() + ""), 00).toLocalTime();
+        
+        for (Reserva reserva : reservadata.listaReservasXFecha(fechalista)) {
+            LocalTime tiempo1 = reserva.getHora().toLocalTime();
+            LocalTime diferencia = tiempo1.minusMinutes(10);
+            if (diferencia.equals(tiempo2)) {
+                JOptionPane.showMessageDialog(null, "La Reserva a nombre de " + reserva.getNombre() + " esta por llegar.");
+            }
+        }
+    }//GEN-LAST:event_jsMinutosStateChanged
 
     public DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -486,6 +572,8 @@ public class MesPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel JtxCantReserv;
+    private javax.swing.JLabel JtxReservadiatx;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -493,7 +581,6 @@ public class MesPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -505,6 +592,9 @@ public class MesPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbEliminarRes;
     private javax.swing.JButton jbGenerarRes;
     private javax.swing.JButton jbModificarRes;
+    private javax.swing.JButton jbMostrarreservas;
     private com.toedter.calendar.JDateChooser jdFecha;
+    private javax.swing.JSpinner jsHora;
+    private javax.swing.JSpinner jsMinutos;
     // End of variables declaration//GEN-END:variables
 }

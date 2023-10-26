@@ -10,13 +10,13 @@ import restaurante.Entidades.Reserva;
 import restaurante.accesoData.ReservaData;
 
 public class GenerarReserva extends javax.swing.JFrame {
-    
+
     public GenerarReserva() {
         initComponents();
         jdFecha.getDateEditor().getUiComponent().setEnabled(false);
         jdFecha.getDateEditor().getUiComponent().setOpaque(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -178,13 +178,15 @@ public class GenerarReserva extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//        int limitereservas = 0;
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         Reserva res = new Reserva();
         ReservaData resdata = new ReservaData();
         int error = 0;
         int aviso = 0;
         int alerta = 0;
+        int cantidadres = 4;
+        LocalDate hoy = LocalDate.now();
         if (jtNombre.getText().isEmpty()
                 || jtApellido.getText().isEmpty()
                 || jtCantPersonas.getText().isEmpty()
@@ -220,7 +222,7 @@ public class GenerarReserva extends javax.swing.JFrame {
                 }
                 alerta = 1;
                 res.setCantidadPersonas(Integer.parseInt(jtCantPersonas.getText()));
-                
+
             } catch (NumberFormatException e) {
                 if (alerta == 0) {
                     JOptionPane.showMessageDialog(null, "Por favor ingresa solo numeros en el Dni");
@@ -231,7 +233,14 @@ public class GenerarReserva extends javax.swing.JFrame {
                     jtCantPersonas.setText("");
                 }
                 error = 1;
-                
+
+            }
+            System.out.println("1"+ cantidadres);
+            for (Reserva reserva : resdata.listaReservasXFecha(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+                if(reserva.getFecha().equals(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())){
+                    cantidadres--;
+                    System.out.println(cantidadres);
+                }
             }
             res.setFecha(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
             int hora = (Integer) jsHora.getValue();
@@ -243,18 +252,28 @@ public class GenerarReserva extends javax.swing.JFrame {
             } else {
                 res.setEstado(false);
             }
-            
+
         }
-        if(error == 0){
-            resdata.crearReserva(res);
+        if (error == 0 && hoy.equals(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+
             MesPrincipal mesp = new MesPrincipal();
+            resdata.crearReserva(res);
             mesp.setVisible(true);
             mesp.setLocationRelativeTo(null);
             this.dispose();
-            
-            
-            
+
+        } else if (error == 0 && cantidadres > 0) {
+
+            MesPrincipal mesp = new MesPrincipal();
+            resdata.crearReserva(res);
+            mesp.setVisible(true);
+            mesp.setLocationRelativeTo(null);
+            this.dispose();
+        } else {
+           JOptionPane.showMessageDialog(null, "No quedan mas reservas para el dia seleccionado");
         }
+
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
@@ -263,12 +282,12 @@ public class GenerarReserva extends javax.swing.JFrame {
             jtFecha.setText(fecha + "");
         }
     }//GEN-LAST:event_jdFechaPropertyChange
-    
+
     public static boolean soloLetras(String cadena) {
-        
+
         Pattern pattern = Pattern.compile("[0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]+");
         Matcher matcher = pattern.matcher(cadena);
-        
+
         return !matcher.find();
     }
 
