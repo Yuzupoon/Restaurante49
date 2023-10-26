@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -13,6 +15,7 @@ import restaurante.Entidades.Mesa;
 public class MesaData {
 
     Connection conexion = null;
+   ReservaData res = new ReservaData();
 
     public MesaData() {
         conexion = Conexion.getConexion();
@@ -132,5 +135,28 @@ public class MesaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la base de Datos");
         }
 
+    }
+    
+    public List<Mesa> listaMesa() {
+      List<Mesa> listaMesa = new ArrayList<>();
+        try {
+            
+            String sql = "SELECT * FROM `mesa`";
+          try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+              ResultSet rs = ps.executeQuery();
+              while (rs.next()) {
+                  Mesa mes = new Mesa();
+                  
+                  mes.setIdMesa(rs.getInt("idMesa"));
+                  mes.setReserva(res.buscarReservaID(rs.getInt("idReserva")));
+                  mes.setCapacidad(rs.getInt("capacidad"));
+                  mes.setEstado(rs.getBoolean("estado"));
+                  listaMesa.add(mes);
+              }
+          }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mesero " + ex.getMessage());
+        }
+        return listaMesa;
     }
 }
