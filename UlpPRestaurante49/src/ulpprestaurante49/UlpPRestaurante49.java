@@ -19,6 +19,7 @@ import ulpprestaurante49.vistas.AdmProducto;
 import ulpprestaurante49.vistas.Home;
 import ulpprestaurante49.vistas.MesPrincipal;
 import ulpprestaurante49.vistas.PedidosTotales;
+import ulpprestaurante49.vistas.ProductosDePedidos;
 
 public class UlpPRestaurante49 {
 
@@ -83,7 +84,7 @@ public class UlpPRestaurante49 {
 //        Mesa mesa2 = new Mesa(cont, resmuerta, 4, true);
 //        mesita.crearMesa(mesa2);
 //        System.out.println(cont);
-//    }while(cont != 20
+//    }while(cont != 20);
         //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
         //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
 
@@ -117,21 +118,30 @@ public class UlpPRestaurante49 {
 //            System.out.println("===================================");
 //        }
 //
-//        Home principal = new Home();
-//        principal.setVisible(true);
-//        principal.setLocationRelativeTo(null);
+        Home principal = new Home();
+        principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
 
 //            AdmProducto produ = new AdmProducto();
 //            produ.setVisible(true);
 //            produ.setLocationRelativeTo(null);
 //
-          MesPrincipal mesa = new MesPrincipal();
-          mesa.setVisible(true);
-          mesa.setLocationRelativeTo(null);
-          
+//          MesPrincipal mesa = new MesPrincipal();
+//          mesa.setVisible(true);
+//          mesa.setLocationRelativeTo(null);
+//          
 //          PedidosTotales total = new PedidosTotales();
 //          total.setVisible(true);
-//          total.setLocationRelativeTo(total);
+//          total.setLocationRelativeTo(null);
+
+//             ProductosDePedidos productos = new ProductosDePedidos();
+//             productos.setVisible(true);
+//             productos.setLocationRelativeTo(null);
+
     }
 
+    
+      
+       
+   
 }

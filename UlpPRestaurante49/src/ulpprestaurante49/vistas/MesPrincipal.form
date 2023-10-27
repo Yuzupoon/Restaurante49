@@ -77,43 +77,51 @@
                               <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" pref="180" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                              <Component id="jsHora" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="jsMinutos" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jbGenerarRes" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="jbModificarRes" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jbEliminarRes" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                                      <Component id="jdFecha" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="jbMostrarreservas" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="JtxReservadiatx" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jsHora" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jsMinutos" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jdFecha" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jbMostrarreservas" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="JtxReservadiatx" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jbGenerarRes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jbModificarRes" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jbEliminarRes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -129,25 +137,25 @@
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jsHora" min="-2" max="-2" attributes="0"/>
-                          <Component id="jsMinutos" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jsMinutos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jsHora" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="163" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="JtxReservadiatx" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="JtxCantReserv" min="-2" pref="16" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="JtxReservadiatx" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jbGenerarRes" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbModificarRes" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbEliminarRes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -197,17 +205,6 @@
                 <Property name="text" type="java.lang.String" value="FECHA:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="10" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="CAPACIDAD DISPONIBLE: 100"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="jbModificarRes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="MODIFICAR RESERVA"/>
@@ -248,17 +245,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMostrarreservasActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="JtxReservadiatx">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Dialog" size="10" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="RESERVAS POR DIA:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="JtxCantReserv">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -274,6 +260,28 @@
                 <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jsMinutosStateChanged"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial Black" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="CAPACIDAD DISPONIBLE: 100"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="JtxReservadiatx">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial Black" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="RESERVAS POR DIA:"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -285,94 +293,104 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="jbMesa7" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jbMesa1" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jbMesa4" min="-2" pref="91" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="46" max="32767" attributes="0"/>
-                      <Component id="jbMesa2" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="jbMesa3" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="jbMesa9" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbMesa5" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jbMesa8" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jbMesa1" min="-2" pref="91" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Component id="jbMesa2" min="-2" pref="91" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jbMesa3" min="-2" pref="91" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jbMesa7" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                              <Component id="jbMesa8" min="-2" pref="91" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jbMesa4" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="jbMesa5" min="-2" pref="91" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                              <Component id="jbMesa6" min="-2" pref="91" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jbMesa10" min="-2" pref="91" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="jbMesa9" min="-2" pref="91" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jbCerrar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbMesa6" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="jbMesa10" min="-2" pref="91" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jbMesa3" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="jbMesa1" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="jbMesa2" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jbMesa6" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="jbMesa5" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="jbMesa4" min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jbMesa7" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jbMesa10" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jbMesa8" alignment="1" min="-2" pref="82" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                      <Component id="jbMesa3" min="-2" pref="82" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="jbMesa1" min="-2" pref="82" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="jbMesa4" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jbMesa6" min="-2" pref="82" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="jbSalir" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="jbMesa2" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jbMesa5" min="-2" pref="82" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jbMesa7" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Component id="jbMesa9" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jbCerrar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jbMesa9" min="-2" pref="82" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jbMesa10" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                              <Component id="jbMesa8" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -418,6 +436,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa3">
               <Properties>
@@ -436,6 +457,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa4">
               <Properties>
@@ -454,6 +478,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa4ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa5">
               <Properties>
@@ -472,6 +499,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa5ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa6">
               <Properties>
@@ -490,6 +520,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa6ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa7">
               <Properties>
@@ -508,6 +541,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa7ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa8">
               <Properties>
@@ -526,6 +562,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa8ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa9">
               <Properties>
@@ -544,6 +583,9 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa9ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMesa10">
               <Properties>
@@ -562,6 +604,40 @@
                 <Property name="verticalAlignment" type="int" value="3"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMesa10ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jbCerrar">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="CERRAR SESION"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbCerrarMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbCerrarMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCerrarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jbSalir">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ATRAS"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSalirActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

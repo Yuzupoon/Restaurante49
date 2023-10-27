@@ -148,8 +148,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbLogin;
-    private javax.swing.JPasswordField jpContrasena;
-    private javax.swing.JTextField jtUsuario;
+    public static javax.swing.JPasswordField jpContrasena;
+    public static javax.swing.JTextField jtUsuario;
     // End of variables declaration//GEN-END:variables
 
     public class Fondopantalla extends JPanel {

@@ -1,8 +1,12 @@
 package ulpprestaurante49.vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +21,10 @@ public class ProductosDePedidos extends javax.swing.JFrame {
     ProductoXPedidoData prodXPedidoData = new ProductoXPedidoData();
     Producto producto = new Producto();
 
+    Fondopantalla frame = new Fondopantalla();
+
     public ProductosDePedidos() {
+        this.setContentPane(frame);
         initComponents();
         crearCabeceraProducto();
         crearCabeceraProductoXPedido();
@@ -43,6 +50,8 @@ public class ProductosDePedidos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setOpaque(false);
+
         jtablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -54,6 +63,7 @@ public class ProductosDePedidos extends javax.swing.JFrame {
 
             }
         ));
+        jtablaProductos.setOpaque(false);
         jtablaProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtablaProductosMouseClicked(evt);
@@ -72,6 +82,7 @@ public class ProductosDePedidos extends javax.swing.JFrame {
 
             }
         ));
+        jtablaPedido.setOpaque(false);
         jScrollPane2.setViewportView(jtablaPedido);
 
         jbAñadir.setText("AÑADIR");
@@ -81,6 +92,7 @@ public class ProductosDePedidos extends javax.swing.JFrame {
             }
         });
 
+        jlNumPedido.setForeground(new java.awt.Color(255, 255, 255));
         jlNumPedido.setText("Num de Pedido:");
 
         jtEliminar.setText("ELIMINAR");
@@ -96,43 +108,56 @@ public class ProductosDePedidos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jsCantidad)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlIdpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlNumPedido))
-                        .addGap(0, 11, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbAñadir, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtEliminar, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jsCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jbAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addGap(32, 32, 32)
+                                            .addComponent(jtEliminar))))
+                                .addContainerGap(85, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jlIdpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jlNumPedido)
+                                        .addContainerGap())))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jlNumPedido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlIdpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(147, 147, 147)
+                        .addGap(11, 11, 11)
                         .addComponent(jbAñadir)
                         .addGap(18, 18, 18)
                         .addComponent(jsCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jtEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,7 +285,6 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         }
     }
 
-
     public void borradofilasProductos() {
 
         int fila = jtablaProductos.getRowCount() - 1;
@@ -287,7 +311,10 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         crono.schedule(new TimerTask() {
             @Override
             public void run() {
+                System.out.println("aca yo");
                 int idpedido = Integer.parseInt(jlIdpedido.getText());
+                System.out.println(idpedido);
+
                 for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
                     modelo2.addRow(new Object[]{
                         MostrarProducto.getProducto().getNombre(),
@@ -297,6 +324,19 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                 crono.cancel();
             }
         }, tiempo);
+    }
 
+    public class Fondopantalla extends JPanel {
+
+        private Image imagen;
+
+        @Override
+        public void paint(Graphics g) {
+
+            imagen = new ImageIcon(getClass().getResource("/imagenes/pedidosProd.jpeg/")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
     }
 }
