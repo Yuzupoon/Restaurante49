@@ -46,11 +46,9 @@
                   <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButton1" pref="159" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jbMozo" max="32767" attributes="0"/>
-                          <Component id="jbProductos" pref="159" max="32767" attributes="0"/>
-                          <Component id="jbMeseros" pref="159" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jbMozo" max="32767" attributes="0"/>
+                      <Component id="jbProductos" pref="159" max="32767" attributes="0"/>
+                      <Component id="jbMeseros" pref="159" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="221" max="32767" attributes="0"/>
               </Group>
@@ -115,6 +113,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="PEDIDOS REALIZADOS"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

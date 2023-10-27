@@ -49,6 +49,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         iconosMesas();
         armarTabla();
         llenarTabla();
+        cantidadEspacio();
         JtxCantReserv.setVisible(false);
         JtxReservadiatx.setVisible(false);
         String admi = "Administracion";
@@ -85,6 +86,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         jsMinutos = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         JtxReservadiatx = new javax.swing.JLabel();
+        jCantidaddisponible = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jbMesa1 = new javax.swing.JButton();
         jbMesa2 = new javax.swing.JButton();
@@ -179,7 +181,7 @@ public class MesPrincipal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("CAPACIDAD DISPONIBLE: 100");
+        jLabel2.setText("CAPACIDAD DISPONIBLE:");
 
         JtxReservadiatx.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         JtxReservadiatx.setForeground(new java.awt.Color(0, 0, 0));
@@ -190,13 +192,8 @@ public class MesPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(140, 140, 140)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -221,9 +218,15 @@ public class MesPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JtxReservadiatx)
-                            .addComponent(jLabel2))
-                        .addGap(21, 21, 21))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(JtxReservadiatx)
+                                .addGap(18, 18, 18)
+                                .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jbGenerarRes)
                         .addGap(18, 18, 18)
@@ -247,13 +250,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                     .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtxReservadiatx)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JtxReservadiatx))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGenerarRes)
@@ -483,12 +491,12 @@ public class MesPrincipal extends javax.swing.JFrame {
                     .addComponent(jbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1284,6 +1292,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel JtxCantReserv;
     private javax.swing.JLabel JtxReservadiatx;
+    private javax.swing.JLabel jCantidaddisponible;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1315,19 +1324,20 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     public void iconosMesas() {
 
-        JButton[] botonesMesas = {jbMesa1, jbMesa2, jbMesa3, jbMesa4, jbMesa5, jbMesa6, jbMesa7, jbMesa8, jbMesa9, jbMesa10};
+        JButton[] botonesMesas = {jbSalir, jbMesa1, jbMesa2, jbMesa3, jbMesa4, jbMesa5, jbMesa6, jbMesa7, jbMesa8, jbMesa9, jbMesa10};
 
         List<Mesa> listaMesas = mesdata.listaMesa();
 
         for (int i = 0; i < botonesMesas.length; i++) {
             Mesa mesa = listaMesas.get(i);
 
-            if (mesa.getReserva().getIdReserva() != 1) {
+            if (mesa.getReserva().getIdReserva() != 1
+                    && i != 0) {
 //                 Mesa ocupada
                 ImageIcon imagenConpedido = new ImageIcon(getClass().getResource("/imagenes/mesaroja1.png/"));
                 botonesMesas[i].setIcon(imagenConpedido);
 
-            } else {
+            } else if (i != 0) {
 //                 Mesa disponible
                 ImageIcon imagenSinpedido = new ImageIcon(getClass().getResource("/imagenes/mesa1.png/"));
                 botonesMesas[i].setIcon(imagenSinpedido);
@@ -1348,5 +1358,18 @@ public class MesPrincipal extends javax.swing.JFrame {
             setOpaque(false);
             super.paint(g);
         }
+    
+    }
+    
+    public void cantidadEspacio() {
+        int cantidadtotal = 0;
+        for (Mesa mesa : mesdata.listaMesa()) {
+            if (mesa.getReserva().getIdReserva() != 1) {
+                cantidadtotal = cantidadtotal;
+            } else {
+                cantidadtotal = cantidadtotal + mesa.getCapacidad();
+            }
+        }
+        jCantidaddisponible.setText(cantidadtotal+"");
     }
 }
