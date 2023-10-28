@@ -274,9 +274,9 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             }
             int cont2 = 0;
             for (Reserva reserva : resData.listaReservasXFecha(fechalista)) {
-                if (reserva.isEstado()==true) {
-                     cont2++;
-                }               
+                if (reserva.isEstado() == true) {
+                    cont2++;
+                }
                 if (JcReserva.getSelectedIndex() == cont2) {
                     idreserva = reserva.getIdReserva();
                 }
@@ -292,7 +292,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
             if (encontroMismaReserva == 0) {
                 double total = Double.parseDouble(jlTotal.getText());
-                int mesi = Integer.parseInt(jtMesa.getText());                
+                int mesi = Integer.parseInt(jtMesa.getText());
                 mesaData.armarMesa(mesi, idreserva);
                 pedidoData.crearPedido(mesi, meserito, "Pendiente", total);
                 jbGenerarPedido.setVisible(false);
@@ -444,11 +444,33 @@ public class PedidoPorMesa extends javax.swing.JFrame {
     }
 
     private void llenarComboReserva() {
-        for (Reserva listaReserva : resData.listaReservasXFecha(fechalista)) {
-            if (listaReserva.isEstado() == true) {
-                JcReserva.addItem(listaReserva + "");
+        Timer crono = new Timer();
+        int tiempo = 300;
+        crono.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                LocalDate fechaActual = LocalDate.now();
+                int idres = 0;
+                if (jtRellename.getText().equals("")) {
+                    for (Reserva listaReservaxfecha : resData.listaReservasXFecha(fechalista)) {
+                        if (listaReservaxfecha.isEstado() == true) {
+                            JcReserva.addItem(listaReservaxfecha + "");
+                        }
+                    }
+                } else {
+                    idres = Integer.parseInt(jtRellename.getText());
+                    for (Reserva listaReserva : resData.listaReservas()) {
+                        if (listaReserva.getIdReserva() == idres) {
+                            LocalDate fechareserva = listaReserva.getFecha();
+                            if (fechaActual.isAfter(fechareserva) && listaReserva.isEstado() == true) {
+                                JcReserva.addItem(listaReserva + "");
+                            }
+                        }
+                    }
+                }
+                crono.cancel();
             }
-        }
+        }, tiempo);
     }
 
     public DefaultTableModel modelo2 = new DefaultTableModel() {

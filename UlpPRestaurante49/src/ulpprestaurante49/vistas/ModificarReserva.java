@@ -60,6 +60,30 @@ public class ModificarReserva extends javax.swing.JFrame {
 
         jLabel8.setText("ESTADO:");
 
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
+        jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtApellidoKeyTyped(evt);
+            }
+        });
+
+        jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDniKeyTyped(evt);
+            }
+        });
+
+        jtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCantPersonasKeyTyped(evt);
+            }
+        });
+
         jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jdFechaPropertyChange(evt);
@@ -277,6 +301,56 @@ public class ModificarReserva extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtNombre.setEditable(true);
+        } else {
+            jtNombre.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");  
+        }
+    }//GEN-LAST:event_jtNombreKeyTyped
+
+    private void jtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellidoKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtApellido.setEditable(true);
+        } else {
+            jtApellido.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");  
+        }
+    }//GEN-LAST:event_jtApellidoKeyTyped
+
+    private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
+          char c = evt.getKeyChar();
+
+        if (Character.isDigit(c) || Character.isISOControl(c)) {
+            jtDni.setEditable(true);
+
+
+        } else {
+            jtDni.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Ingrese solamente numeros");
+            return;
+
+        }
+    }//GEN-LAST:event_jtDniKeyTyped
+
+    private void jtCantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCantPersonasKeyTyped
+          char c = evt.getKeyChar();
+
+        if (Character.isDigit(c) || Character.isISOControl(c)) {
+            jtCantPersonas.setEditable(true);
+
+
+        } else {
+            jtCantPersonas.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Ingrese solamente numeros");
+            return;
+
+        }
+    }//GEN-LAST:event_jtCantPersonasKeyTyped
     
     public static boolean soloLetras(String cadena) {
         

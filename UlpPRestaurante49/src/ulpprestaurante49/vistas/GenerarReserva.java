@@ -1,5 +1,6 @@
 package ulpprestaurante49.vistas;
 
+import java.awt.event.KeyEvent;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -58,6 +59,30 @@ public class GenerarReserva extends javax.swing.JFrame {
         jLabel7.setText("HORA:");
 
         jLabel8.setText("ESTADO:");
+
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
+        jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtApellidoKeyTyped(evt);
+            }
+        });
+
+        jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtDniKeyTyped(evt);
+            }
+        });
+
+        jtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCantPersonasKeyTyped(evt);
+            }
+        });
 
         jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -185,61 +210,33 @@ public class GenerarReserva extends javax.swing.JFrame {
         int error = 0;
         int aviso = 0;
         int alerta = 0;
-        int cantidadres = 4;
+        int cantidades = 4;
+        LocalDate Ingreso = null;
         LocalDate hoy = LocalDate.now();
-        if (jtNombre.getText().isEmpty()
-                || jtApellido.getText().isEmpty()
-                || jtCantPersonas.getText().isEmpty()
-                || jtDni.getText().isEmpty()
-                || jdFecha.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Porfavor Flac@ Rellename los campos");
-        } else {
-            if (soloLetras(jtNombre.getText()) == true) {
-                res.setNombre(jtNombre.getText());
-            } else {
-                JOptionPane.showMessageDialog(null, "Flac@ Poneme solo letras en el nombre");
-                jtNombre.setText("");
-                error = 1;
-            }
-            if (soloLetras(jtApellido.getText()) == true) {
-                res.setApellido(jtApellido.getText());
-            } else {
-                JOptionPane.showMessageDialog(null, "Flac@ Poneme solo letras en el apellido");
-                jtApellido.setText("");
-                error = 1;
-            }
-            try {
+        try {
+//            if (jtNombre.getText().isEmpty()
+//                    || jtApellido.getText().isEmpty()
+//                    || jtCantPersonas.getText().isEmpty()
+//                    || jtDni.getText().isEmpty()
+//                    || jdFecha.getDate() == null) {
+//                JOptionPane.showMessageDialog(null, "Porfavor Flac@ Rellename los campos");
+//            } else {
+            res.setNombre(jtNombre.getText());
+            res.setApellido(jtApellido.getText());
+            if (!jtDni.getText().equals("")) {
                 for (Reserva listaReserva : resdata.listaReservas()) {
                     if (Integer.parseInt(jtDni.getText()) == listaReserva.getDni()) {
                         aviso = 1;
-                        error = 1;
                     }
                 }
-                if (aviso == 0) {
-                    res.setDni(Integer.parseInt(jtDni.getText()));
-                } else {
-                    JOptionPane.showMessageDialog(null, "El documento ingresado ya se encuentra registrado en otra reserva por favor ingresa un documento diferente");
-                }
-                alerta = 1;
-                res.setCantidadPersonas(Integer.parseInt(jtCantPersonas.getText()));
-
-            } catch (NumberFormatException e) {
-                if (alerta == 0) {
-                    JOptionPane.showMessageDialog(null, "Por favor ingresa solo numeros en el Dni");
-                    jtDni.setText("");
-                }
-                if (alerta == 1) {
-                    JOptionPane.showMessageDialog(null, "Por favor ingresa solo numeros en la cantidad de personas");
-                    jtCantPersonas.setText("");
-                }
-                error = 1;
-
+                res.setDni(Integer.parseInt(jtDni.getText()));
             }
-            System.out.println("1"+ cantidadres);
+            res.setCantidadPersonas(Integer.parseInt(jtCantPersonas.getText()));
+            System.out.println("1" + cantidades);
             for (Reserva reserva : resdata.listaReservasXFecha(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
-                if(reserva.getFecha().equals(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())){
-                    cantidadres--;
-                    System.out.println(cantidadres);
+                if (reserva.getFecha().equals(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+                    cantidades--;
+                    System.out.println(cantidades);
                 }
             }
             res.setFecha(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
@@ -252,9 +249,18 @@ public class GenerarReserva extends javax.swing.JFrame {
             } else {
                 res.setEstado(false);
             }
-
+//            }
+            if (jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() != null) {
+                Ingreso = jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecciona una fecha porfavor");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Profavor rellename todos los campos");
         }
-        if (error == 0 && hoy.equals(jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+        System.out.println(Ingreso);
+
+        if (hoy.equals(Ingreso)) {
 
             MesPrincipal mesp = new MesPrincipal();
             resdata.crearReserva(res);
@@ -262,18 +268,19 @@ public class GenerarReserva extends javax.swing.JFrame {
             mesp.setLocationRelativeTo(null);
             this.dispose();
 
-        } else if (error == 0 && cantidadres > 0) {
+        } else if (!hoy.equals(Ingreso) && Ingreso != null) {
+            if (cantidades > 0) {
+                MesPrincipal mesp = new MesPrincipal();
+                resdata.crearReserva(res);
+                mesp.setVisible(true);
+                mesp.setLocationRelativeTo(null);
+                this.dispose();
 
-            MesPrincipal mesp = new MesPrincipal();
-            resdata.crearReserva(res);
-            mesp.setVisible(true);
-            mesp.setLocationRelativeTo(null);
-            this.dispose();
-        } else {
-           JOptionPane.showMessageDialog(null, "No quedan mas reservas para el dia seleccionado");
+            } else {
+                JOptionPane.showMessageDialog(null, "No quedan mas reservas para el dia seleccionado");
+            }
+
         }
-
-
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
@@ -282,6 +289,54 @@ public class GenerarReserva extends javax.swing.JFrame {
             jtFecha.setText(fecha + "");
         }
     }//GEN-LAST:event_jdFechaPropertyChange
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtNombre.setEditable(true);
+        } else {
+            jtNombre.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");
+        }
+    }//GEN-LAST:event_jtNombreKeyTyped
+
+    private void jtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtApellidoKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtApellido.setEditable(true);
+        } else {
+            jtApellido.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");
+        }
+    }//GEN-LAST:event_jtApellidoKeyTyped
+
+    private void jtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDniKeyTyped
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c) || Character.isISOControl(c)) {
+            jtDni.setEditable(true);
+
+        } else {
+            jtDni.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Ingrese solamente numeros");
+            return;
+
+        }
+    }//GEN-LAST:event_jtDniKeyTyped
+
+    private void jtCantPersonasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCantPersonasKeyTyped
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c) || Character.isISOControl(c)) {
+            jtCantPersonas.setEditable(true);
+
+        } else {
+            jtCantPersonas.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Ingrese solamente numeros");
+            return;
+
+        }
+    }//GEN-LAST:event_jtCantPersonasKeyTyped
 
     public static boolean soloLetras(String cadena) {
 
