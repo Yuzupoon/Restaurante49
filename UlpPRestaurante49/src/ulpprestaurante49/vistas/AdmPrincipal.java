@@ -34,6 +34,7 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jbMeseros.setText("MESEROS");
         jbMeseros.setBorder(null);
         jbMeseros.setBorderPainted(false);
+        jbMeseros.setMaximumSize(new java.awt.Dimension(100, 22));
         jbMeseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbMeserosActionPerformed(evt);
@@ -44,20 +45,33 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jbProductos.setText("   PRODUCTOS");
         jbProductos.setBorder(null);
         jbProductos.setBorderPainted(false);
+        jbProductos.setMaximumSize(new java.awt.Dimension(100, 22));
         jbProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbProductosActionPerformed(evt);
             }
         });
 
+        jbMozo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jbMozo.setText("VENT MOZO");
+        jbMozo.setBorder(null);
+        jbMozo.setBorderPainted(false);
+        jbMozo.setMaximumSize(new java.awt.Dimension(100, 22));
+        jbMozo.setMinimumSize(new java.awt.Dimension(91, 22));
+        jbMozo.setPreferredSize(new java.awt.Dimension(91, 22));
         jbMozo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbMozoActionPerformed(evt);
             }
         });
 
-        jButton1.setText("PEDIDOS REALIZADOS");
+        jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jButton1.setText("PED. REALIZADOS");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setMaximumSize(new java.awt.Dimension(100, 22));
+        jButton1.setMinimumSize(new java.awt.Dimension(91, 22));
+        jButton1.setPreferredSize(new java.awt.Dimension(91, 22));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -71,11 +85,11 @@ public class AdmPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbMozo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                    .addComponent(jbMeseros, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
-                .addContainerGap(221, Short.MAX_VALUE))
+                    .addComponent(jbProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jbMeseros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,10 +99,10 @@ public class AdmPrincipal extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jbMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
