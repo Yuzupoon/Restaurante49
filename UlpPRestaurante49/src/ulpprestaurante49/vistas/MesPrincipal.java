@@ -84,6 +84,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         jsHora = new javax.swing.JSpinner();
         jsMinutos = new javax.swing.JSpinner();
         jbCerrar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jbMesa1 = new javax.swing.JButton();
         jbMesa2 = new javax.swing.JButton();
@@ -199,6 +200,10 @@ public class MesPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("RELOJ:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -211,19 +216,19 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbMostrarreservas)
-                                .addGap(54, 54, 54))))
+                                .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbMostrarreservas)
+                        .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -250,10 +255,11 @@ public class MesPrincipal extends javax.swing.JFrame {
                     .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMostrarreservas)
                     .addComponent(jLabel1))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -434,29 +440,8 @@ public class MesPrincipal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jbMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jbMesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -467,46 +452,63 @@ public class MesPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                         .addComponent(jbSalir))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jbMesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbMesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbMesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbMesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbMesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jbMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(83, 83, 83)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(jbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(13, 13, 13)
-                                .addComponent(jbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(jbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jbMesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbMesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbMesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbMesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jbMesa8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbMesa9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -530,13 +532,17 @@ public class MesPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -620,9 +626,9 @@ public class MesPrincipal extends javax.swing.JFrame {
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
         PedidoPorMesa.jtMesa.setText("1");
-
         Mesa mesa = new Mesa();
         int contador = 0;
+
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
                     && listadePedido.getMesa().getReserva().getIdReserva() != 1
@@ -633,6 +639,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -640,9 +647,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -651,13 +659,6 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
 
             }
         }
@@ -759,7 +760,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         this.dispose();
         PedidoPorMesa.jtMesa.setText("2");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -771,6 +771,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -778,9 +779,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -790,17 +792,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
-
     }//GEN-LAST:event_jbMesa2ActionPerformed
 
     private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
@@ -839,7 +832,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         this.dispose();
         PedidoPorMesa.jtMesa.setText("3");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -851,6 +843,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -858,9 +851,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -870,17 +864,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
-
     }//GEN-LAST:event_jbMesa3ActionPerformed
 
     private void jbMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMesa4ActionPerformed
@@ -890,7 +875,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         this.dispose();
         PedidoPorMesa.jtMesa.setText("4");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -902,6 +886,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -909,9 +894,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -921,16 +907,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
 
     }//GEN-LAST:event_jbMesa4ActionPerformed
 
@@ -940,8 +918,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
         PedidoPorMesa.jtMesa.setText("5");
-
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -953,6 +929,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -960,9 +937,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -972,17 +950,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
-
     }//GEN-LAST:event_jbMesa5ActionPerformed
 
     private void jbMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMesa6ActionPerformed
@@ -992,7 +961,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         this.dispose();
         PedidoPorMesa.jtMesa.setText("6");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -1004,6 +972,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -1011,9 +980,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -1022,13 +992,6 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
 
             }
         }
@@ -1042,8 +1005,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
         PedidoPorMesa.jtMesa.setText("7");
-
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -1055,6 +1016,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -1062,9 +1024,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -1074,16 +1037,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
 
     }//GEN-LAST:event_jbMesa7ActionPerformed
 
@@ -1094,7 +1049,6 @@ public class MesPrincipal extends javax.swing.JFrame {
         this.dispose();
         PedidoPorMesa.jtMesa.setText("8");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -1106,6 +1060,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -1113,9 +1068,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -1125,27 +1081,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
 
     }//GEN-LAST:event_jbMesa8ActionPerformed
 
     private void jbMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMesa9ActionPerformed
-       PedidoPorMesa pedidoMesa = new PedidoPorMesa();
+        PedidoPorMesa pedidoMesa = new PedidoPorMesa();
         pedidoMesa.setVisible(true);
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
         PedidoPorMesa.jtMesa.setText("9");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -1157,6 +1104,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -1164,9 +1112,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -1176,27 +1125,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
 
     }//GEN-LAST:event_jbMesa9ActionPerformed
 
     private void jbMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMesa10ActionPerformed
-       PedidoPorMesa pedidoMesa = new PedidoPorMesa();
+        PedidoPorMesa pedidoMesa = new PedidoPorMesa();
         pedidoMesa.setVisible(true);
         pedidoMesa.setLocationRelativeTo(null);
         this.dispose();
         PedidoPorMesa.jtMesa.setText("10");
 
-        Mesa mesa = new Mesa();
         int contador = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
@@ -1208,6 +1148,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                         PedidoPorMesa.jcMesero.setSelectedIndex(contador);
                     }
                 }
+
                 if (listadePedido.getEstado().equals("Pendiente")) {
                     PedidoPorMesa.jcEstado.setSelectedIndex(1);
                 } else {
@@ -1215,9 +1156,10 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                    contador++;
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                    if (reserva.getFecha().equals(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
+                    if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
                         PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
@@ -1227,16 +1169,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
 
-            } else {
-
-                LocalDate hoy = LocalDate.now();
-                for (Reserva reserva : reservadata.listaReservasXFecha(hoy)) {
-                    PedidoPorMesa.JcReserva.addItem(reserva + "");
-                }
-
             }
         }
-
 
     }//GEN-LAST:event_jbMesa10ActionPerformed
 
@@ -1297,6 +1231,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1325,20 +1260,19 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     public void iconosMesas() {
 
-        JButton[] botonesMesas = {jbSalir, jbMesa1, jbMesa2, jbMesa3, jbMesa4, jbMesa5, jbMesa6, jbMesa7, jbMesa8, jbMesa9, jbMesa10};
+        JButton[] botonesMesas = {jbMesa1, jbMesa2, jbMesa3, jbMesa4, jbMesa5, jbMesa6, jbMesa7, jbMesa8, jbMesa9, jbMesa10};
 
         List<Mesa> listaMesas = mesdata.listaMesa();
 
         for (int i = 0; i < botonesMesas.length; i++) {
             Mesa mesa = listaMesas.get(i);
 
-            if (mesa.getReserva().getIdReserva() != 1
-                    && i != 0) {
+            if (mesa.getReserva().getIdReserva() != 1) {
 //                 Mesa ocupada
                 ImageIcon imagenConpedido = new ImageIcon(getClass().getResource("/imagenes/mesaroja1.png/"));
                 botonesMesas[i].setIcon(imagenConpedido);
 
-            } else if (i != 0) {
+            } else {
 //                 Mesa disponible
                 ImageIcon imagenSinpedido = new ImageIcon(getClass().getResource("/imagenes/mesa1.png/"));
                 botonesMesas[i].setIcon(imagenSinpedido);
@@ -1359,9 +1293,9 @@ public class MesPrincipal extends javax.swing.JFrame {
             setOpaque(false);
             super.paint(g);
         }
-    
+
     }
-    
+
     public void cantidadEspacio() {
         int cantidadtotal = 0;
         for (Mesa mesa : mesdata.listaMesa()) {
@@ -1371,6 +1305,6 @@ public class MesPrincipal extends javax.swing.JFrame {
                 cantidadtotal = cantidadtotal + mesa.getCapacidad();
             }
         }
-        jCantidaddisponible.setText(cantidadtotal+"");
+        jCantidaddisponible.setText(cantidadtotal + "");
     }
 }

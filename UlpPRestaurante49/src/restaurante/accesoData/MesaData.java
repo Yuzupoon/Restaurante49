@@ -66,14 +66,13 @@ public class MesaData {
             ps.setInt(1, idReserva);
             ps.setInt(2, idMesa);
             int lleno = ps.executeUpdate();
-            System.out.println(lleno);
+        
             if(lleno == 1 ){
                 JOptionPane.showMessageDialog(null,"La mesa se ocupo para esta Reserva");
             }else{
                 JOptionPane.showMessageDialog(null, "La mesa que quiere ocupar esta ocupada");
             }
-            ps.close();
-            ocuparMesa(idMesa);
+            ps.close();            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al acceder a la tabla Mesa", 0);
         }

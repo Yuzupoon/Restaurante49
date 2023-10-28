@@ -41,11 +41,11 @@ public class PedidoPorMesa extends javax.swing.JFrame {
     ProductoData produdata = new ProductoData();
 
     public PedidoPorMesa() {
-        
+
         this.setContentPane(frame);
         initComponents();
         llenarComboMesero();
-//        llenarComboReserva();
+        llenarComboReserva();
         crearCabecera();
         llenarTabla();
         jtFecha.setText(fecha);
@@ -274,88 +274,136 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             }
             int cont2 = 0;
             for (Reserva reserva : resData.listaReservasXFecha(fechalista)) {
-                cont2++;
+                if (reserva.isEstado()==true) {
+                     cont2++;
+                }               
                 if (JcReserva.getSelectedIndex() == cont2) {
                     idreserva = reserva.getIdReserva();
                 }
             }
-            double total = Double.parseDouble(jlTotal.getText());
-            int mesi = Integer.parseInt(jtMesa.getText());
-            mesaData.armarMesa(mesi, idreserva);
-            pedidoData.crearPedido(mesi, meserito, "Pendiente", total);
 
+            int encontroMismaReserva = 0;
+            Reserva reserva1 = resData.buscarReservaID(idreserva);
+            for (Pedido listadePedido : pedidoData.listadePedidos()) {
+                if (listadePedido.getMesa().getReserva().getIdReserva() == reserva1.getIdReserva()) {
+                    encontroMismaReserva = 1;
+                }
+            }
+
+            if (encontroMismaReserva == 0) {
+                double total = Double.parseDouble(jlTotal.getText());
+                int mesi = Integer.parseInt(jtMesa.getText());                
+                mesaData.armarMesa(mesi, idreserva);
+                pedidoData.crearPedido(mesi, meserito, "Pendiente", total);
+                jbGenerarPedido.setVisible(false);
+            } else {
+                JcReserva.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Esta reserva ya se encuentra en otra mesa");
+            }
         }
 
 
     }//GEN-LAST:event_jbGenerarPedidoActionPerformed
 
     private void jbAgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarPedidoActionPerformed
-       for (Pedido listadePedido : pedidoData.listadePedidos()) {
+        int entro = 0;
+        int idpedido = 0;
+        for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())
                     && !listadePedido.getEstado().equals("Pagado")) {
-                ProductosDePedidos produ = new ProductosDePedidos();
-                produ.setVisible(true);
-                produ.setLocationRelativeTo(null);
-                this.dispose();
-
-                int idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
-                ProductosDePedidos.jlIdpedido.setText(idpedido + "");
-            }else{
-                JOptionPane.showMessageDialog(null, "No se encuentra ningun pedido generado para esta mesa porfavor genera un pedido");
+                entro = 1;
+                idpedido = listadePedido.getIdPedido();
             }
+        }
+
+        if (entro == 1) {
+            ProductosDePedidos produ = new ProductosDePedidos();
+            produ.setVisible(true);
+            produ.setLocationRelativeTo(null);
+            this.dispose();
+            ProductosDePedidos.jlIdpedido.setText(idpedido + "");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encuentra ningun pedido generado para esta mesa porfavor genera un pedido");
         }
     }//GEN-LAST:event_jbAgregarPedidoActionPerformed
 
     private void jbEntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntregadoActionPerformed
-        Mesa idmesa = new Mesa();
-        Mesero meserito = new Mesero();
-        int cont = 0;
-        int idpedido = 0;
-        idmesa = mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText()));
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
-            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
-                idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())
+                    && !listadePedido.getEstado().equals("Pagado")) {
+                listadePedido.setEstado("Entregado");
+                pedidoData.modificarPedido(listadePedido);
+                jcEstado.setSelectedIndex(2);
             }
         }
-        for (Mesero mesero : mesData.listaMesero()) {
-            cont++;
-            if (jcMesero.getSelectedIndex() == cont) {
-
-                meserito = mesero;
-
-            }
-        }
-        double total = Double.parseDouble(jlTotal.getText());
-        Pedido pedido = new Pedido(idpedido, idmesa, meserito, "Entregado", total);
-        pedidoData.cambiarEstado(pedido);
+//        Mesa idmesa = new Mesa();
+//        Mesero meserito = new Mesero();
+//        int cont = 0;
+//        int idpedido = 0;
+//        idmesa = mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText()));
+//        for (Pedido listadePedido : pedidoData.listadePedidos()) {
+//            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
+//                idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+//            }
+//        }
+//        for (Mesero mesero : mesData.listaMesero()) {
+//            cont++;
+//            if (jcMesero.getSelectedIndex() == cont) {
+//
+//                meserito = mesero;
+//
+//            }
+//        }
+//        double total = Double.parseDouble(jlTotal.getText());
+//        Pedido pedido = new Pedido(idpedido, idmesa, meserito, "Entregado", total);
+//        jcEstado.setSelectedIndex(2);
+//        pedidoData.cambiarEstado(pedido);
     }//GEN-LAST:event_jbEntregadoActionPerformed
 
+
     private void jbPagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPagadoActionPerformed
-        Mesa idmesa = new Mesa();
-        Mesero meserito = new Mesero();
-        int cont = 0;
-        int idpedido = 0;
-        int mesa = Integer.parseInt(jtMesa.getText());
-        idmesa = mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText()));
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
-            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
-                idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())
+                    && !listadePedido.getEstado().equals("Pagado")) {
+                listadePedido.setEstado("Pagado");
+                listadePedido.setTotal(Double.parseDouble(jlTotal.getText()));
+                pedidoData.modificarPedido(listadePedido);
+                mesaData.armarMesa(listadePedido.getMesa().getIdMesa(), 1);
+                Reserva anularReserva = resData.buscarReservaID(listadePedido.getMesa().getReserva().getIdReserva());
+                anularReserva.setEstado(false);
+                resData.modificarReserva(anularReserva);
+                MesPrincipal pantalla = new MesPrincipal();
+                pantalla.setVisible(true);
+                pantalla.setLocationRelativeTo(null);
+                this.dispose();
             }
         }
-        for (Mesero mesero : mesData.listaMesero()) {
-            cont++;
-            if (jcMesero.getSelectedIndex() == cont) {
 
-                meserito = mesero;
-
-            }
-        }
-        double total = Double.parseDouble(jlTotal.getText());
-        Pedido pedido = new Pedido(idpedido, idmesa, meserito, "Pagado", total);
-        mesaData.armarMesa(mesa, 1);
-        mesaData.liberarMesa(mesa);
-        resData.eliminarReserva(Integer.parseInt(jtRellename.getText()));
-        pedidoData.modificarPedido(pedido);
+//        Mesa idmesa = new Mesa();
+//        Mesero meserito = new Mesero();
+//        int cont = 0;
+//        int idpedido = 0;
+//        int mesa = Integer.parseInt(jtMesa.getText());
+//        idmesa = mesaData.buscarMesaID(Integer.parseInt(jtMesa.getText()));
+//        for (Pedido listadePedido : pedidoData.listadePedidos()) {
+//            if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())) {
+//                idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+//            }
+//        }
+//        for (Mesero mesero : mesData.listaMesero()) {
+//            cont++;
+//            if (jcMesero.getSelectedIndex() == cont) {
+//
+//                meserito = mesero;
+//
+//            }
+//        }
+//        double total = Double.parseDouble(jlTotal.getText());
+//        Pedido pedido = new Pedido(idpedido, idmesa, meserito, "Pagado", total);
+//        mesaData.armarMesa(mesa, 1);
+//        mesaData.liberarMesa(mesa);
+//        resData.eliminarReserva(Integer.parseInt(jtRellename.getText()));
+//        pedidoData.modificarPedido(pedido);
     }//GEN-LAST:event_jbPagadoActionPerformed
 
     private void jbAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtrasActionPerformed
@@ -397,7 +445,9 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
     private void llenarComboReserva() {
         for (Reserva listaReserva : resData.listaReservasXFecha(fechalista)) {
-            JcReserva.addItem(listaReserva + "");
+            if (listaReserva.isEstado() == true) {
+                JcReserva.addItem(listaReserva + "");
+            }
         }
     }
 
@@ -428,23 +478,27 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                 int idpedido = 0;
                 for (Pedido listadePedido : pedidoData.listadePedidos()) {
                     int mesa = Integer.parseInt(jtMesa.getText());
-                    if (listadePedido.getMesa().getIdMesa() == mesa) {
-                        idpedido = Integer.parseInt(listadePedido.getIdPedido() + "");
+                    if (listadePedido.getMesa().getIdMesa() == mesa
+                            && listadePedido.getMesa().getReserva().getIdReserva() != 1) {
+                        idpedido = listadePedido.getIdPedido();
                     }
                 }
                 crono.cancel();
-                for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
-                    for (Producto listaProducto : produdata.listaProductos()) {
-                        if (MostrarProducto.getProducto().getNombre().equals(listaProducto.getNombre())) {
-                            modelo2.addRow(new Object[]{
-                                MostrarProducto.getProducto().getNombre(),
-                                MostrarProducto.getCantidad(),
-                                listaProducto.getPrecio() * MostrarProducto.getCantidad()
-                            });
-                        }
+                if (idpedido != 0) {
+                    for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
+                        for (Producto listaProducto : produdata.listaProductos()) {
+                            if (MostrarProducto.getProducto().getNombre().equals(listaProducto.getNombre())) {
+                                modelo2.addRow(new Object[]{
+                                    MostrarProducto.getProducto().getNombre(),
+                                    MostrarProducto.getCantidad(),
+                                    listaProducto.getPrecio() * MostrarProducto.getCantidad()
+                                });
+                            }
 
+                        }
                     }
                 }
+
                 int fila = jttablaPedida.getRowCount() - 1;
                 double total = 0;
                 for (int i = fila; i >= 0; i--) {
