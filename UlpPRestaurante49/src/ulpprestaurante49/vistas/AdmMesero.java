@@ -137,6 +137,12 @@ public class AdmMesero extends javax.swing.JFrame {
             }
         });
 
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
         jtContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtContraseniaKeyReleased(evt);
@@ -530,6 +536,16 @@ public class AdmMesero extends javax.swing.JFrame {
             jlControl.setForeground(colorVerde);
         }
     }//GEN-LAST:event_jtContraseniaKeyReleased
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtNombre.setEditable(true);
+        } else {
+            jtNombre.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");
+        }
+    }//GEN-LAST:event_jtNombreKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

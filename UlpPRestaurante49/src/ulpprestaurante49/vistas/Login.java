@@ -2,6 +2,7 @@ package ulpprestaurante49.vistas;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -37,12 +38,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(102, 102, 102));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 255, 204));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USUARIO");
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 255, 204));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CONTRASEÑA");
 
         jpContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -68,18 +69,22 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbLogin)
-                .addGap(215, 215, 215))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(221, 221, 221)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel3)))
                 .addContainerGap(181, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbLogin)
+                .addGap(205, 205, 205))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +117,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
-        
+
         String admi = "Administracion";
         String usu = "proyecto49";
         if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
@@ -120,22 +125,22 @@ public class Login extends javax.swing.JFrame {
             adm.setVisible(true);
             adm.setLocationRelativeTo(null);
             this.dispose();
-        }else{
+        } else {
             int acierto = 0;
-            
+
             for (Mesero mesero : meseroData.listaMesero()) {
-                
-               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
-                   acierto = 1;
-               }
+
+                if (jtUsuario.getText().equals(mesero.getUsuario()) && jpContrasena.getText().equals(mesero.getContraseña())) {
+                    acierto = 1;
+                }
             }
-        
-            if(acierto == 1){
-            MesPrincipal mesero = new MesPrincipal();
-            mesero.setVisible(true);
-            mesero.setLocationRelativeTo(null);
-            this.dispose();
-        }else{
+
+            if (acierto == 1) {
+                MesPrincipal mesero = new MesPrincipal();
+                mesero.setVisible(true);
+                mesero.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
                 jpContrasena.setText("");
             }
@@ -147,7 +152,36 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLoginActionPerformed
 
     private void jpContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpContrasenaKeyPressed
-        char nombre = evt.getKeyChar();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String admi = "Administracion";
+            String usu = "proyecto49";
+            if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
+                AdmPrincipal adm = new AdmPrincipal();
+                adm.setVisible(true);
+                adm.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
+                int acierto = 0;
+
+                for (Mesero mesero : meseroData.listaMesero()) {
+
+                    if (jtUsuario.getText().equals(mesero.getUsuario()) && jpContrasena.getText().equals(mesero.getContraseña())) {
+                        acierto = 1;
+                    }
+                }
+
+                if (acierto == 1) {
+                    MesPrincipal mesero = new MesPrincipal();
+                    mesero.setVisible(true);
+                    mesero.setLocationRelativeTo(null);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
+                    jpContrasena.setText("");
+                }
+            }
+
+        }
 
     }//GEN-LAST:event_jpContrasenaKeyPressed
 

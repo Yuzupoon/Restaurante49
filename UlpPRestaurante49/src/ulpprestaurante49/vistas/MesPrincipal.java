@@ -241,9 +241,9 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jbGenerarRes)
-                .addGap(18, 18, 18)
-                .addComponent(jbModificarRes, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbModificarRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbEliminarRes))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -746,6 +746,10 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     private void jbMostrarreservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarreservasActionPerformed
         jdFecha.setDate(null);
+        jsHora.setValue(0);
+        jsMinutos.setValue(0);
+        JtxCantReserv.setVisible(false);
+        JtxReservadiatx.setVisible(false);
     }//GEN-LAST:event_jbMostrarreservasActionPerformed
 
     private void jsHoraStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jsHoraStateChanged

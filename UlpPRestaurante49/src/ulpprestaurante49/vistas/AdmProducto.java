@@ -94,6 +94,24 @@ public class AdmProducto extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("SISTEMA ADMINISTRADOR DE PRODUCTOS");
 
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNombreKeyTyped(evt);
+            }
+        });
+
+        jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtPrecioKeyTyped(evt);
+            }
+        });
+
+        jtStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtStockKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Nombre");
 
         jLabel3.setText("Precio");
@@ -112,6 +130,9 @@ public class AdmProducto extends javax.swing.JFrame {
         jtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtBuscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtBuscarKeyTyped(evt);
             }
         });
 
@@ -538,6 +559,54 @@ public class AdmProducto extends javax.swing.JFrame {
     private void jtBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtBuscarMouseEntered
         jtBuscar.setToolTipText("Busca el producto por su nombre");
     }//GEN-LAST:event_jtBuscarMouseEntered
+
+    private void jtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtNombre.setEditable(true);
+        } else {
+            jtNombre.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");
+        }
+    }//GEN-LAST:event_jtNombreKeyTyped
+
+    private void jtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtStockKeyTyped
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c) || Character.isISOControl(c)) {
+            jtStock.setEditable(true);
+
+        } else {
+            jtStock.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Ingrese solamente numeros");
+            return;
+
+        }
+    }//GEN-LAST:event_jtStockKeyTyped
+
+    private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
+        char c = evt.getKeyChar();
+
+        if (Character.isDigit(c) || Character.isISOControl(c) || evt.getKeyChar() == '.') {
+            jtPrecio.setEditable(true);
+
+        } else {
+            jtPrecio.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Ingrese solamente numeros");
+            return;
+
+        }
+    }//GEN-LAST:event_jtPrecioKeyTyped
+
+    private void jtBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBuscarKeyTyped
+        char nombre = evt.getKeyChar();
+        if (Character.isLetter(nombre) || Character.isWhitespace(nombre) || Character.isISOControl(nombre)) {
+            jtBuscar.setEditable(true);
+        } else {
+            jtBuscar.setEditable(false);
+            JOptionPane.showMessageDialog(this, "Ingresa solo letras");
+        }
+    }//GEN-LAST:event_jtBuscarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
