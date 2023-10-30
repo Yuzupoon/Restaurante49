@@ -1,5 +1,9 @@
 package ulpprestaurante49.vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import restaurante.Entidades.Pedido;
 import restaurante.Entidades.ProductoXPedido;
@@ -8,10 +12,13 @@ import restaurante.accesoData.ProductoXPedidoData;
 
 public class PedidosTotales extends javax.swing.JFrame {
 
+    Fondopantalla frame = new Fondopantalla();
+
     PedidoData pedidodata = new PedidoData();
     ProductoXPedidoData proxPed = new ProductoXPedidoData();
 
     public PedidosTotales() {
+        this.setContentPane(frame);
         initComponents();
         crearCabecera();
         crearCabecera2();
@@ -32,6 +39,8 @@ public class PedidosTotales extends javax.swing.JFrame {
         jtTablaDeProductos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setOpaque(false);
 
         jtPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,31 +111,33 @@ public class PedidosTotales extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbActivo)
-                    .addComponent(jbPago)
-                    .addComponent(jbAtras))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbActivo)
+                            .addComponent(jbPago)
+                            .addComponent(jbAtras))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGap(57, 57, 57)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(74, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbPago)
                         .addGap(18, 18, 18)
                         .addComponent(jbActivo)
                         .addGap(18, 18, 18)
-                        .addComponent(jbAtras))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                        .addComponent(jbAtras)
+                        .addGap(154, 154, 154))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,7 +146,7 @@ public class PedidosTotales extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +186,7 @@ public class PedidosTotales extends javax.swing.JFrame {
             return false;
         }
     };
-    
+
     public DefaultTableModel modelo2 = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -232,8 +243,8 @@ public class PedidosTotales extends javax.swing.JFrame {
             borradofilas2();
             int id = (Integer) modelo.getValueAt(fila, 0);
             if (proxPed.MostrarProductos(id).isEmpty()) {
-                String a = "Pendiente de generar un pedido" ;
-                String b="                       ---";                
+                String a = "Pendiente de generar un pedido";
+                String b = "                       ---";
                 modelo2.addRow(new Object[]{
                     a,
                     b
@@ -249,7 +260,7 @@ public class PedidosTotales extends javax.swing.JFrame {
             }
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -270,7 +281,8 @@ public class PedidosTotales extends javax.swing.JFrame {
 
         }
     }
-     private void borradofilas2() {
+
+    private void borradofilas2() {
 
         int fila = jtTablaDeProductos.getRowCount() - 1;
         for (int i = fila; i >= 0; i--) {
@@ -280,5 +292,17 @@ public class PedidosTotales extends javax.swing.JFrame {
         }
     }
 
+    public class Fondopantalla extends JPanel {
 
+        private Image imagen;
+
+        @Override
+        public void paint(Graphics g) {
+
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondoOscuro.jpeg/")).getImage();
+            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+    }
 }
