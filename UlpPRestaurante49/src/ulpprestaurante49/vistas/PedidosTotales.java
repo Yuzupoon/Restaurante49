@@ -51,21 +51,30 @@ public class PedidosTotales extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtPedido);
 
-        jbPago.setText("Pago");
+        jbPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton pagado chico.png"))); // NOI18N
+        jbPago.setBorderPainted(false);
+        jbPago.setContentAreaFilled(false);
+        jbPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPagoActionPerformed(evt);
             }
         });
 
-        jbActivo.setText("Activos");
+        jbActivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton activos chico.png"))); // NOI18N
+        jbActivo.setBorderPainted(false);
+        jbActivo.setContentAreaFilled(false);
+        jbActivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbActivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbActivoActionPerformed(evt);
             }
         });
 
-        jbAtras.setText("Atras");
+        jbAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton atras chico.png"))); // NOI18N
+        jbAtras.setBorderPainted(false);
+        jbAtras.setContentAreaFilled(false);
+        jbAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAtrasActionPerformed(evt);
@@ -99,7 +108,7 @@ public class PedidosTotales extends javax.swing.JFrame {
                     .addComponent(jbActivo)
                     .addComponent(jbPago)
                     .addComponent(jbAtras))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

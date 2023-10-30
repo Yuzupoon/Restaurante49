@@ -80,7 +80,9 @@ public class AdmMesero extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablaMozo);
 
-        jbCrearMozo.setText("CREAR");
+        jbCrearMozo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Crear2.png"))); // NOI18N
+        jbCrearMozo.setBorderPainted(false);
+        jbCrearMozo.setContentAreaFilled(false);
         jbCrearMozo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbCrearMozoMouseEntered(evt);
@@ -95,7 +97,9 @@ public class AdmMesero extends javax.swing.JFrame {
             }
         });
 
-        jbEliminarMozo.setText("ELIMINAR ");
+        jbEliminarMozo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Eliminar2.png"))); // NOI18N
+        jbEliminarMozo.setBorderPainted(false);
+        jbEliminarMozo.setContentAreaFilled(false);
         jbEliminarMozo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbEliminarMozoMouseEntered(evt);
@@ -142,7 +146,9 @@ public class AdmMesero extends javax.swing.JFrame {
 
         jLabel4.setText("CONTRASEÑA");
 
-        jbModificarMozo.setText("MODIFICAR");
+        jbModificarMozo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Modificar2.png"))); // NOI18N
+        jbModificarMozo.setBorderPainted(false);
+        jbModificarMozo.setContentAreaFilled(false);
         jbModificarMozo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbModificarMozoMouseEntered(evt);
@@ -157,7 +163,9 @@ public class AdmMesero extends javax.swing.JFrame {
             }
         });
 
-        jtAtras.setText("ATRAS");
+        jtAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Atras2.png"))); // NOI18N
+        jtAtras.setBorderPainted(false);
+        jtAtras.setContentAreaFilled(false);
         jtAtras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jtAtrasMouseEntered(evt);
@@ -172,7 +180,9 @@ public class AdmMesero extends javax.swing.JFrame {
             }
         });
 
-        jbLimpiar.setText("LIMPIAR");
+        jbLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton limpiar2.png"))); // NOI18N
+        jbLimpiar.setBorderPainted(false);
+        jbLimpiar.setContentAreaFilled(false);
         jbLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbLimpiarMouseEntered(evt);
@@ -200,15 +210,17 @@ public class AdmMesero extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
-                        .addGap(18, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbEliminarMozo)
-                        .addContainerGap(21, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGap(8, 8, 8)
                         .addComponent(jbCrearMozo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbModificarMozo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbLimpiar)
-                        .addGap(78, 78, 78)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlControl, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtAtras))
@@ -235,8 +247,7 @@ public class AdmMesero extends javax.swing.JFrame {
                             .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
-                                .addComponent(jLabel2))
-                            .addComponent(jbModificarMozo)))
+                                .addComponent(jLabel2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jbCerrarSesion)))
@@ -246,36 +257,40 @@ public class AdmMesero extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jbEliminarMozo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jbEliminarMozo)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlControl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbModificarMozo)
+                            .addComponent(jbCrearMozo)
+                            .addComponent(jbLimpiar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jlControl, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(114, 114, 114)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbCrearMozo)
-                    .addComponent(jbModificarMozo)
-                    .addComponent(jtAtras)
-                    .addComponent(jbLimpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtAtras)))
+                .addGap(28, 28, 28)
                 .addComponent(jbCerrarSesion)
                 .addContainerGap())
         );

@@ -36,8 +36,6 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jbMeseros.setBorder(null);
         jbMeseros.setContentAreaFilled(false);
         jbMeseros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbMeseros.setDisabledIcon(null);
-        jbMeseros.setDisabledSelectedIcon(null);
         jbMeseros.setMaximumSize(new java.awt.Dimension(100, 22));
         jbMeseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
