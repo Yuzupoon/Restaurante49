@@ -31,9 +31,13 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jbMeseros.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jbMeseros.setText("MESEROS");
+        jbMeseros.setForeground(new java.awt.Color(255, 255, 255));
+        jbMeseros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Mesero.png"))); // NOI18N
         jbMeseros.setBorder(null);
-        jbMeseros.setBorderPainted(false);
+        jbMeseros.setContentAreaFilled(false);
+        jbMeseros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbMeseros.setDisabledIcon(null);
+        jbMeseros.setDisabledSelectedIcon(null);
         jbMeseros.setMaximumSize(new java.awt.Dimension(100, 22));
         jbMeseros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -42,9 +46,10 @@ public class AdmPrincipal extends javax.swing.JFrame {
         });
 
         jbProductos.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jbProductos.setText("   PRODUCTOS");
+        jbProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Productos.png"))); // NOI18N
         jbProductos.setBorder(null);
-        jbProductos.setBorderPainted(false);
+        jbProductos.setContentAreaFilled(false);
+        jbProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbProductos.setMaximumSize(new java.awt.Dimension(100, 22));
         jbProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,9 +58,10 @@ public class AdmPrincipal extends javax.swing.JFrame {
         });
 
         jbMozo.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jbMozo.setText("VENT MOZO");
+        jbMozo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Vista Mozo.png"))); // NOI18N
         jbMozo.setBorder(null);
-        jbMozo.setBorderPainted(false);
+        jbMozo.setContentAreaFilled(false);
+        jbMozo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMozo.setMaximumSize(new java.awt.Dimension(100, 22));
         jbMozo.setMinimumSize(new java.awt.Dimension(91, 22));
         jbMozo.setPreferredSize(new java.awt.Dimension(91, 22));
@@ -66,9 +72,11 @@ public class AdmPrincipal extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
-        jButton1.setText("PED. REALIZADOS");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Pedidos realizados.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setMaximumSize(new java.awt.Dimension(100, 22));
         jButton1.setMinimumSize(new java.awt.Dimension(91, 22));
         jButton1.setPreferredSize(new java.awt.Dimension(91, 22));
@@ -83,26 +91,26 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(132, 132, 132)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbMozo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(jbMeseros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(205, Short.MAX_VALUE))
+                    .addComponent(jbProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbMeseros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jbMeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jbMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jbMeseros, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jbMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
