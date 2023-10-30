@@ -12,8 +12,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
@@ -48,6 +46,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     public MesPrincipal() {
         this.setContentPane(frame);
         initComponents();
+        corregirMesa();
         iconosMesas();
         armarTabla();
         llenarTabla();
@@ -571,13 +570,14 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     private void jbEliminarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarResActionPerformed
         int fila = jTablaReserva.getSelectedRow();
+
         if (fila != -1) {
             int id = (Integer) modelo.getValueAt(fila, 0);
             Reserva a = reservadata.buscarReservaID(id);
             a.setEstado(false);
             reservadata.modificarReserva(a);
         } else {
-            JOptionPane.showMessageDialog(null, "Selecciona una reserva que quieras eliminar");
+            JOptionPane.showMessageDialog(null, "Seleccione una Reserva de la Tabla");
         }
         borradofilas();
         llenarTabla();
@@ -585,6 +585,7 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     private void jbModificarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarResActionPerformed
         int fila = jTablaReserva.getSelectedRow();
+
         if (fila != -1) {
             int id = (Integer) modelo.getValueAt(fila, 0);
             ModificarReserva modificar = new ModificarReserva();
@@ -609,7 +610,6 @@ public class MesPrincipal extends javax.swing.JFrame {
                 ModificarReserva.jcEstado.setSelectedIndex(1);
             }
         } else {
-            System.out.println("hola");
             JOptionPane.showMessageDialog(this, "Por favor seleccioname una reserva para modificar");
         }
 
@@ -624,6 +624,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTablaReservaMouseClicked
 
     private void jbMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMesa1ActionPerformed
+
         PedidoPorMesa pedidoMesa = new PedidoPorMesa();
         pedidoMesa.setVisible(true);
         pedidoMesa.setLocationRelativeTo(null);
@@ -631,6 +632,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         PedidoPorMesa.jtMesa.setText("1");
         Mesa mesa = new Mesa();
         int contador = 0;
+
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(PedidoPorMesa.jtMesa.getText())
                     && listadePedido.getMesa().getReserva().getIdReserva() != 1
@@ -649,33 +651,19 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
+
             }
         }
 
@@ -795,33 +783,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -882,33 +855,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -940,33 +898,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -998,33 +941,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -1056,33 +984,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -1115,33 +1028,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -1174,33 +1072,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -1233,33 +1116,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -1292,33 +1160,18 @@ public class MesPrincipal extends javax.swing.JFrame {
                 }
                 contador = 0;
                 for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
+                    if (reserva.isEstado() == true) {
+                        contador++;
+                    }
                     if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
+                        PedidoPorMesa.JcReserva.setSelectedIndex(contador);
                         PedidoPorMesa.jtRellename.setText(reserva.getIdReserva() + "");
                         PedidoPorMesa.jtRellename.setVisible(false);
+
                     }
                 }
-//              ================================================================
-                Timer crono = new Timer();
-                int tiempo = 400;
-                crono.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        int contador = 0;
-                        for (Reserva reserva : reservadata.listaReservasXFecha(listadePedido.getMesa().getReserva().getFecha())) {
-                            if (reserva.isEstado() == true) {
-                                contador++;
-                            }
-                            if (reserva.getIdReserva() == listadePedido.getMesa().getReserva().getIdReserva()) {
-
-                                PedidoPorMesa.JcReserva.setSelectedIndex(contador);
-                            }
-                        }
-                        crono.cancel();
-                    }
-                }, tiempo);
                 PedidoPorMesa.jlTotal.setText(listadePedido.getTotal() + "");
                 PedidoPorMesa.jbGenerarPedido.setVisible(false);
-//              ================================================================
 
             }
         }
@@ -1408,6 +1261,23 @@ public class MesPrincipal extends javax.swing.JFrame {
     private javax.swing.JSpinner jsHora;
     private javax.swing.JSpinner jsMinutos;
     // End of variables declaration//GEN-END:variables
+
+    public void corregirMesa() {
+        for (Pedido listadePedido : pedidoData.listadePedidos()) {
+            if (!listadePedido.getMesa().getReserva().getFecha().equals(LocalDate.now())
+                    && listadePedido.getMesa().getReserva().isEstado() == true
+                    && !listadePedido.getEstado().equals("Pagado")) {
+
+                listadePedido.setEstado("Pagado");
+                pedidoData.modificarPedido(listadePedido);
+                Reserva reserva = reservadata.buscarReservaID(listadePedido.getMesa().getReserva().getIdReserva());
+                reserva.setEstado(false);
+                reservadata.modificarReserva(reserva);
+                mesdata.armarMesa(listadePedido.getMesa().getIdMesa(), 1);
+                
+            }
+        }
+    }
 
     public void iconosMesas() {
 

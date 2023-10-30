@@ -111,11 +111,11 @@ public class ReservaData {
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, idReserva);
             int exito = ps.executeUpdate();
-//            if (exito == 1) {
-//                JOptionPane.showMessageDialog(null, "Se elimino exitosamente la Reserva");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No existe Reserva con ID: " + idReserva);
-//            }
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se elimino exitosamente la Reserva");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe Reserva con ID: " + idReserva);
+            }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Reserva " + ex.getMessage());

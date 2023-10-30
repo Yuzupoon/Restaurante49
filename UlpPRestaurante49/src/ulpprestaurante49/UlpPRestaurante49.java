@@ -78,13 +78,13 @@ public class UlpPRestaurante49 {
 //        z.modificarReserva(resmuerta);
 //        mesita.armarMesa(5, 4);
 //    mesita.crearMesa(mesa2);
-//    int cont = 2;
+//    int cont = 0;
 //    do{
 //        cont++;
 //        Mesa mesa2 = new Mesa(cont, resmuerta, 4, true);
 //        mesita.crearMesa(mesa2);
 //        System.out.println(cont);
-//    }while(cont != 10);
+//    }while(cont != 20);
         //CAMBIO IMPORTANTE CAMBIO EN LA BASE DE DATOS EN PRODUCTO A CANTIDAD POR STOCK
         //DE LA BASE DE DATOS BORRE DE LA TABLA PEDIDOS AL IDPRODUCTO
 
@@ -117,7 +117,7 @@ public class UlpPRestaurante49 {
 //            System.out.println(listadePedido.toString());
 //            System.out.println("===================================");
 //        }
-////
+//
         Home principal = new Home();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);

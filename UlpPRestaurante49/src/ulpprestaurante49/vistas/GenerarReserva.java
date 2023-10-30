@@ -41,6 +41,7 @@ public class GenerarReserva extends javax.swing.JFrame {
         jsMinutos = new javax.swing.JSpinner();
         jbGuardar = new javax.swing.JButton();
         jtFecha = new javax.swing.JLabel();
+        jbAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,30 +60,6 @@ public class GenerarReserva extends javax.swing.JFrame {
         jLabel7.setText("HORA:");
 
         jLabel8.setText("ESTADO:");
-
-        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtNombreKeyTyped(evt);
-            }
-        });
-
-        jtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtApellidoKeyTyped(evt);
-            }
-        });
-
-        jtDni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtDniKeyTyped(evt);
-            }
-        });
-
-        jtCantPersonas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtCantPersonasKeyTyped(evt);
-            }
-        });
 
         jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -104,6 +81,13 @@ public class GenerarReserva extends javax.swing.JFrame {
             }
         });
 
+        jbAtras.setText("ATRAS");
+        jbAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,14 +99,16 @@ public class GenerarReserva extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel8))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbAtras)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel8)))
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -184,7 +170,9 @@ public class GenerarReserva extends javax.swing.JFrame {
                     .addComponent(jcEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54))
+                .addGap(18, 18, 18)
+                .addComponent(jbAtras)
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,6 +326,13 @@ public class GenerarReserva extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtCantPersonasKeyTyped
 
+    private void jbAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtrasActionPerformed
+            MesPrincipal pantalla = new MesPrincipal();
+            pantalla.setVisible(true);
+            pantalla.setLocationRelativeTo(null);
+            this.dispose();
+    }//GEN-LAST:event_jbAtrasActionPerformed
+
     public static boolean soloLetras(String cadena) {
 
         Pattern pattern = Pattern.compile("[0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?]+");
@@ -356,6 +351,7 @@ public class GenerarReserva extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbAtras;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JComboBox<String> jcEstado;
     private com.toedter.calendar.JDateChooser jdFecha;
