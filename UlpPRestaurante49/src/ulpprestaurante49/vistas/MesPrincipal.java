@@ -86,6 +86,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         jsMinutos = new javax.swing.JSpinner();
         jbCerrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jtFecha = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jbMesa1 = new javax.swing.JButton();
         jbMesa2 = new javax.swing.JButton();
@@ -219,6 +220,9 @@ public class MesPrincipal extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("RELOJ:");
 
+        jtFecha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jtFecha.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -228,15 +232,17 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jsMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(jbMostrarreservas, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -269,7 +275,8 @@ public class MesPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jsHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -575,12 +582,21 @@ public class MesPrincipal extends javax.swing.JFrame {
 
     private void jbEliminarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarResActionPerformed
         int fila = jTablaReserva.getSelectedRow();
-
+        int yaExiste = 0;
         if (fila != -1) {
             int id = (Integer) modelo.getValueAt(fila, 0);
+            for (Pedido listadePedido : pedidoData.listadePedidos()) {
+                if (listadePedido.getMesa().getReserva().getIdReserva() == id) {
+                    yaExiste = 1;
+                }
+            }
+            if (yaExiste == 0) {
             Reserva a = reservadata.buscarReservaID(id);
             a.setEstado(false);
             reservadata.modificarReserva(a);
+            } else {
+                JOptionPane.showMessageDialog(null, "<html>La Reserva ya esta en <b> una mesa no se puedo Eliminar</html>");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una Reserva de la Tabla");
         }
@@ -589,7 +605,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEliminarResActionPerformed
 
     private void jbModificarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarResActionPerformed
-  int fila = jTablaReserva.getSelectedRow();
+        int fila = jTablaReserva.getSelectedRow();
         int yaExiste = 0;
         if (fila != -1) {
             int id = (Integer) modelo.getValueAt(fila, 0);
@@ -622,7 +638,7 @@ public class MesPrincipal extends javax.swing.JFrame {
                 } else {
                     ModificarReserva.jcEstado.setSelectedIndex(1);
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "<html>La Reserva ya esta en <b> una mesa no se puedo Modificar</html>");
             }
         } else {
@@ -689,6 +705,12 @@ public class MesPrincipal extends javax.swing.JFrame {
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
         numero++;
         int reservaspordia = 4;
+        if (jdFecha.getDate() != null) {
+            LocalDate fecha = jdFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            jtFecha.setText(fecha + "");
+        }else{
+            jtFecha.setText("");
+        }
         if (numero == 3) {
             borradofilas();
             if (jdFecha.getDate() == null) {
@@ -1279,6 +1301,7 @@ public class MesPrincipal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdFecha;
     private javax.swing.JSpinner jsHora;
     private javax.swing.JSpinner jsMinutos;
+    private javax.swing.JLabel jtFecha;
     // End of variables declaration//GEN-END:variables
 
     public void corregirMesa() {

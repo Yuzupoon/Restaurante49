@@ -1,5 +1,8 @@
 package ulpprestaurante49.vistas;
 
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -24,6 +27,7 @@ public class AdmPrincipal extends javax.swing.JFrame {
         jbProductos = new javax.swing.JButton();
         jbMozo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jbCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -84,6 +88,26 @@ public class AdmPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        jbCerrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jbCerrar.setForeground(new java.awt.Color(0, 0, 0));
+        jbCerrar.setText("CERRAR SESION");
+        jbCerrar.setBorder(null);
+        jbCerrar.setContentAreaFilled(false);
+        jbCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbCerrarMouseExited(evt);
+            }
+        });
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,6 +120,10 @@ public class AdmPrincipal extends javax.swing.JFrame {
                     .addComponent(jbProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbMeseros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbCerrar)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +136,9 @@ public class AdmPrincipal extends javax.swing.JFrame {
                 .addComponent(jbMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jbCerrar)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,10 +185,32 @@ public class AdmPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jbCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jbCerrar.setForeground(Color.red);
+        Font font1 = new Font("Segoe UI", Font.BOLD, 14);
+        jbCerrar.setFont(font1);
+    }//GEN-LAST:event_jbCerrarMouseEntered
+
+    private void jbCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbCerrarMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        jbCerrar.setForeground(Color.black);
+        Font font2 = new Font("Segoe UI", Font.BOLD, 14);
+        jbCerrar.setFont(font2);
+    }//GEN-LAST:event_jbCerrarMouseExited
+
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        home.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jbCerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbCerrar;
     private javax.swing.JButton jbMeseros;
     private javax.swing.JButton jbMozo;
     private javax.swing.JButton jbProductos;

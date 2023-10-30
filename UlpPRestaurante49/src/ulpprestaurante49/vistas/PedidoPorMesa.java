@@ -348,13 +348,21 @@ public class PedidoPorMesa extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAgregarPedidoActionPerformed
 
     private void jbEntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntregadoActionPerformed
+        int aviso = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())
                     && !listadePedido.getEstado().equals("Pagado")) {
                 listadePedido.setEstado("Entregado");
                 pedidoData.modificarPedido(listadePedido);
                 jcEstado.setSelectedIndex(2);
+                aviso = 0;
+            } else {
+                aviso = 1;
             }
+        }
+        if (aviso == 1) {
+            JOptionPane.showMessageDialog(this, "Porfavor genera un pedido para esta mesa");
+
         }
 //        Mesa idmesa = new Mesa();
 //        Mesero meserito = new Mesero();
@@ -382,6 +390,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
 
     private void jbPagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPagadoActionPerformed
+        int aviso = 0;
         for (Pedido listadePedido : pedidoData.listadePedidos()) {
             if (listadePedido.getMesa().getIdMesa() == Integer.parseInt(jtMesa.getText())
                     && !listadePedido.getEstado().equals("Pagado")) {
@@ -396,7 +405,14 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                 pantalla.setVisible(true);
                 pantalla.setLocationRelativeTo(null);
                 this.dispose();
+                aviso = 0;
+            }else{
+                aviso = 1;
             }
+        }
+        if (aviso == 1) {
+            JOptionPane.showMessageDialog(this, "Porfavor genera un pedido para esta mesa");
+
         }
 
 //        Mesa idmesa = new Mesa();
