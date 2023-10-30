@@ -127,7 +127,10 @@ public class MesPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTablaReserva);
 
-        jbGenerarRes.setText("GENERAR RESERVA");
+        jbGenerarRes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Generar Reserva.png"))); // NOI18N
+        jbGenerarRes.setBorderPainted(false);
+        jbGenerarRes.setContentAreaFilled(false);
+        jbGenerarRes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGenerarRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGenerarResActionPerformed(evt);
@@ -138,14 +141,20 @@ public class MesPrincipal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("FECHA:");
 
-        jbModificarRes.setText("MODIFICAR RESERVA");
+        jbModificarRes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton modficar reserva.png"))); // NOI18N
+        jbModificarRes.setBorderPainted(false);
+        jbModificarRes.setContentAreaFilled(false);
+        jbModificarRes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbModificarRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarResActionPerformed(evt);
             }
         });
 
-        jbEliminarRes.setText("ELIMINAR RESERVA");
+        jbEliminarRes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Eliminar reserva.png"))); // NOI18N
+        jbEliminarRes.setBorderPainted(false);
+        jbEliminarRes.setContentAreaFilled(false);
+        jbEliminarRes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEliminarRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarResActionPerformed(evt);
@@ -162,7 +171,10 @@ public class MesPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbMostrarreservas.setText("Mostrar todas las Reservas");
+        jbMostrarreservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton mostrar reservas.png"))); // NOI18N
+        jbMostrarreservas.setBorderPainted(false);
+        jbMostrarreservas.setContentAreaFilled(false);
+        jbMostrarreservas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMostrarreservas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbMostrarreservasActionPerformed(evt);
@@ -176,7 +188,7 @@ public class MesPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jsMinutos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+        jsMinutos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 10));
         jsMinutos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jsMinutosStateChanged(evt);
@@ -235,12 +247,11 @@ public class MesPrincipal extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addComponent(jbEliminarRes))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbCerrar)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -416,7 +427,10 @@ public class MesPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbSalir.setText("ATRAS");
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Atras Mediano.png"))); // NOI18N
+        jbSalir.setBorderPainted(false);
+        jbSalir.setContentAreaFilled(false);
+        jbSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -444,18 +458,6 @@ public class MesPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(JtxReservadiatx)
-                        .addGap(18, 18, 18)
-                        .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbSalir)
-                        .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 18, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,7 +483,20 @@ public class MesPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18))))))
+                                .addGap(18, 18, 18))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(JtxReservadiatx)
+                                .addGap(18, 18, 18)
+                                .addComponent(JtxCantReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jbSalir)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,16 +519,21 @@ public class MesPrincipal extends javax.swing.JFrame {
                         .addComponent(jbMesa8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbMesa9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JtxCantReserv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JtxReservadiatx, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbSalir, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 22, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JtxCantReserv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JtxReservadiatx, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jCantidaddisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbSalir)
+                        .addGap(22, 22, 22))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -573,35 +593,45 @@ public class MesPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEliminarResActionPerformed
 
     private void jbModificarResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarResActionPerformed
-        int fila = jTablaReserva.getSelectedRow();
-
+  int fila = jTablaReserva.getSelectedRow();
+        int yaExiste = 0;
         if (fila != -1) {
             int id = (Integer) modelo.getValueAt(fila, 0);
-            ModificarReserva modificar = new ModificarReserva();
-            modificar.setVisible(true);
-            modificar.setLocationRelativeTo(null);
-            this.dispose();
+            for (Pedido listadePedido : pedidoData.listadePedidos()) {
+                if (listadePedido.getMesa().getReserva().getIdReserva() == id) {
+                    yaExiste = 1;
+                }
+            }
 
-            Reserva res = new Reserva();
-            res = reservadata.buscarReservaID(id);
+            if (yaExiste == 0) {
 
-            ModificarReserva.jtId.setText(id + "");
-            ModificarReserva.jtNombre.setText(res.getNombre());
-            ModificarReserva.jtApellido.setText(res.getApellido());
-            ModificarReserva.jtDni.setText(res.getDni() + "");
-            ModificarReserva.jdFecha.setDate(java.sql.Date.valueOf(res.getFecha()));
-            ModificarReserva.jsHora.setValue(res.getHora().getHours());
-            ModificarReserva.jsMinutos.setValue(res.getHora().getMinutes());
-            ModificarReserva.jtCantPersonas.setText(res.getCantidadPersonas() + "");
-            if (res.isEstado() == true) {
-                ModificarReserva.jcEstado.setSelectedIndex(0);
-            } else {
-                ModificarReserva.jcEstado.setSelectedIndex(1);
+                ModificarReserva modificar = new ModificarReserva();
+                modificar.setVisible(true);
+                modificar.setLocationRelativeTo(null);
+                this.dispose();
+
+                Reserva res = new Reserva();
+                res = reservadata.buscarReservaID(id);
+
+                ModificarReserva.jtId.setText(id + "");
+                ModificarReserva.jtNombre.setText(res.getNombre());
+                ModificarReserva.jtApellido.setText(res.getApellido());
+                ModificarReserva.jtDni.setText(res.getDni() + "");
+                ModificarReserva.jdFecha.setDate(java.sql.Date.valueOf(res.getFecha()));
+                ModificarReserva.jsHora.setValue(res.getHora().getHours());
+                ModificarReserva.jsMinutos.setValue(res.getHora().getMinutes());
+                ModificarReserva.jtCantPersonas.setText(res.getCantidadPersonas() + "");
+                if (res.isEstado() == true) {
+                    ModificarReserva.jcEstado.setSelectedIndex(0);
+                } else {
+                    ModificarReserva.jcEstado.setSelectedIndex(1);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "<html>La Reserva ya esta en <b> una mesa no se puedo Modificar</html>");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Por favor seleccioname una reserva para modificar");
         }
-
     }//GEN-LAST:event_jbModificarResActionPerformed
 
     private void jTablaReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaReservaMouseClicked

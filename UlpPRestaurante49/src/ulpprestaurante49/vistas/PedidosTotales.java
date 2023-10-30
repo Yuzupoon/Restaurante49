@@ -60,7 +60,7 @@ public class PedidosTotales extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtPedido);
 
-        jbPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton pagado chico.png"))); // NOI18N
+        jbPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Pagado.png"))); // NOI18N
         jbPago.setBorderPainted(false);
         jbPago.setContentAreaFilled(false);
         jbPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -70,7 +70,7 @@ public class PedidosTotales extends javax.swing.JFrame {
             }
         });
 
-        jbActivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton activos chico.png"))); // NOI18N
+        jbActivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Botones Activos.png"))); // NOI18N
         jbActivo.setBorderPainted(false);
         jbActivo.setContentAreaFilled(false);
         jbActivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -80,7 +80,7 @@ public class PedidosTotales extends javax.swing.JFrame {
             }
         });
 
-        jbAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton atras chico.png"))); // NOI18N
+        jbAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Atras Mediano.png"))); // NOI18N
         jbAtras.setBorderPainted(false);
         jbAtras.setContentAreaFilled(false);
         jbAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,7 +118,7 @@ public class PedidosTotales extends javax.swing.JFrame {
                             .addComponent(jbActivo)
                             .addComponent(jbPago)
                             .addComponent(jbAtras))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +129,7 @@ public class PedidosTotales extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(74, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbPago)

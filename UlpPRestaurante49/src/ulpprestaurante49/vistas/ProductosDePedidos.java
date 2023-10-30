@@ -96,7 +96,10 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         jtablaPedido.setOpaque(false);
         jScrollPane2.setViewportView(jtablaPedido);
 
-        jbAñadir.setText("AÑADIR");
+        jbAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton añadir.png"))); // NOI18N
+        jbAñadir.setBorderPainted(false);
+        jbAñadir.setContentAreaFilled(false);
+        jbAñadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAñadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAñadirActionPerformed(evt);
@@ -111,7 +114,10 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         jlIdpedido.setBackground(new java.awt.Color(255, 255, 255));
         jlIdpedido.setForeground(new java.awt.Color(255, 255, 255));
 
-        jtEliminar.setText("ELIMINAR");
+        jtEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Eliminar.png"))); // NOI18N
+        jtEliminar.setBorderPainted(false);
+        jtEliminar.setContentAreaFilled(false);
+        jtEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jtEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtEliminarActionPerformed(evt);
@@ -126,7 +132,10 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("PRODUCTOS");
 
-        jbAtras.setText("ATRAS");
+        jbAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Atras Mediano.png"))); // NOI18N
+        jbAtras.setBorderPainted(false);
+        jbAtras.setContentAreaFilled(false);
+        jbAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAtrasActionPerformed(evt);
@@ -153,12 +162,12 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                                 .addComponent(jsCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                    .addComponent(jtEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jbAñadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(jLabel1)))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -188,19 +197,17 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                             .addComponent(jbAñadir))
                         .addGap(18, 18, 18)
                         .addComponent(jtEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1)))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jbAtras)))
+                    .addComponent(jbAtras))
                 .addGap(25, 25, 25))
         );
 
@@ -263,7 +270,7 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                     prodData.buscarProductoPorNombre(product).cargarStock(cantidad);
                 }
             }
-            prodXPedidoData.eliminarProductoxPedido(product);
+            prodXPedidoData.eliminarProductoxPedido2(product, idpedido);
             borradofilasProdXPedidos();
             borradofilasProductos();
             llenartablaPrducto();
@@ -271,7 +278,6 @@ public class ProductosDePedidos extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Profavor seleccioname un producto agregado al pedido");
         }
-
     }//GEN-LAST:event_jtEliminarActionPerformed
 
     private void jbAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtrasActionPerformed
@@ -315,8 +321,11 @@ public class ProductosDePedidos extends javax.swing.JFrame {
             total = Double.parseDouble(jtablaPedido.getValueAt(i, 2) + "") + total;
 
         }
-        pedido.setTotal(total);
-        pedidoData.modificarPedido(pedido);
+        if (pedido.getTotal() != total) {
+            pedido.setTotal(total);
+            pedidoData.modificarPedido(pedido);
+        }
+
         PedidoPorMesa.jbGenerarPedido.setVisible(false);
     }//GEN-LAST:event_jbAtrasActionPerformed
 
@@ -411,18 +420,33 @@ public class ProductosDePedidos extends javax.swing.JFrame {
             public void run() {
 
                 int idpedido = Integer.parseInt(jlIdpedido.getText());
-
+                int repetido = 0;
+                int cantidad = 0;
                 for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
-                    for (Producto listaProducto : prodData.listaProductos()) {
-                        if (MostrarProducto.getProducto().getNombre().equals(listaProducto.getNombre())) {
-                            modelo2.addRow(new Object[]{
-                                MostrarProducto.getProducto().getNombre(),
-                                MostrarProducto.getCantidad(),
-                                listaProducto.getPrecio() * MostrarProducto.getCantidad()
-                            });
+                    for (ProductoXPedido MostrarProducto1 : prodXPedidoData.MostrarProductos(idpedido)) {
+                        if (MostrarProducto.getProducto().getNombre().equals(MostrarProducto1.getProducto().getNombre())) {
+                            repetido++;
+                            cantidad += MostrarProducto1.getCantidad();
+                            if (repetido == 2) {
+                                String nombre = MostrarProducto1.getProducto().getNombre();
+                                prodXPedidoData.eliminarProductoxPedido2(nombre, idpedido);
+                                prodXPedidoData.crearPedidoDeProducto(idpedido, nombre, cantidad);
+
+                            }
                         }
                     }
+                    repetido = 0;
+                    cantidad = 0;
                 }
+                for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
+                    modelo2.addRow(new Object[]{
+                        MostrarProducto.getProducto().getNombre(),
+                        MostrarProducto.getCantidad(),
+                        prodData.buscarProductoPorNombre(MostrarProducto.getProducto().getNombre()).getPrecio() * MostrarProducto.getCantidad()
+                    });
+                }
+//
+
                 crono.cancel();
             }
         }, tiempo);

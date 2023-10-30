@@ -42,9 +42,12 @@ public class Home extends javax.swing.JFrame {
         jbIngresar.setBackground(new java.awt.Color(255, 255, 255));
         jbIngresar.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jbIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        jbIngresar.setText("INGRESAR");
+        jbIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Ingresar.png"))); // NOI18N
         jbIngresar.setBorder(null);
+        jbIngresar.setBorderPainted(false);
         jbIngresar.setContentAreaFilled(false);
+        jbIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbIngresar.setDefaultCapable(false);
         jbIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jbIngresarMouseEntered(evt);
@@ -68,7 +71,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(115, 115, 115))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
+                .addGap(155, 155, 155)
                 .addComponent(jbIngresar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -79,7 +82,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbIngresar)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

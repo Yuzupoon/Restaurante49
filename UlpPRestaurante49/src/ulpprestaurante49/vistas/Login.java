@@ -47,9 +47,19 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("CONTRASEÑA:");
         jLabel3.setOpaque(true);
 
+        jpContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jpContrasenaKeyPressed(evt);
+            }
+        });
+
         jbLogin.setBackground(new java.awt.Color(102, 102, 102));
         jbLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jbLogin.setText("INGRESAR");
+        jbLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Boton Ingresar.png"))); // NOI18N
+        jbLogin.setBorderPainted(false);
+        jbLogin.setContentAreaFilled(false);
+        jbLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbLogin.setDefaultCapable(false);
         jbLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLoginActionPerformed(evt);
@@ -70,11 +80,11 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jbLogin)))
+                        .addGap(6, 6, 6)
+                        .addComponent(jbLogin))
+                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,9 +98,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbLogin)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,38 +119,43 @@ public class Login extends javax.swing.JFrame {
 
     private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
         
-        String admi = "Administracion";
-        String usu = "proyecto49";
-        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
-            AdmPrincipal adm = new AdmPrincipal();
-            adm.setVisible(true);
-            adm.setLocationRelativeTo(null);
-            this.dispose();
-        }else{
-            int acierto = 0;
-            
-            for (Mesero mesero : meseroData.listaMesero()) {
-                
-               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
-                   acierto = 1;
-               }
-            }
-        
-            if(acierto == 1){
-            MesPrincipal mesero = new MesPrincipal();
-            mesero.setVisible(true);
-            mesero.setLocationRelativeTo(null);
-            this.dispose();
-        }else{
-                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
-                jpContrasena.setText("");
-            }
-        }
-//       AdmPrincipal mes = new AdmPrincipal();
-//      mes.setVisible(true);
-//      mes.setLocationRelativeTo(null);
-//      dispose();
+//        String admi = "Administracion";
+//        String usu = "proyecto49";
+//        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
+//            AdmPrincipal adm = new AdmPrincipal();
+//            adm.setVisible(true);
+//            adm.setLocationRelativeTo(null);
+//            this.dispose();
+//        }else{
+//            int acierto = 0;
+//            
+//            for (Mesero mesero : meseroData.listaMesero()) {
+//                
+//               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
+//                   acierto = 1;
+//               }
+//            }
+//        
+//            if(acierto == 1){
+//            MesPrincipal mesero = new MesPrincipal();
+//            mesero.setVisible(true);
+//            mesero.setLocationRelativeTo(null);
+//            this.dispose();
+//        }else{
+//                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
+//                jpContrasena.setText("");
+//            }
+//        }
+      AdmPrincipal mes = new AdmPrincipal();
+      mes.setVisible(true);
+      mes.setLocationRelativeTo(null);
+      dispose();
     }//GEN-LAST:event_jbLoginActionPerformed
+
+    private void jpContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpContrasenaKeyPressed
+        char nombre = evt.getKeyChar();
+
+    }//GEN-LAST:event_jpContrasenaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
