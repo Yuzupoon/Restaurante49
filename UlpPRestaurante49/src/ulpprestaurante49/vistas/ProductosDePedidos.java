@@ -16,6 +16,7 @@ import restaurante.Entidades.Pedido;
 import restaurante.Entidades.Producto;
 import restaurante.Entidades.ProductoXPedido;
 import restaurante.Entidades.Reserva;
+import restaurante.accesoData.MesaData;
 import restaurante.accesoData.MeseroData;
 import restaurante.accesoData.PedidoData;
 import restaurante.accesoData.ProductoData;
@@ -232,6 +233,8 @@ public class ProductosDePedidos extends javax.swing.JFrame {
             llenarSegundaTabla();
             int cantidadrequerida = (Integer) jsCantidad.getValue();
             prodData.buscarProductoId(idproducto).restarStock(cantidadrequerida);
+            borradofilasProductos();
+            llenartablaPrducto();
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor selecciona un producto que desea Agregar al pedido");
         }
@@ -305,6 +308,15 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                 PedidoPorMesa.JcReserva.setSelectedIndex(contador1);
             }
         }
+        int fila = jtablaPedido.getRowCount() - 1;
+        double total = 0;
+        for (int i = fila; i >= 0; i--) {
+
+            total = Double.parseDouble(jtablaPedido.getValueAt(i, 2) + "") + total;
+
+        }
+        pedido.setTotal(total);
+        pedidoData.modificarPedido(pedido);
         PedidoPorMesa.jbGenerarPedido.setVisible(false);
     }//GEN-LAST:event_jbAtrasActionPerformed
 
@@ -353,6 +365,7 @@ public class ProductosDePedidos extends javax.swing.JFrame {
 
         modelo2.addColumn("Producto");
         modelo2.addColumn("Cantidad");
+        modelo2.addColumn("Subtotal");
         jtablaPedido.setModel(modelo2);
 
     }
@@ -400,10 +413,15 @@ public class ProductosDePedidos extends javax.swing.JFrame {
                 int idpedido = Integer.parseInt(jlIdpedido.getText());
 
                 for (ProductoXPedido MostrarProducto : prodXPedidoData.MostrarProductos(idpedido)) {
-                    modelo2.addRow(new Object[]{
-                        MostrarProducto.getProducto().getNombre(),
-                        MostrarProducto.getCantidad()
-                    });
+                    for (Producto listaProducto : prodData.listaProductos()) {
+                        if (MostrarProducto.getProducto().getNombre().equals(listaProducto.getNombre())) {
+                            modelo2.addRow(new Object[]{
+                                MostrarProducto.getProducto().getNombre(),
+                                MostrarProducto.getCantidad(),
+                                listaProducto.getPrecio() * MostrarProducto.getCantidad()
+                            });
+                        }
+                    }
                 }
                 crono.cancel();
             }

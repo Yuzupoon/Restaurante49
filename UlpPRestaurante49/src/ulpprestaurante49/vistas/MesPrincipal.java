@@ -169,12 +169,14 @@ public class MesPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jsHora.setModel(new javax.swing.SpinnerNumberModel(0, 0, 23, 1));
         jsHora.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jsHoraStateChanged(evt);
             }
         });
 
+        jsMinutos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
         jsMinutos.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jsMinutosStateChanged(evt);
@@ -1269,12 +1271,12 @@ public class MesPrincipal extends javax.swing.JFrame {
                     && !listadePedido.getEstado().equals("Pagado")) {
 
                 listadePedido.setEstado("Pagado");
+                mesdata.armarMesa(listadePedido.getMesa().getIdMesa(), 1, 4);
                 pedidoData.modificarPedido(listadePedido);
                 Reserva reserva = reservadata.buscarReservaID(listadePedido.getMesa().getReserva().getIdReserva());
                 reserva.setEstado(false);
                 reservadata.modificarReserva(reserva);
-                mesdata.armarMesa(listadePedido.getMesa().getIdMesa(), 1);
-                
+
             }
         }
     }

@@ -274,14 +274,14 @@ public class PedidoPorMesa extends javax.swing.JFrame {
             }
             int cont2 = 0;
             for (Reserva reserva : resData.listaReservasXFecha(fechalista)) {
-                if (reserva.isEstado()==true) {
-                     cont2++;
-                }               
+                if (reserva.isEstado() == true) {
+                    cont2++;
+                }
                 if (JcReserva.getSelectedIndex() == cont2) {
                     idreserva = reserva.getIdReserva();
                 }
             }
-
+            int personas = resData.buscarReservaID(idreserva).getCantidadPersonas();
             int encontroMismaReserva = 0;
             Reserva reserva1 = resData.buscarReservaID(idreserva);
             for (Pedido listadePedido : pedidoData.listadePedidos()) {
@@ -292,8 +292,8 @@ public class PedidoPorMesa extends javax.swing.JFrame {
 
             if (encontroMismaReserva == 0) {
                 double total = Double.parseDouble(jlTotal.getText());
-                int mesi = Integer.parseInt(jtMesa.getText());                
-                mesaData.armarMesa(mesi, idreserva);
+                int mesi = Integer.parseInt(jtMesa.getText());
+                mesaData.armarMesa(mesi, idreserva, personas);
                 pedidoData.crearPedido(mesi, meserito, "Pendiente", total);
                 jbGenerarPedido.setVisible(false);
             } else {
@@ -368,7 +368,7 @@ public class PedidoPorMesa extends javax.swing.JFrame {
                 listadePedido.setEstado("Pagado");
                 listadePedido.setTotal(Double.parseDouble(jlTotal.getText()));
                 pedidoData.modificarPedido(listadePedido);
-                mesaData.armarMesa(listadePedido.getMesa().getIdMesa(), 1);
+                mesaData.armarMesa(listadePedido.getMesa().getIdMesa(), 1, 4);
                 Reserva anularReserva = resData.buscarReservaID(listadePedido.getMesa().getReserva().getIdReserva());
                 anularReserva.setEstado(false);
                 resData.modificarReserva(anularReserva);

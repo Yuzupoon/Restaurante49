@@ -15,7 +15,7 @@ import restaurante.Entidades.Mesa;
 public class MesaData {
 
     Connection conexion = null;
-   ReservaData res = new ReservaData();
+    ReservaData res = new ReservaData();
 
     public MesaData() {
         conexion = Conexion.getConexion();
@@ -58,50 +58,50 @@ public class MesaData {
         }
     }
 
-    public void armarMesa(int idMesa, int idReserva) {
+    public void armarMesa(int idMesa, int idReserva, int capacidad) {
         try {
-        String sql = "UPDATE `mesa` SET `idReserva`=?  WHERE `idMesa`=? AND `estado`= 1";
-        PreparedStatement ps = conexion.prepareStatement(sql);
+            String sql = "UPDATE `mesa` SET `idReserva`=?, capacidad = ?  WHERE `idMesa`=? AND `estado`= 1";
+            PreparedStatement ps = conexion.prepareStatement(sql);
 
             ps.setInt(1, idReserva);
-            ps.setInt(2, idMesa);
+            ps.setInt(2, capacidad);
+            ps.setInt(3, idMesa);
             int lleno = ps.executeUpdate();
-        
-            if(lleno == 1 ){
-                JOptionPane.showMessageDialog(null,"La mesa se ocupo para esta Reserva");
-            }else{
+
+            if (lleno == 1) {
+                JOptionPane.showMessageDialog(null, "La mesa se ocupo para esta Reserva");
+            } else {
                 JOptionPane.showMessageDialog(null, "La mesa que quiere ocupar esta ocupada");
             }
-            ps.close();            
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error al acceder a la tabla Mesa", 0);
         }
-        
+
     }
 
-    public Mesa buscarMesaID(int idMesa){
-        Mesa mesa= new Mesa();
+    public Mesa buscarMesaID(int idMesa) {
+        Mesa mesa = new Mesa();
         try {
-            String sql="SELECT * FROM `mesa` WHERE idMesa=?";
+            String sql = "SELECT * FROM `mesa` WHERE idMesa=?";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, idMesa);
-            ResultSet rs =ps.executeQuery();
-             while (rs.next()) {          
-                 ReservaData reservaData= new ReservaData();
-                 
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ReservaData reservaData = new ReservaData();
+
                 mesa.setIdMesa(idMesa);
                 mesa.setReserva(reservaData.buscarReservaID(rs.getInt("idReserva")));
                 mesa.setCapacidad(rs.getInt("capacidad"));
                 mesa.setEstado(rs.getBoolean("estado"));
             }
-             ps.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(MesaData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mesa;
     }
-    
-    
+
     public void ocuparMesa(int id) {
         try {
             String sql = "UPDATE Mesa SET estado = 0 WHERE idMesa = ? ";
@@ -135,24 +135,24 @@ public class MesaData {
         }
 
     }
-    
+
     public List<Mesa> listaMesa() {
-      List<Mesa> listaMesa = new ArrayList<>();
+        List<Mesa> listaMesa = new ArrayList<>();
         try {
-            
+
             String sql = "SELECT * FROM `mesa`";
-          try (PreparedStatement ps = conexion.prepareStatement(sql)) {
-              ResultSet rs = ps.executeQuery();
-              while (rs.next()) {
-                  Mesa mes = new Mesa();
-                  
-                  mes.setIdMesa(rs.getInt("idMesa"));
-                  mes.setReserva(res.buscarReservaID(rs.getInt("idReserva")));
-                  mes.setCapacidad(rs.getInt("capacidad"));
-                  mes.setEstado(rs.getBoolean("estado"));
-                  listaMesa.add(mes);
-              }
-          }
+            try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    Mesa mes = new Mesa();
+
+                    mes.setIdMesa(rs.getInt("idMesa"));
+                    mes.setReserva(res.buscarReservaID(rs.getInt("idReserva")));
+                    mes.setCapacidad(rs.getInt("capacidad"));
+                    mes.setEstado(rs.getBoolean("estado"));
+                    listaMesa.add(mes);
+                }
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Mesero " + ex.getMessage());
         }
