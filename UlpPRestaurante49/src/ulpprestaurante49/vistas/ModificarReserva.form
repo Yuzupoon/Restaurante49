@@ -74,17 +74,20 @@
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jtCantPersonas" min="-2" pref="122" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jcEstado" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
-                                          <Component id="jtId" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jbGuardar" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jtCantPersonas" min="-2" pref="122" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jcEstado" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                                              <Component id="jtId" min="-2" pref="91" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jtApellido" min="-2" pref="134" max="-2" attributes="0"/>
+                                          <Component id="jtDni" min="-2" pref="134" max="-2" attributes="0"/>
+                                          <Component id="jtNombre" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jtApellido" min="-2" pref="134" max="-2" attributes="0"/>
-                                      <Component id="jtDni" min="-2" pref="134" max="-2" attributes="0"/>
-                                      <Component id="jtNombre" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
                               </Group>
@@ -92,9 +95,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jbAtras" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jbGuardar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="20" pref="373" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -162,9 +163,9 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jbGuardar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbAtras" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jbAtras" min="-2" max="-2" attributes="0"/>
+                      <Component id="jbGuardar" min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="269" max="-2" attributes="0"/>
               </Group>

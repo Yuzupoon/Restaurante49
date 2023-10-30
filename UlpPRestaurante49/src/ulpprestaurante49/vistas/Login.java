@@ -36,16 +36,14 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jLabel2.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("         USUARIO: ");
-        jLabel2.setOpaque(true);
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 255, 204));
+        jLabel2.setText("USUARIO");
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CONTRASEÑA:");
-        jLabel3.setOpaque(true);
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 255, 204));
+        jLabel3.setText("CONTRASEÑA");
 
         jpContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -70,37 +68,33 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbLogin)
+                .addGap(215, 215, 215))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                .addGap(221, 221, 221)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jbLogin))
-                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbLogin)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,37 +113,37 @@ public class Login extends javax.swing.JFrame {
 
     private void jbLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLoginActionPerformed
         
-//        String admi = "Administracion";
-//        String usu = "proyecto49";
-//        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
-//            AdmPrincipal adm = new AdmPrincipal();
-//            adm.setVisible(true);
-//            adm.setLocationRelativeTo(null);
-//            this.dispose();
-//        }else{
-//            int acierto = 0;
-//            
-//            for (Mesero mesero : meseroData.listaMesero()) {
-//                
-//               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
-//                   acierto = 1;
-//               }
-//            }
-//        
-//            if(acierto == 1){
-//            MesPrincipal mesero = new MesPrincipal();
-//            mesero.setVisible(true);
-//            mesero.setLocationRelativeTo(null);
-//            this.dispose();
-//        }else{
-//                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
-//                jpContrasena.setText("");
-//            }
-//        }
-      AdmPrincipal mes = new AdmPrincipal();
-      mes.setVisible(true);
-      mes.setLocationRelativeTo(null);
-      dispose();
+        String admi = "Administracion";
+        String usu = "proyecto49";
+        if (jtUsuario.getText().equals(admi) && jpContrasena.getText().equals(usu)) {
+            AdmPrincipal adm = new AdmPrincipal();
+            adm.setVisible(true);
+            adm.setLocationRelativeTo(null);
+            this.dispose();
+        }else{
+            int acierto = 0;
+            
+            for (Mesero mesero : meseroData.listaMesero()) {
+                
+               if(jtUsuario.getText().equals(mesero.getUsuario()) &&  jpContrasena.getText().equals(mesero.getContraseña())) {
+                   acierto = 1;
+               }
+            }
+        
+            if(acierto == 1){
+            MesPrincipal mesero = new MesPrincipal();
+            mesero.setVisible(true);
+            mesero.setLocationRelativeTo(null);
+            this.dispose();
+        }else{
+                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña son incorrectos");
+                jpContrasena.setText("");
+            }
+        }
+//      AdmPrincipal mes = new AdmPrincipal();
+//      mes.setVisible(true);
+//      mes.setLocationRelativeTo(null);
+//      dispose();
     }//GEN-LAST:event_jbLoginActionPerformed
 
     private void jpContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpContrasenaKeyPressed
