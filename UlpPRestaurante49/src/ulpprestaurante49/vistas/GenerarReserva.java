@@ -53,6 +53,7 @@ public class GenerarReserva extends javax.swing.JFrame {
         jbAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setOpaque(false);
 

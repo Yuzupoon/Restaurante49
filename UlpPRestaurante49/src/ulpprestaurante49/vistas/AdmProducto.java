@@ -70,6 +70,7 @@ public class AdmProducto extends javax.swing.JFrame {
         jbCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setOpaque(false);
 

@@ -105,6 +105,7 @@ public class MesPrincipal extends javax.swing.JFrame {
         JtxCantReserv = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setOpaque(false);
 

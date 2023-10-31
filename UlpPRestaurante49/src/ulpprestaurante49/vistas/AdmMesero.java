@@ -59,6 +59,7 @@ public class AdmMesero extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setOpaque(false);
 

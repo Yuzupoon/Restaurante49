@@ -39,6 +39,7 @@ public class PedidosTotales extends javax.swing.JFrame {
         jtTablaDeProductos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setOpaque(false);
 
